@@ -5,7 +5,7 @@ import { Card } from "flowbite-react";
 const Catalogo = () => {
   return (
     <div>
-      <ul className="bg-[#EADCDC] grid grid-cols-4 gap-4 p-4 text-center">
+      <ul className="bg-[#EADCDC] grid grid-cols-4 gap-4 text-center p-16">
         {records.map((record) => (
           <Link key={record.id} to={`/producto/:${record.id}`}>
             <Card imgSrc={record.img}>
