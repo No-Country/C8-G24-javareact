@@ -33,3 +33,14 @@
 .text-stroke{
     -webkit-text-stroke: 1px black;
 }
+
+
+/*cart button badge*/
+#rounded-full{
+    position: relative;
+    border-radius: 99%;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0rem 0.5rem;
+    z-index: 99;
+}

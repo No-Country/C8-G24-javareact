@@ -1,22 +1,54 @@
 import Card from "../CardsItem/Card1";
 import { Breadcrumb } from "flowbite-react";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import products from "../../Records/ProductsLists/ProductLists.json";
 
 const Filters = ({ name }) => {
+  let location = useLocation();
   const { product } = useParams();
+  const [type, setType] = useState([]);
+  
+  useEffect(() => {
+    setType(exactType); 
+   },[] );
+   
+  
+const exactType = products.filter(checkTypes);
+
+function checkTypes(types) {
+  return types.subtipo === product.slice(1);
+}
+
+const filterProd = type.filter(subCheckTypes)
+
+function subCheckTypes(types) {
+  
+  if(location.pathname.includes("perros")){
+    return types.tipo === "perros";
+  }else if (location.pathname.includes("gatos")){
+    return types.tipo === "gatos";
+  }else if (location.pathname.includes("otros")){
+    return types.tipo === "otros";
+  }else if (location.pathname.includes("promociones")){
+    return types.tipo === "promociones";
+  }else if (location.pathname.includes("servicios")){
+    return types.tipo === "servicios";
+  }
+}
 
   const priceShop = products.map((shop) => shop.comercios);
+  
   for (let i = 0; i < priceShop.length; i++) {
     const highPriceShop = priceShop[i].sort((a, b) => {
       return Number.parseInt(a.precio) - Number.parseInt(b.precio);
     });
   }
-
+ 
   const [filtersSelected, setFiltersSelected] = useState(
-    products.map(
+    filterProd.map(
       (accumulator, el) => ({ ...accumulator, [el.product]: false }),
       {}
     )
@@ -30,7 +62,7 @@ const Filters = ({ name }) => {
     });
 
     if (e.target.checked) {
-      const result = products.filter(
+      const result = filterProd.filter(
         (item) =>
           item.product.includes(e.target.value) && !filteredData.includes(item)
       );
@@ -42,8 +74,6 @@ const Filters = ({ name }) => {
       setFilteredData(result);
     }
   };
-
-  console.log(filteredData);
 
   return (
     <div>

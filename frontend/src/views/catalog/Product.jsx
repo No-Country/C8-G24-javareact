@@ -1,31 +1,33 @@
 import { Card } from "flowbite-react";
 import Button from "./Button1";
-import products from "../records/ProductsLists/ProductLists.json";
-import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import CartContext from "../CartContext";
+import CardContext from "../Context/SearchContext/CardContext";
 
 function Product() {
-  const { id } = useParams();
-  const indexProduct = products.findIndex(
-    (p) => p.id === parseInt(id.slice(1), 10)
-  );
-  const [product, setProduct] = useState(products[indexProduct]);
+  
+  const { chosenCard } = useContext(CardContext);  
+  const [product, setProduct] = useState(chosenCard);
   const [cantidad, setCantidad] = useState(1);
   const { cart, setCart } = useContext(CartContext);
-
+   
   const addToCart = () => {
-    setCart([...cart, product]);
+
+     if (product.cantidad === 1 ) {
+      product.cantidad = cantidad;
+      setCart([...cart, product]);
+    }
+ 
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === product.id) {
+        product.cantidad = cantidad + product.cantidad;
+        setCart([...cart]);
+      }        
+    }
   };
 
   const handleChange = (e) => {
-    if (e.target.value > 1) {
-      setCantidad(e.target.value);
-      let cart2 = cart;
-      cart2[indexProduct].cantidad = e.target.value;
-      setCart(cart2);
-    }
-    console.log(e.target.value);
+    setCantidad(parseInt(e.target.value));
   };
 
   return (
@@ -33,7 +35,7 @@ function Product() {
       <img src={product.img} alt="" className="w-1/3" />
       <div className="text-center m-5 w-1/3 flex flex-col items-center">
         <header className="bg-[#F8CF32] p-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          <h1>{product.product}</h1>
+          <h1>Tienda: {chosenCard.negocio}</h1>
         </header>
         <div className="flex flex-col items-center mt-5 w-3/4">
           <Card href="#">
@@ -50,9 +52,7 @@ function Product() {
               </li>
               <li>
                 cantidad:{" "}
-                <select
-                  className="bg-[#D9D9D9]"
-                >
+                <select className="bg-[#D9D9D9]" onChange={handleChange}>
                   {[...Array(product.stock).keys()].map((i) => (
                     <option key={i} value={i + 1}>
                       {i + 1}

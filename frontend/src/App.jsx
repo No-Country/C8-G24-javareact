@@ -13,6 +13,8 @@ import FormPayment from "./views/FormPayment";
 
 import { SearchProvider } from "./views/Context/SearchContext/SearchContext";
 import { CartProvider } from "./views/CartContext";
+import { CardProvider } from "./views/Context/SearchContext/CardContext";
+
 import { CartPage } from "./views/Pages/CartPage/CartPage";
 import CheckoutForm from "./views/Pages/CheckoutForm/CheckoutForm";
 import InformationUserCheckout from "./views/Pages/InformationUserCheckout/InformationUserCheckout";
@@ -34,6 +36,7 @@ function App() {
     return (
       <div className="Container">
         <CartProvider>
+          <CardProvider>
           <SearchProvider>
             <YellowTop />
             <Routes>
@@ -78,6 +81,7 @@ function App() {
             </Routes>
             <Footers />
           </SearchProvider>
+          </CardProvider>
         </CartProvider>
       </div>
     );

@@ -37,9 +37,8 @@ function YellowTop() {
           </div>
         </Link>
         <SearchInput />
-        <div className="flex gap-4 mt-3 mb-3">
+        <div className="flex gap-4 mt-12 lg:mt-3 mb-3">
           <div className="flex flex-row items-center font-fontGafata gap-2">
-            {/* <Favourites /> */}
             <Cart />
           </div>
         </div>
