@@ -44,3 +44,13 @@
     padding: 0rem 0.5rem;
     z-index: 99;
 }
+
+/*padding dropdown shops*/
+
+.padding-list div{
+    padding: 0rem;
+}
+
+.padding-list div ul{
+    padding: 0rem;
+}

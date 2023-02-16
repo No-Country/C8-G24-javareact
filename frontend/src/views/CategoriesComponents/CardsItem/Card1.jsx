@@ -34,10 +34,10 @@ const Card1 = ({ description, image, comercios , shopping , shipments , price , 
         </Card>
       </div>
       <div className="m-4">
-        <Dropdown label={`Compáralo en ${comercios.length} tiendas`} placement="bottom" style={{backgroundColor:"#37cbfa"}}>
+        <Dropdown label={`Compáralo en ${comercios.length} tiendas`} className="padding-list" placement="bottom" style={{backgroundColor:"#37cbfa"}}>
           {comercios.map((items) => {
             return (
-              <Dropdown.Item className=" border w-96 flex justify-between border-r-0 border-l-0" onClick={ () => {handleCardFunctionX(items , description, image, comercios , shopping , shipments , price , id)} }>
+              <Dropdown.Item className="border-y w-96 flex justify-between" onClick={ () => {handleCardFunctionX(items , description, image, comercios , shopping , shipments , price , id)} }>
                 <div>
                   <p>{items.negocio}</p>
                 </div>

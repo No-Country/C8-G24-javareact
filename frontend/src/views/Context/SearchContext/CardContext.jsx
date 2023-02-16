@@ -29,7 +29,8 @@ const CardProvider = ({ children }) => {
       cantidad: 1,
       envio: items.envio,
       negocio: items.negocio,
-      stock: items.stock
+      stock: items.stock,
+      idItem : items.id
     };
     setChosenCard(informationChosenCard);
   };

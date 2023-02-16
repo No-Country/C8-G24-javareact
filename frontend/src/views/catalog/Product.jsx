@@ -12,6 +12,8 @@ function Product() {
   const { cart, setCart } = useContext(CartContext);
    
   const addToCart = () => {
+    /*ESTO HAY QUE EMPAREJARLO*/
+      
 
      if (product.cantidad === 1 ) {
       product.cantidad = cantidad;
@@ -19,7 +21,8 @@ function Product() {
     }
  
     for (let i = 0; i < cart.length; i++) {
-      if (cart[i].id === product.id) {
+     
+      if (cart[i].id === product.id && (cart[i].idItem === product.idItem)) {
         product.cantidad = cantidad + product.cantidad;
         setCart([...cart]);
       }        
