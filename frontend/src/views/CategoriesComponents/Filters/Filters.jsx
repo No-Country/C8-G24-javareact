@@ -5,6 +5,7 @@ import { useState , useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import products from "../../Records/ProductsLists/ProductLists.json";
+import commerce from "../../helpers/helpers";
 
 const Filters = ({ name }) => {
   let location = useLocation();
@@ -133,14 +134,18 @@ function subCheckTypes(types) {
         </div>
         <div className="grid grid-cols-3 gap-8 w-full">
           {filteredData.map((item) => {
+             const commerceItems = (item.comercios.map((item) => item));
+
+             commerce(commerceItems)
+             
             return (
               <Card
                 image={item.img}
                 description={item.product}
                 comercios={item.comercios}
-                shopping={item.comercios.map((item) => item.negocio)[0]}
-                shipments={item.comercios.map((item) => item.envio)[0]}
-                price={item.comercios.map((item) => item.precio)[0]}
+                shopping={commerceItems[0].negocio}
+                shipments={commerceItems[0].envio}
+                price={commerceItems[0].precio}
               />
             );
           })}

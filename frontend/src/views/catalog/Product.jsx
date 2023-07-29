@@ -14,7 +14,7 @@ function Product() {
   const addToCart = () => {
     /*ESTO HAY QUE EMPAREJARLO*/
       
-
+    console.log(product)
      if (product.cantidad === 1 ) {
       product.cantidad = cantidad;
       setCart([...cart, product]);
