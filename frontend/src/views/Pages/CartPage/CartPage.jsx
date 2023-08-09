@@ -15,7 +15,6 @@ import { useContext } from "react";
 import CartContext from "../../CartContext";
 
 export const CartPage = () => {
-
   const { cart, setCart, cartItems, setCartItems } = useContext(CartContext);
 
   const [optionText, setOptionText] = useState();
@@ -33,16 +32,17 @@ export const CartPage = () => {
   const [inDateItems, setInDateItems] = useState({
     number: "",
     month: "",
-    day: "",
     year: ""
   });
 
   const [outDateItems, setOutDateItems] = useState({
     number: "",
     month: "",
-    day: "",
     year: ""
   });
+
+  const [weekDayStart, setWeekDayStart] = useState();
+  const [weekDayEnd, setWeekDayEnd] = useState();
 
   const [storageShipping, setStorageShipping] = useState([]);
 
@@ -53,16 +53,20 @@ export const CartPage = () => {
     "miércoles",
     "jueves",
     "viernes",
-    "sábado",
-    "domingo"
+    "sábado"
   ];
 
   function clickOn() {
-    if (
+    const today = new Date(); 
+    let firstDay = new Date(today);
+    let secondDay = new Date(value.startDate);
+    
+    if(
       formValue.length >= 7 &&
-      inDateItems.day.length >= 1 &&
-      outDateItems.day.length >= 1 &&
-      optionText !== undefined
+      weekDayStart !== undefined 
+      &&
+     optionText !== undefined 
+     && (firstDay <= secondDay)
     ) {
       setImpress(true);
 
@@ -79,30 +83,41 @@ export const CartPage = () => {
     setValue(newValue);
 
     //Introducir valores de inicio
-    const numberDayIn = new Date(newValue.startDate).getDay();
-    const nameDayIn = dias[numberDayIn];
 
     const dateIn = newValue.startDate.split("-");
 
     Object.assign(inDateItems, {
-      number: dateIn[2],
-      day: nameDayIn,
-      month: dateIn[1],
-      year: dateIn[0]
+      number: parseInt(dateIn[2], 10),
+      month: parseInt(dateIn[1], 10),
+      year: parseInt(dateIn[0], 10)
     });
 
+    const dayExactStart = new Date(
+      inDateItems.year,
+      inDateItems.month - 1,
+      inDateItems.number
+    ).getDay();
+    const dayWeekStart = dias[dayExactStart];
+
+    setWeekDayStart(dayWeekStart);
+
     //Introducir valores de salida
-    const numberDayOut = new Date(newValue.endDate).getDay();
-    const nameDayOut = dias[numberDayOut];
 
     const dateOut = newValue.endDate.split("-");
 
     Object.assign(outDateItems, {
       number: dateOut[2],
-      day: nameDayOut,
       month: dateOut[1],
       year: dateOut[0]
     });
+
+    const dayExactEnd = new Date(
+      outDateItems.year,
+      outDateItems.month - 1,
+      outDateItems.number
+    ).getDay();
+    const dayWeekEnd = dias[dayExactEnd];
+    setWeekDayEnd(dayWeekEnd);
   };
 
   const handleChangeForm = (event) => {
@@ -122,8 +137,6 @@ export const CartPage = () => {
     e.preventDefault();
     if (
       formValue.length >= 7 &&
-      inDateItems.day.length >= 1 &&
-      outDateItems.day.length >= 1 &&
       optionText !== undefined
     ) {
       setPrint(formValue);
@@ -182,8 +195,8 @@ export const CartPage = () => {
                 <p>Tu codigo postal es el {print}</p>
                 <p>
                   {`
-                  Te llevaremos tu producto entre los dias ${inDateItems.day}
-                  ${inDateItems.number}/${inDateItems.month}/${inDateItems.year} y el ${outDateItems.day}
+                  Te llevaremos tu producto entre los dias ${weekDayStart}
+                  ${inDateItems.number}/${inDateItems.month}/${inDateItems.year} y el ${weekDayEnd}
                   ${outDateItems.number}/${outDateItems.month}/${outDateItems.year} entre los horarios de ${optionText} `}
                 </p>
               </div>
