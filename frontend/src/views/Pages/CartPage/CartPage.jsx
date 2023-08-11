@@ -1,7 +1,7 @@
 import React from "react";
 import { CartList } from "../../CartList/CartList";
 
-import products from "../../Records/ProductsLists/ProductLists.json";
+// import products from "../../Records/ProductsLists/ProductLists.json";
 
 import { Card, TextInput, Button, Select } from "flowbite-react";
 
@@ -59,7 +59,8 @@ export const CartPage = () => {
   function clickOn() {
     const today = new Date(); 
     let firstDay = new Date(today);
-    let secondDay = new Date(value.startDate);
+    const [mes, dia, año] = value.startDate.split('-').map(Number);
+    let secondDay = new Date(`${mes}/${dia}/${año}`);
     
     if(
       formValue.length >= 7 &&
