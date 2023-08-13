@@ -6,8 +6,24 @@ import { Dropdown, Avatar, Label, Select } from "flowbite-react";
 
 import records from "../Records/ProductsLists/ProductLists.json";
 
-function countryChoose(){
-  console.log(records)
+function countryChoose(e) {
+  switch (e.target.value) {
+    case "chile":
+      console.log("chile");
+      break;
+    case "argentina":
+      console.log("argentina");
+      break;
+    case "brasil":
+      console.log("brasil");
+      break;
+    case "uruguay":
+      console.log("uruguay");
+      break;
+
+    default:
+      break;
+  }
 }
 
 const Location = () => {
@@ -32,8 +48,12 @@ const Location = () => {
 
         <Dropdown.Item>
           <div id="select" class="w-52">
-            <Select id="countries" required={true} onChange={countryChoose}>
-              <option value="argentina" >Argentina</option>
+            <Select
+              id="countries"
+              required={true}
+              onChange={(e) => countryChoose(e)}
+            >
+              <option value="argentina">Argentina</option>
               <option value="brasil">Brasil</option>
               <option value="chile">Chile</option>
               <option value="uruguay">Uruguay</option>
