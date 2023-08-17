@@ -2,11 +2,14 @@ import { createContext ,useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import products from '../../Records/ProductsLists/ProductLists.json'
+import { useContext } from "react";
+import LocationContext from "./LocationContext";
 
 const SearchContext = createContext();
 
 const SearchProvider = ({ children }) => {
+
+    const {locationProducts} = useContext(LocationContext);
 
     let navigate = useNavigate();
 
@@ -19,7 +22,7 @@ const SearchProvider = ({ children }) => {
 
         let searchKeywords = e.target.value; 
 
-        const matchProductsKeywords = products.filter((item) => item.product.toUpperCase().includes(searchKeywords.toUpperCase()))
+        const matchProductsKeywords = locationProducts.filter((item) => item.product.toUpperCase().includes(searchKeywords.toUpperCase()))
         setMatch(matchProductsKeywords)
     }
   

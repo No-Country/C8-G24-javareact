@@ -4,7 +4,7 @@ import cartImg from "../../assets/vectors/cart.svg";
 //Components from flowbite
 import { Dropdown, Avatar, Button } from "flowbite-react";
 import { useState, useEffect, useContext } from "react";
-import CartContext from "../CartContext";
+import CartContext from "../Context/CartContext";
 
 import { useNavigate } from "react-router-dom";
 

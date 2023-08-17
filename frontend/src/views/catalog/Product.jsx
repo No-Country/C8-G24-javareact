@@ -1,8 +1,8 @@
 import { Card } from "flowbite-react";
 import Button from "./Button1";
 import { useContext, useState } from "react";
-import CartContext from "../CartContext";
-import CardContext from "../Context/SearchContext/CardContext";
+import CartContext from "../Context/CartContext";
+import CardContext from "../Context/CardContext";
 
 function Product() {
   

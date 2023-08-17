@@ -4,10 +4,16 @@ import { useParams } from "react-router-dom";
 import { useState , useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import products from "../../Records/ProductsLists/ProductLists.json";
 import commerce from "../../helpers/helpers";
 
+// Context
+import { useContext } from "react";
+import LocationContext from "../../Context/LocationContext";
+
 const Filters = ({ name }) => {
+
+  const {locationProducts} = useContext(LocationContext);
+
   let location = useLocation();
   const { product } = useParams();
   const [type, setType] = useState([]);
@@ -17,7 +23,7 @@ const Filters = ({ name }) => {
    },[] );
    
   
-const exactType = products.filter(checkTypes);
+const exactType = locationProducts.filter(checkTypes);
 
 function checkTypes(types) {
   return types.subtipo === product.slice(1);
@@ -40,7 +46,7 @@ function subCheckTypes(types) {
   }
 }
 
-  const priceShop = products.map((shop) => shop.comercios);
+  const priceShop = locationProducts.map((shop) => shop.comercios);
   
   for (let i = 0; i < priceShop.length; i++) {
     const highPriceShop = priceShop[i].sort((a, b) => {

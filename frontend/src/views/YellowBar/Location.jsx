@@ -2,31 +2,21 @@
 import locationVector from "../../assets/vectors/locationVector.svg";
 
 //Components Flowbite
-import { Dropdown, Avatar, Label, Select } from "flowbite-react";
+import { Dropdown, Avatar } from "flowbite-react";
 
-import records from "../Records/ProductsLists/ProductLists.json";
+//Context
+import { useContext } from "react";
+import LocationContext from "../Context/LocationContext";
 
-function countryChoose(e) {
-  switch (e.target.value) {
-    case "chile":
-      console.log("chile");
-      break;
-    case "argentina":
-      console.log("argentina");
-      break;
-    case "brasil":
-      console.log("brasil");
-      break;
-    case "uruguay":
-      console.log("uruguay");
-      break;
-
-    default:
-      break;
-  }
-}
+const countriesData = [
+  { country: "argentina", placeholder: "Argentina", id: 1 },
+  { country: "brasil", placeholder: "Brasil", id: 2 },
+  { country: "chile", placeholder: "Chile", id: 3 },
+  { country: "uruguay", placeholder: "Uruguay", id: 4 }
+];
 
 const Location = () => {
+  const { countryChoose } = useContext(LocationContext);
   return (
     <>
       <Dropdown
@@ -46,20 +36,20 @@ const Location = () => {
           </span>
         </Dropdown.Header>
 
-        <Dropdown.Item>
-          <div id="select" class="w-52">
-            <Select
-              id="countries"
-              required={true}
-              onChange={(e) => countryChoose(e)}
-            >
-              <option value="argentina">Argentina</option>
-              <option value="brasil">Brasil</option>
-              <option value="chile">Chile</option>
-              <option value="uruguay">Uruguay</option>
-            </Select>
-          </div>
-        </Dropdown.Item>
+        <div id="countries" class="w-52">
+          {countriesData.map((item) => {
+            return (
+              <Dropdown.Item key={item.id}>
+                <button
+                  className="w-full text-left"
+                  onClick={() => countryChoose(item.country)}
+                >
+                  {item.placeholder}
+                </button>
+              </Dropdown.Item>
+            );
+          })}
+        </div>
       </Dropdown>
     </>
   );

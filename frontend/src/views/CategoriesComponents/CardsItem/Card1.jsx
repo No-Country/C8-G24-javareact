@@ -1,7 +1,7 @@
 import { Card, Dropdown } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import CardContext from "../../Context/SearchContext/CardContext";
+import CardContext from "../../Context/CardContext";
 
 const Card1 = ({ description, image, comercios , shopping , shipments , price , id }) => {
   const navigate = useNavigate();

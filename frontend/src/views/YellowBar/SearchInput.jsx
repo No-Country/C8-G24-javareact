@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SearchPage from "../Pages/SearchPage/SearchPage";
 
 import { useContext } from "react";
-import SearchContext from "../Context/SearchContext/SearchContext";
+import SearchContext from "../Context/SearchContext";
 
 const SearchInput = () => {
 

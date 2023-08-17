@@ -12,7 +12,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 import { useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
-import CartContext from "../../CartContext";
+import CartContext from "../../Context/CartContext";
 
 export const CartPage = () => {
   const { cart, setCart, cartItems, setCartItems } = useContext(CartContext);

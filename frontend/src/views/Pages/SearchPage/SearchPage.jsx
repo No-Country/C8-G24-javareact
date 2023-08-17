@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import SearchContext from "../../Context/SearchContext/SearchContext";
+import SearchContext from "../../Context/SearchContext";
 import Card1 from "../../CategoriesComponents/CardsItem/Card1";
 import commerce from "../../helpers/helpers";
 const SearchPage = () => {

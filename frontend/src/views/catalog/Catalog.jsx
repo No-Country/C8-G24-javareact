@@ -1,12 +1,17 @@
-import records from "../Records/ProductsLists/ProductLists.json";
+// import records from "../Records/ProductsLists/ProductLists.json";
+
 import Card1 from "../CategoriesComponents/CardsItem/Card1";
 import commerce from "../helpers/helpers";
+import { useContext } from "react";
+import LocationContext from "../Context/LocationContext";
 
 const Catalogo = () => {
+  const {locationProducts} = useContext(LocationContext);
+  
   return (
     <div>
       <ul className="bg-[#EADCDC] grid grid-cols-4 gap-4 text-center p-16">
-        {records.map((item) => {
+        {locationProducts.map((item) => {
           const commerceItems = (item.comercios.map((item) => item));
 
           commerce(commerceItems)

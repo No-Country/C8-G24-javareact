@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 //   shoppingReducer
 // } from "./reducers/shoppingReducer";
 // import { TYPES } from "./actions/shoppingAction";
-import records from "./Records/ProductsLists/ProductLists.json"
+import records from "../Records/ProductsLists/ProductLists.json"
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
