@@ -1,4 +1,4 @@
-import { createContext , useState } from "react";
+import { createContext , useEffect, useState } from "react";
 
 //Data - Records
 import chiStock from "../Records/ProductsLists/ChileStock.json"
@@ -10,22 +10,35 @@ const LocationContext = createContext();
 
 const LocationProvider = ({children}) =>{
 
-    const [locationProducts, setLocationProducts] = useState(argStock);
+  useEffect(()=>{
+    countryChoose(storeLocation)
+    setCountryState(storeLocation)
+  },[])
+
+    const [locationProducts, setLocationProducts] = useState([]);
+    const [countryState, setCountryState] = useState();
+
+    const storeLocation = localStorage.getItem("country");
 
     function countryChoose(country) {
       
+        setCountryState(country)
         switch (country) {
-          case "chile":
+          case "CHILE":
             setLocationProducts(chiStock);
+            localStorage.setItem("country", country)
             break;
-          case "argentina":
+          case "ARGENTINA":
             setLocationProducts(argStock);
+            localStorage.setItem("country", country)
             break;
-          case "brasil":
+          case "BRASIL":
             setLocationProducts(braStock);
+            localStorage.setItem("country", country)
             break;
-          case "uruguay":
+          case "URUGUAY":
             setLocationProducts(uruStock);
+            localStorage.setItem("country", country)
             break;
       
           default:
@@ -34,7 +47,8 @@ const LocationProvider = ({children}) =>{
       }
     const data = {
         countryChoose,
-        locationProducts
+        locationProducts,
+        countryState
       };
 
       return(

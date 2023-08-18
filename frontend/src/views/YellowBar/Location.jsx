@@ -9,14 +9,15 @@ import { useContext } from "react";
 import LocationContext from "../Context/LocationContext";
 
 const countriesData = [
-  { country: "argentina", placeholder: "Argentina", id: 1 },
-  { country: "brasil", placeholder: "Brasil", id: 2 },
-  { country: "chile", placeholder: "Chile", id: 3 },
-  { country: "uruguay", placeholder: "Uruguay", id: 4 }
+  { country: "ARGENTINA", placeholder: "Argentina", id: 1 },
+  { country: "BRASIL", placeholder: "Brasil", id: 2 },
+  { country: "CHILE", placeholder: "Chile", id: 3 },
+  { country: "URUGUAY", placeholder: "Uruguay", id: 4 }
 ];
 
 const Location = () => {
-  const { countryChoose } = useContext(LocationContext);
+  const { countryChoose , countryState } = useContext(LocationContext);
+  
   return (
     <>
       <Dropdown
@@ -24,7 +25,7 @@ const Location = () => {
           <>
             <Avatar alt="User settings" img={locationVector} rounded={true} />
             <div>
-              <p>EN QUE REGION TE ENCUENTRAS</p>
+              <p>{countryState}</p>
             </div>
           </>
         }
