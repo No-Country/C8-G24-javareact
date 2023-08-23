@@ -1,4 +1,5 @@
 import { createContext , useEffect, useState } from "react";
+import { useLocation , useNavigate } from 'react-router-dom';
 
 //Data - Records
 import chiStock from "../Records/ProductsLists/ChileStock.json"
@@ -10,9 +11,16 @@ const LocationContext = createContext();
 
 const LocationProvider = ({children}) =>{
 
+  let location = useLocation();
+  let navigate = useNavigate();
+
   useEffect(()=>{
-    countryChoose(storeLocation)
+    
     setCountryState(storeLocation)
+  
+    localStorage.getItem("country") === null ? countryChoose("ARGENTINA") : countryChoose(storeLocation)
+
+    
   },[])
 
     const [locationProducts, setLocationProducts] = useState([]);
@@ -21,29 +29,43 @@ const LocationProvider = ({children}) =>{
     const storeLocation = localStorage.getItem("country");
 
     function countryChoose(country) {
-      
-        setCountryState(country)
-        switch (country) {
-          case "CHILE":
-            setLocationProducts(chiStock);
-            localStorage.setItem("country", country)
-            break;
-          case "ARGENTINA":
-            setLocationProducts(argStock);
-            localStorage.setItem("country", country)
-            break;
-          case "BRASIL":
-            setLocationProducts(braStock);
-            localStorage.setItem("country", country)
-            break;
-          case "URUGUAY":
-            setLocationProducts(uruStock);
-            localStorage.setItem("country", country)
-            break;
-      
-          default:
-            break;
-        }
+     
+       setCountryState(country)
+       switch (country) {
+         case "CHILE":
+           setLocationProducts(chiStock);
+           localStorage.setItem("country", country)
+           if(location.pathname === "/search"){
+            navigate("/")
+           }
+           break;
+         case "ARGENTINA":
+           setLocationProducts(argStock);
+           localStorage.setItem("country", country)
+           if(location.pathname === "/search"){
+            navigate("/")
+           }
+           break;
+         case "BRASIL":
+           setLocationProducts(braStock);
+           localStorage.setItem("country", country)
+           if(location.pathname === "/search"){
+            navigate("/")
+           }
+           break;
+         case "URUGUAY":
+           setLocationProducts(uruStock);
+           localStorage.setItem("country", country)
+           if(location.pathname === "/search"){
+            navigate("/")
+           }
+           break;
+     
+         default:
+           break;
+
+     }
+        
       }
     const data = {
         countryChoose,
