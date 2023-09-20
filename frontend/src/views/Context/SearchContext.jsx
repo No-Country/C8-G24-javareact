@@ -9,21 +9,27 @@ const SearchContext = createContext();
 
 const SearchProvider = ({ children }) => {
 
-    const {locationProducts} = useContext(LocationContext);
+    const {locationProducts , setMove} = useContext(LocationContext);
 
     let navigate = useNavigate();
 
     const [search, setSearch] = useState();
     const [match , setMatch] = useState([]);
-  
+
+    
     const handleSearch = (e) =>{
         navigate('/search')
         setSearch(e.target.value);
-
+       
+        //el move lo puse para que cada vez que apriete una tecla vuelva a pensar la logica de corazones
+        setMove(e.target.value)
+        
+        
         let searchKeywords = e.target.value; 
 
         const matchProductsKeywords = locationProducts.filter((item) => item.product.toUpperCase().includes(searchKeywords.toUpperCase()))
         setMatch(matchProductsKeywords)
+        
     }
   
     const data = {

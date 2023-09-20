@@ -1,10 +1,25 @@
 import { Dropdown } from "flowbite-react";
 import { Label, TextInput, Checkbox, Button } from "flowbite-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import LocationContext from "../Context/LocationContext";
 
 const UserLogged = ({ registerUser, setRegisterUser }) => {
-  const [log, setLog] = useState(true);
 
+  const {setDisabled , setProductosFavoritos} = useContext(LocationContext)
+
+  
+
+  function handleDisabled() {
+    setDisabled(false)
+  }
+
+  function handleUpabled() {
+    setDisabled(true)
+  }
+
+
+  const [log, setLog] = useState(true);
+ 
   const [userMail, setUserMail] = useState();
   const [userName, setUserName] = useState();
   const [logValue, setLogValue] = useState({
@@ -47,8 +62,8 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
 
   function onHandleLogSubmit(e) {
     e.preventDefault();
-
-    //VER PORQUE NO PUEDO COMPROBAR SI O
+    handleUpabled() 
+   
     for (let i = 0; i < userLoad.length; i++) {
       if (
         userLoad[i].mail === logValue.mail &&
@@ -76,7 +91,10 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
 
   const handleClose = () => {
     localStorage.removeItem("usersLog");
+    setProductosFavoritos([])
     setLog(true);
+    handleDisabled() 
+    
   };
 
   if (log) {

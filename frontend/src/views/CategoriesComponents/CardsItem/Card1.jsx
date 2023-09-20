@@ -1,43 +1,214 @@
-import { Card, Dropdown } from "flowbite-react";
+import { Card, Dropdown, Avatar } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CardContext from "../../Context/CardContext";
+import LocationContext from "../../Context/LocationContext";
 
-const Card1 = ({ description, image, comercios , shopping , shipments , price , id }) => {
+import hearth from "../../../assets/vectors/hearth.svg";
+import hearthEmpty from "../../../assets/vectors/hearth-nofill.svg";
+
+const Card1 = ({
+  description,
+  image,
+  comercios,
+  shopping,
+  shipments,
+  price,
+  id,
+  productosFavoritos,
+  setProductosFavoritos,match
+}) => {
   const navigate = useNavigate();
 
+  const [like, setLike] = useState(false);
+  
   //context --cardcontext
   const { handleCardFunctionX } = useContext(CardContext);
+  const { disabled, setDisabled , move } = useContext(LocationContext);
+
+  //**** CUANDO EL EL BUSCADOR NO ENCUENTRA NADA Y LUEGO SE VUELVE TODO PARECE QUE VA BIEN ***//
+
+  useEffect(() => {
+    
+    // Actualiza el título del documento usando la API del navegador
+    const userSaved = JSON.parse(localStorage.getItem("usersLog"));
+
+    if (userSaved !== null) {
+      setDisabled(true);
+      const everyNumber = userSaved[0].productsLike;
+    
+      if (everyNumber !== undefined) {
+        for (let i = 0; i < everyNumber.length; i++) {
+          const element = everyNumber[i].id;
+        
+         
+          ///move + tocar esto para que el search funcione correctamente
+         
+      
+          
+          if (id === element) {
+            
+            
+            setLike(true);
+            
+          }
+         
+
+        }
+      }
+    } else {
+      setDisabled(false);
+    }
+    if (disabled) {
+      if (like === true) {
+        
+        setLike(true);
+     
+      }
+    } else if (!disabled) {
+      setLike(false);
+    }
+  }, [disabled , move  ]);
+
   
-  const handleCardFunction = (rerer)=>{
-   navigate(`/producto/:${id}`);
+  const handleLike = () => {
   
-   /*VER AQUI DE PONER EL CONTEXT O PARAMETROS PARA HIJO*/
-   console.log(rerer)
+     setLike(!like);
+
+    const nuevoFavorito = { id, description, image, price };
+
+    const likeSetUser = localStorage.getItem("usersLog");
+    const userLogLike = JSON.parse(likeSetUser);
 
 
-   console.log(products)
-  }
-  
-  
- 
+    //**ESTO ES PARA CUANDO ES LA PRIMERA VEZ QUE SE USA LA CUENTA */
+    
+     if (userLogLike[0].productsLike === undefined) {
+    //   // console.log(userLogLike[0].productsLike)
+     const nuevosProductosFavoritos = [...productosFavoritos];
+
+     if (!like) {
+    //   //   // Agrega el producto a la lista de productos favoritos
+      nuevosProductosFavoritos.push(nuevoFavorito);
+   } else {
+    //   //   // Elimina el producto de la lista de productos favoritos
+   const index = nuevosProductosFavoritos.findIndex(
+       (producto) => producto.id === id
+   );
+      if (index !== -1) {
+        nuevosProductosFavoritos.splice(index, 1);
+   }
+   }
+
+  setProductosFavoritos(nuevosProductosFavoritos);
+
+  const likeUser = [{...userLogLike[0], productsLike: nuevosProductosFavoritos}];
+
+    localStorage.setItem("usersLog", JSON.stringify(likeUser));
+
+     }
+ else if (userLogLike[0].productsLike !== undefined) {
+      // setLike(!like);
+      const nameData = userLogLike[0].productsLike;
+
+      if (!like) {
+        nameData.push(nuevoFavorito);
+      } else {
+        // Elimina el producto de la lista de productos favoritos
+        const index = nameData.findIndex((producto) => producto.id === id);
+        if (index !== -1) {
+          nameData.splice(index, 1);
+        }
+      }
+
+      setProductosFavoritos(nameData);
+
+      const likeUser = [{ ...userLogLike[0], productsLike: nameData }];
+
+      localStorage.setItem("usersLog", JSON.stringify(likeUser));
+      
+    }
+    const loadDataLS = JSON.parse(localStorage.getItem("users"));
+    const loadLogDataLS = JSON.parse(localStorage.getItem("usersLog"));
+
+    for (let i = 0; i < loadDataLS.length; i++) {
+      const element = loadDataLS[i].mail;
+
+      if (element === loadLogDataLS[0].mail) {
+        
+        const actualizeUser = loadDataLS[i];
+
+          //aca esta el problema
+        const productsLike = loadLogDataLS[0].productsLike;
+        
+        const userSet = { ...actualizeUser, productsLike };
+
+        loadDataLS[i] = userSet;
+
+       
+
+        localStorage.setItem("users", JSON.stringify(loadDataLS));
+      }
+    }
+      disabled === false &&
+      alert("Registrate o inicia tu sesión para poder agregar favoritos");
+    
+  };
 
   return (
     <div className="flex flex-col items-center" key={id}>
-      <div className="max-w-sm">
+      <div className="max-w-sm relative overflow-hidden">
         <Card imgSrc={image}>
+          <button
+            onClick={handleLike}
+            className="absolute top-4 right-4 bg-gray-50 rounded-full p-3 shadow-md"
+          >
+            {disabled ? (
+              <Avatar
+                alt="User settings"
+                img={!like ? hearthEmpty : hearth}
+                rounded={true}
+              />
+            ) : (
+              <Avatar alt="User settings" img={hearthEmpty} rounded={true} />
+            )}
+            {/* {disabled ? <p>hola</p> : <p>chau</p>} */}
+          </button>
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {description} 
+            {description}
           </h5>
-          <h4 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">$ {price}</h4>
-          <p>Envio ${shipments} en {shopping} </p>
+          <h4 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            $ {price}
+          </h4>
+          <p>
+            Envio ${shipments} en {shopping}{" "}
+          </p>
         </Card>
       </div>
       <div className="m-4">
-        <Dropdown label={`Compáralo en ${comercios.length} tiendas`} className="padding-list" placement="bottom" style={{backgroundColor:"#37cbfa"}}>
+        <Dropdown
+          label={`Compáralo en ${comercios.length} tiendas`}
+          className="padding-list"
+          placement="bottom"
+          style={{ backgroundColor: "#37cbfa" }}
+        >
           {comercios.map((items) => {
             return (
-              <Dropdown.Item className="border-y w-96 flex justify-between" onClick={ () => {handleCardFunctionX(items , description, image, comercios , shopping , shipments , price , id)} }>
+              <Dropdown.Item
+                className="border-y w-96 flex justify-between"
+                onClick={() => {
+                  handleCardFunctionX(
+                    items,
+                    description,
+                    image,
+                    comercios,
+                    shopping,
+                    shipments,
+                    price,
+                    id
+                  );
+                }}
+              >
                 <div>
                   <p>{items.negocio}</p>
                 </div>
@@ -50,7 +221,6 @@ const Card1 = ({ description, image, comercios , shopping , shipments , price , 
           })}
         </Dropdown>
       </div>
-     
     </div>
   );
 };

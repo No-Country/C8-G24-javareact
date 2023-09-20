@@ -143,24 +143,6 @@
       ]
     },
     {
-      "id": 8,
-      "product": "Alimento Royal Canin 8 Kg adulto, raza pequeña",
-      "precio": 8500,
-      "stock": 10,
-      "peso": 8,
-      "tipo": "perros",
-      "edad": "adulto",
-      "raza" : "pequeña",
-      "subtipo": "alimento balanceado",
-      "cantidad": 1,
-      "img": "/src/assets/products/dogs/alimento-balanceado/royal_Canin5.webp",
-      "comercios": [
-        { "negocio": "Tienda Mia", "envio": 500, "precio": 7500 , "stock":10},
-        { "negocio": "Maipu Vet", "envio": 400, "precio": 8300 , "stock":2 },
-        { "negocio": "Mi mascota", "envio": 530, "precio": 7850 , "stock":6}
-      ]
-    },
-    {
       "id": 9,
       "product": "Alimento Royal Canin 10 Kg adulto, raza mediana",
       "precio": 5500,
@@ -437,6 +419,24 @@
         { "negocio": "Mi mascota", "envio": 530, "precio": 10300 , "stock":7},
         { "negocio": "Pet shop", "envio": 530, "precio": 10000 , "stock":2},
         { "negocio": "Can shop", "envio": 530, "precio": 12000 , "stock":2}
+      ]
+    },
+    {
+      "id": 25,
+      "product": "Alimento Royal Canin 8 Kg adulto, raza pequeña",
+      "precio": 8500,
+      "stock": 10,
+      "peso": 8,
+      "tipo": "perros",
+      "edad": "adulto",
+      "raza" : "pequeña",
+      "subtipo": "alimento balanceado",
+      "cantidad": 1,
+      "img": "/src/assets/products/dogs/alimento-balanceado/royal_Canin5.webp",
+      "comercios": [
+        { "negocio": "Tienda Mia", "envio": 500, "precio": 7500 , "stock":10},
+        { "negocio": "Maipu Vet", "envio": 400, "precio": 8300 , "stock":2 },
+        { "negocio": "Mi mascota", "envio": 530, "precio": 7850 , "stock":6}
       ]
     } 
   ]

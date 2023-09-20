@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext , useState } from "react";
 import SearchContext from "../../Context/SearchContext";
+import LocationContext from "../../Context/LocationContext";
 import Card1 from "../../CategoriesComponents/CardsItem/Card1";
 import commerce from "../../helpers/helpers";
 const SearchPage = () => {
   const { match } = useContext(SearchContext);
-
-
+  const { productosFavoritos , setProductosFavoritos } = useContext(LocationContext);
+  
   if (match.length >= 1) {
     return (
       <>
@@ -25,6 +26,8 @@ const SearchPage = () => {
                     shopping={commerceItems[0].negocio}
                     shipments={commerceItems[0].envio}
                     price={commerceItems[0].precio}
+                    productosFavoritos={productosFavoritos}
+                    setProductosFavoritos={setProductosFavoritos}
                   />
                 </>
               );
