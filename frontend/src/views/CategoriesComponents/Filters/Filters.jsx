@@ -1,7 +1,7 @@
 import Card from "../CardsItem/Card1";
 import { Breadcrumb } from "flowbite-react";
 import { useParams } from "react-router-dom";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import commerce from "../../helpers/helpers";
@@ -11,49 +11,47 @@ import { useContext } from "react";
 import LocationContext from "../../Context/LocationContext";
 
 const Filters = ({ name }) => {
-
-  const {locationProducts} = useContext(LocationContext);
+  const { locationProducts, productosFavoritos, setProductosFavoritos } =
+    useContext(LocationContext);
 
   let location = useLocation();
   const { product } = useParams();
   const [type, setType] = useState([]);
-  
+
   useEffect(() => {
-    setType(exactType); 
-   },[] );
-   
-  
-const exactType = locationProducts.filter(checkTypes);
+    setType(exactType);
+  }, []);
 
-function checkTypes(types) {
-  return types.subtipo === product.slice(1);
-}
+  const exactType = locationProducts.filter(checkTypes);
 
-const filterProd = type.filter(subCheckTypes)
-
-function subCheckTypes(types) {
-  
-  if(location.pathname.includes("perros")){
-    return types.tipo === "perros";
-  }else if (location.pathname.includes("gatos")){
-    return types.tipo === "gatos";
-  }else if (location.pathname.includes("otros")){
-    return types.tipo === "otros";
-  }else if (location.pathname.includes("promociones")){
-    return types.tipo === "promociones";
-  }else if (location.pathname.includes("servicios")){
-    return types.tipo === "servicios";
+  function checkTypes(types) {
+    return types.subtipo === product.slice(1);
   }
-}
+
+  const filterProd = type.filter(subCheckTypes);
+
+  function subCheckTypes(types) {
+    if (location.pathname.includes("perros")) {
+      return types.tipo === "perros";
+    } else if (location.pathname.includes("gatos")) {
+      return types.tipo === "gatos";
+    } else if (location.pathname.includes("otros")) {
+      return types.tipo === "otros";
+    } else if (location.pathname.includes("promociones")) {
+      return types.tipo === "promociones";
+    } else if (location.pathname.includes("servicios")) {
+      return types.tipo === "servicios";
+    }
+  }
 
   const priceShop = locationProducts.map((shop) => shop.comercios);
-  
+
   for (let i = 0; i < priceShop.length; i++) {
     const highPriceShop = priceShop[i].sort((a, b) => {
       return Number.parseInt(a.precio) - Number.parseInt(b.precio);
     });
   }
- 
+
   const [filtersSelected, setFiltersSelected] = useState(
     filterProd.map(
       (accumulator, el) => ({ ...accumulator, [el.product]: false }),
@@ -121,7 +119,7 @@ function subCheckTypes(types) {
               <label>{"grande"}</label>
             </div>
           </div>
-    
+
           <h2>Kilogramos:</h2>
           <div className="text-[#927D7D]">
             <div>
@@ -140,18 +138,21 @@ function subCheckTypes(types) {
         </div>
         <div className="grid grid-cols-3 gap-8 w-full">
           {filteredData.map((item) => {
-             const commerceItems = (item.comercios.map((item) => item));
+            const commerceItems = item.comercios.map((item) => item);
 
-             commerce(commerceItems)
-             
+            commerce(commerceItems);
+
             return (
               <Card
                 image={item.img}
                 description={item.product}
                 comercios={item.comercios}
+                id={item.id}
                 shopping={commerceItems[0].negocio}
                 shipments={commerceItems[0].envio}
                 price={commerceItems[0].precio}
+                productosFavoritos={productosFavoritos}
+                setProductosFavoritos={setProductosFavoritos}
               />
             );
           })}

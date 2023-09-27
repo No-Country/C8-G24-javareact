@@ -28,6 +28,7 @@ const SearchPage = () => {
                     price={commerceItems[0].precio}
                     productosFavoritos={productosFavoritos}
                     setProductosFavoritos={setProductosFavoritos}
+                    match={match}
                   />
                 </>
               );

@@ -26,10 +26,17 @@ const LocationProvider = ({ children }) => {
   const [countryState, setCountryState] = useState();
   const [disabled, setDisabled] = useState();
   const [move, setMove] = useState();
+  const [favourites , setFavourites] = useState();
 
   const storeLocation = localStorage.getItem("country");
 
- 
+ function holas(){
+  const favouritesItems = JSON.parse(localStorage.getItem("usersLog"));
+  
+  if (favouritesItems !== null) {
+    setFavourites(favouritesItems[0].productsLike)
+  }
+ }
 
   function countryChoose(country) {
     setCountryState(country);
@@ -76,7 +83,9 @@ const LocationProvider = ({ children }) => {
     setDisabled,
     disabled,
     setMove,
-    move
+    move,
+    holas,
+    favourites 
   };
 
   return (

@@ -16,98 +16,85 @@ const Card1 = ({
   price,
   id,
   productosFavoritos,
-  setProductosFavoritos,match
+  setProductosFavoritos,
+  match
 }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [like, setLike] = useState(false);
-  
+
   //context --cardcontext
   const { handleCardFunctionX } = useContext(CardContext);
-  const { disabled, setDisabled , move } = useContext(LocationContext);
-
-  //**** CUANDO EL EL BUSCADOR NO ENCUENTRA NADA Y LUEGO SE VUELVE TODO PARECE QUE VA BIEN ***//
+  const { disabled, setDisabled, move , holas } = useContext(LocationContext);
 
   useEffect(() => {
-    
+    holas()
     // Actualiza el título del documento usando la API del navegador
     const userSaved = JSON.parse(localStorage.getItem("usersLog"));
 
     if (userSaved !== null) {
       setDisabled(true);
+      setLike(false);
       const everyNumber = userSaved[0].productsLike;
-    
+
       if (everyNumber !== undefined) {
         for (let i = 0; i < everyNumber.length; i++) {
           const element = everyNumber[i].id;
-        
-         
-          ///move + tocar esto para que el search funcione correctamente
-         
-      
-          
-          if (id === element) {
-            
-            
-            setLike(true);
-            
-          }
-         
 
+          if (id === element) {
+            setLike(true);
+          }
         }
       }
     } else {
       setDisabled(false);
     }
-    if (disabled) {
-      if (like === true) {
-        
-        setLike(true);
-     
-      }
-    } else if (!disabled) {
+    if (!disabled) {
       setLike(false);
     }
-  }, [disabled , move  ]);
+  }, [disabled, move, like, id, match]);
 
-  
+
   const handleLike = () => {
-  
-     setLike(!like);
+    
+    setLike(!like);
 
+    if (!disabled) {
+      return alert("Regístrate o inicia tu sesión para poder agregar favoritos");
+  }
+  
     const nuevoFavorito = { id, description, image, price };
 
     const likeSetUser = localStorage.getItem("usersLog");
     const userLogLike = JSON.parse(likeSetUser);
 
-
     //**ESTO ES PARA CUANDO ES LA PRIMERA VEZ QUE SE USA LA CUENTA */
-    
-     if (userLogLike[0].productsLike === undefined) {
-    //   // console.log(userLogLike[0].productsLike)
-     const nuevosProductosFavoritos = [...productosFavoritos];
 
-     if (!like) {
-    //   //   // Agrega el producto a la lista de productos favoritos
-      nuevosProductosFavoritos.push(nuevoFavorito);
-   } else {
-    //   //   // Elimina el producto de la lista de productos favoritos
-   const index = nuevosProductosFavoritos.findIndex(
-       (producto) => producto.id === id
-   );
-      if (index !== -1) {
-        nuevosProductosFavoritos.splice(index, 1);
-   }
-   }
+    if (userLogLike[0].productsLike === undefined) {
+      
+      const nuevosProductosFavoritos = [...productosFavoritos];
 
-  setProductosFavoritos(nuevosProductosFavoritos);
+      if (!like) {
+        // Agrega el producto a la lista de productos favoritos
+        nuevosProductosFavoritos.push(nuevoFavorito);
+      } else {
+        // Elimina el producto de la lista de productos favoritos
+        const index = nuevosProductosFavoritos.findIndex(
+          (producto) => producto.id === id
+        );
+        if (index !== -1) {
+          nuevosProductosFavoritos.splice(index, 1);
+        }
+      }
 
-  const likeUser = [{...userLogLike[0], productsLike: nuevosProductosFavoritos}];
+      setProductosFavoritos(nuevosProductosFavoritos);
 
-    localStorage.setItem("usersLog", JSON.stringify(likeUser));
+      const likeUser = [
+        { ...userLogLike[0], productsLike: nuevosProductosFavoritos }
+      ];
 
-     }
- else if (userLogLike[0].productsLike !== undefined) {
+      localStorage.setItem("usersLog", JSON.stringify(likeUser));
+    } else if (userLogLike[0].productsLike !== undefined) {
       // setLike(!like);
       const nameData = userLogLike[0].productsLike;
 
@@ -126,7 +113,6 @@ const Card1 = ({
       const likeUser = [{ ...userLogLike[0], productsLike: nameData }];
 
       localStorage.setItem("usersLog", JSON.stringify(likeUser));
-      
     }
     const loadDataLS = JSON.parse(localStorage.getItem("users"));
     const loadLogDataLS = JSON.parse(localStorage.getItem("usersLog"));
@@ -135,24 +121,22 @@ const Card1 = ({
       const element = loadDataLS[i].mail;
 
       if (element === loadLogDataLS[0].mail) {
-        
         const actualizeUser = loadDataLS[i];
 
-          //aca esta el problema
         const productsLike = loadLogDataLS[0].productsLike;
-        
+
         const userSet = { ...actualizeUser, productsLike };
 
         loadDataLS[i] = userSet;
 
-       
-
         localStorage.setItem("users", JSON.stringify(loadDataLS));
       }
     }
-      disabled === false &&
-      alert("Registrate o inicia tu sesión para poder agregar favoritos");
+
     
+    
+
+      
   };
 
   return (
@@ -172,7 +156,6 @@ const Card1 = ({
             ) : (
               <Avatar alt="User settings" img={hearthEmpty} rounded={true} />
             )}
-            {/* {disabled ? <p>hola</p> : <p>chau</p>} */}
           </button>
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {description}

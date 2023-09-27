@@ -12,9 +12,7 @@ function Product() {
   const { cart, setCart } = useContext(CartContext);
    
   const addToCart = () => {
-    /*ESTO HAY QUE EMPAREJARLO*/
       
-    console.log(product)
      if (product.cantidad === 1 ) {
       product.cantidad = cantidad;
       setCart([...cart, product]);
