@@ -33,12 +33,15 @@ const LocationProvider = ({ children }) => {
  function holas(){
   const favouritesItems = JSON.parse(localStorage.getItem("usersLog"));
   
-  if (favouritesItems !== null) {
+  if (favouritesItems !== null){
     setFavourites(favouritesItems[0].productsLike)
+  }else{
+    setFavourites([])
   }
  }
 
   function countryChoose(country) {
+    
     setCountryState(country);
     switch (country) {
       case "CHILE":
@@ -47,6 +50,7 @@ const LocationProvider = ({ children }) => {
         if (location.pathname === "/search") {
           navigate("/");
         }
+        
         break;
       case "ARGENTINA":
         setLocationProducts(argStock);

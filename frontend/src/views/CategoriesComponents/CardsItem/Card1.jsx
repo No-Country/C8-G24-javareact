@@ -28,6 +28,7 @@ const Card1 = ({
   const { disabled, setDisabled, move , holas } = useContext(LocationContext);
 
   useEffect(() => {
+    
     holas()
     // Actualiza el título del documento usando la API del navegador
     const userSaved = JSON.parse(localStorage.getItem("usersLog"));

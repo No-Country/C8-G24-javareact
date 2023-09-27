@@ -5,8 +5,6 @@ import hearth from "../../assets/vectors/hearth.svg";
 import { Dropdown, Avatar } from "flowbite-react";
 import LocationContext from "../Context/LocationContext";
 
-
-
 const Favourites = () => {
 
 const { favourites } = useContext(LocationContext) 
@@ -19,8 +17,12 @@ useEffect(() => {
    setItemsFav(favourites)
   }else{
    const setFav = JSON.parse(localStorage.getItem("usersLog"))
+   console.log(!setFav)
+   if(setFav === undefined || setFav !== null){
 
-   !setFav && setItemsFav(setFav[0].productsLike)
+    setFav[0].productsLike === null && setItemsFav(setFav[0].productsLike)
+   }
+  // !setFav && setItemsFav(setFav[0].productsLike)
    
   }
 
