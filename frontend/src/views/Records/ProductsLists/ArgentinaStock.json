@@ -320,10 +320,10 @@
       "subtipo": "dieta",
       "img": "/src/assets/products/others/diet/pienso_perros_dieta.jpeg",
       "comercios": [
-        { "negocio": "Lola Vet", "envio": 500, "precio": 2200 , "stock":7},
-        { "negocio": "Mi mascota", "envio": 530, "precio": 2300 , "stock":3},
-        { "negocio": "Pet shop", "envio": 530, "precio": 2000 , "stock":12},
-        { "negocio": "Can shop", "envio": 530, "precio": 1700 , "stock":2}
+        { "negocio": "Lola Vet", "envio": 500, "precio": 2200 , "stock":7 , "id":100},
+        { "negocio": "Mi mascota", "envio": 530, "precio": 2300 , "stock":3 , "id": 101},
+        { "negocio": "Pet shop", "envio": 530, "precio": 2000 , "stock":12  , "id": 102},
+        { "negocio": "Can shop", "envio": 530, "precio": 1700 , "stock":2  , "id": 103}
       ]
     },
     {
@@ -339,10 +339,10 @@
       "subtipo": "necesidades especiales",
       "img": "/src/assets/products/others/special-needs/antiparasitarios.webp",
       "comercios": [
-        { "negocio": "Lola Vet", "envio": 500, "precio": 2200 , "stock":7},
-        { "negocio": "Mi mascota", "envio": 530, "precio": 2300 , "stock":3},
-        { "negocio": "Pet shop", "envio": 530, "precio": 2000 , "stock":12},
-        { "negocio": "Can shop", "envio": 530, "precio": 1500 , "stock":2}
+        { "negocio": "Lola Vet", "envio": 500, "precio": 2200 , "stock":7 ,   "id": 104},
+        { "negocio": "Mi mascota", "envio": 530, "precio": 2300 , "stock":3 ,   "id": 105},
+        { "negocio": "Pet shop", "envio": 530, "precio": 2000 , "stock":12 ,  "id": 106},
+        { "negocio": "Can shop", "envio": 530, "precio": 1500 , "stock":2 ,  "id": 107}
       ]
     },
     {
@@ -358,10 +358,10 @@
       "subtipo": "juguetes",
       "img": "/src/assets/products/promotions/toy/kong.webp",
       "comercios": [
-        { "negocio": "Lola Vet", "envio": 500, "precio": 6200 , "stock":9},
-        { "negocio": "Mi mascota", "envio": 530, "precio": 6300 , "stock":7},
-        { "negocio": "Pet shop", "envio": 530, "precio": 6000 , "stock":21},
-        { "negocio": "Can shop", "envio": 530, "precio": 3700 , "stock":12}
+        { "negocio": "Lola Vet", "envio": 500, "precio": 6200 , "stock":9 , "id": 110},
+        { "negocio": "Mi mascota", "envio": 530, "precio": 6300 , "stock":7 , "id": 111},
+        { "negocio": "Pet shop", "envio": 530, "precio": 6000 , "stock":21 ,  "id": 112},
+        { "negocio": "Can shop", "envio": 530, "precio": 3700 , "stock":12 , "id":113}
       ]
     },
     {

@@ -9,29 +9,34 @@ import CartContext from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
-
+  const { cart , setCart } = useContext(CartContext);
+  
   const [btnBuy, setBtnBuy] = useState(false);
-
+  const [subtotal, setSubtotal] = useState()
+  const [plusQuantity , setPlusQuantity] = useState();
+  
   useEffect(() => {
-    if (cart.length === 0) {
-      setBtnBuy(false);
-    } else {
-      setBtnBuy(true);
+    if (cart !== null) {
+      if (cart.length === 0) {
+        setBtnBuy(false);
+      } else {
+        setBtnBuy(true);
+      }
+      setSubtotal(cart.reduce(
+        (acc, item) => acc + item.precio * item.cantidad,
+        0
+      )) 
+  
+      setPlusQuantity(cart.reduce((prev, curr) => prev + curr.cantidad, 0))
+      
     }
-  }),[];
-
-  const SUBTOTAL = cart.reduce(
-    (acc, item) => acc + item.precio * item.cantidad,
-    0
-  );
+    
+  }),[subtotal , plusQuantity];
 
   const navigate = useNavigate();
   function buyCart() {
     navigate("/cart");
   }
-
-  const plusQuantity = cart.reduce((prev, curr) => prev + curr.cantidad, 0);
 
   return (
     <>
@@ -77,7 +82,7 @@ const Cart = () => {
                 <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                   {cart.map((products) => {
                     return (
-                      <li className="py-3 sm:py-4" key={products.id}>
+                      <li className="py-3 sm:py-4" >
                         <div className="flex items-center space-x-4">
                           <div className="shrink-0">
                             <img
@@ -110,7 +115,7 @@ const Cart = () => {
             <Dropdown.Divider />
             <Dropdown.Item className="flex justify-between">
               <p className="text-lg">Subtotal</p>
-              <p className="text-lg font-semibold">{`$ ${SUBTOTAL}`}</p>
+              <p className="text-lg font-semibold">{`$ ${subtotal}`}</p>
             </Dropdown.Item>
             <Dropdown.Item className="flex justify-center" rquired={true}>
               <Button onClick={buyCart} color="dark">

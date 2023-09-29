@@ -5,25 +5,28 @@ import CartContext from "../Context/CartContext";
 import CardContext from "../Context/CardContext";
 
 function Product() {
-  
-  const { chosenCard } = useContext(CardContext);  
+  const { chosenCard } = useContext(CardContext);
   const [product, setProduct] = useState(chosenCard);
   const [cantidad, setCantidad] = useState(1);
   const { cart, setCart } = useContext(CartContext);
-   
+
   const addToCart = () => {
-      
-     if (product.cantidad === 1 ) {
+    let findId = cart.find((item) => item.idItem === product.idItem);
+
+    if (!findId) {
       product.cantidad = cantidad;
       setCart([...cart, product]);
-    }
- 
-    for (let i = 0; i < cart.length; i++) {
-     
-      if (cart[i].id === product.id && (cart[i].idItem === product.idItem)) {
-        product.cantidad = cantidad + product.cantidad;
-        setCart([...cart]);
-      }        
+      localStorage.setItem("usersCart", JSON.stringify([...cart, product]));
+    } else {
+      product.cantidad = cantidad + findId.cantidad;
+
+      const cartItemDelete = cart.filter(
+        (item) => item.idItem !== product.idItem
+      );
+
+      setCart([...cartItemDelete, product]);
+
+      localStorage.setItem("usersCart", JSON.stringify(cart));
     }
   };
 

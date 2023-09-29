@@ -117,6 +117,7 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
                   value={item.value}
                   name={item.name}
                   required={true}
+                  autoComplete="current"
                   onChange={handleChange}
                 />
               </div>
@@ -132,7 +133,7 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
           </Button>
           <span className="block text-sm">
             ¿Nuevo cliente?{" "}
-            <button
+            <button type="button"
               onClick={() => {
                 setRegisterUser(false);
               }}

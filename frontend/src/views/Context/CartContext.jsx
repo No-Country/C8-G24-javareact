@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 // import {
 //   shoppingInitialState,
 //   shoppingReducer
@@ -8,14 +8,16 @@ import records from "../Records/ProductsLists/ProductLists.json"
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  // const [cart, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
-  const [cart, setCart] = useState([]);
+  
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("usersCart")));
   const [cartItems, setCartItems] = useState([]);
 
-  // const addTocart = (id) => {
-  //   dispatch({ type: TYPES.ADD_TO_CART, payload: id });
-  // };
-
+  useEffect(() => {
+    if (cart === null) {
+      setCart([])
+    }
+  });
+     
   const data = {
     cart,
     setCart,

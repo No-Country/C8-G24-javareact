@@ -17,15 +17,12 @@ useEffect(() => {
    setItemsFav(favourites)
   }else{
    const setFav = JSON.parse(localStorage.getItem("usersLog"))
-   console.log(!setFav)
+   
    if(setFav === undefined || setFav !== null){
 
     setFav[0].productsLike === null && setItemsFav(setFav[0].productsLike)
-   }
-  // !setFav && setItemsFav(setFav[0].productsLike)
-   
+   } 
   }
-
 },[favourites])
 
 return (

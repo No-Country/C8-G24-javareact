@@ -50,6 +50,7 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
   ];
 
   const handleChange = (e) => {
+    
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
   };
 
@@ -84,6 +85,7 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
                 value={userForm.value}
                 id={userForm.id}
                 required={true}
+                autoComplete="current"
                 onChange={handleChange}
               />
             </div>
@@ -99,7 +101,7 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
         </Button>
         <span className="block text-sm">
           ¿Ya eres cliente?{" "}
-          <button
+          <button type="button"
             onClick={() => {
               setRegisterUser(true);
             }}
