@@ -12,7 +12,7 @@ const CheckedShip = () => {
 
     const userRegistered = localStorage.getItem("usersLog");
     if (userRegistered !== null) {
-      alert("Estas registrado");
+      
       navigate("/checkform/payments");
     } else {
       alert("Registrate apretando el boton mi cuenta");

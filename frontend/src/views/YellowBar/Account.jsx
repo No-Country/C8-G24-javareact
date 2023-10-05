@@ -16,13 +16,13 @@ const Account = () => {
       <Dropdown
         label={
           <>
-            <Avatar alt="User settings" img={user} rounded={true} />
+            <Avatar alt="User settings" img={user} rounded={true}  />
             <div>
-              <p>MI CUENTA</p>
+              <p className="text-xs sm:text-sm max-sm:hidden">MI CUENTA</p>
             </div>
           </>
         }
-        class=" hover:bg-yellow-200 rounded"
+        class="hover:bg-yellow-200 rounded"
       >
         {registerUser ? (
           <UserLogged

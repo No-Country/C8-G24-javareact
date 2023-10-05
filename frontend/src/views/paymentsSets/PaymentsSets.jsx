@@ -9,7 +9,7 @@ import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const PaymentsSets = () => {
+const PaymentsSets = ({setCart , cart}) => {
     const navigate = useNavigate();
 
   const [creditCard, setCreditCard] = useState({
@@ -31,8 +31,10 @@ const PaymentsSets = () => {
     
         const userRegistered = localStorage.getItem("usersLog");
         if (userRegistered !== null) {
-          alert("Estas registrado");
+          
           sessionStorage.setItem("creditCard", JSON.stringify(creditCard));
+          console.log(cart)
+          setCart([])
           navigate("/checkform/validation");
         } else {
           alert("Registrate apretando el boton mi cuenta");

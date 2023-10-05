@@ -82,61 +82,77 @@ const Filters = ({ name }) => {
 
   return (
     <div>
-      <Breadcrumb aria-label="Default breadcrumb example">
+      <Breadcrumb aria-label="Default breadcrumb example" className="mb-4">
         <Breadcrumb.Item exact href="/">
           Home
         </Breadcrumb.Item>
         <Breadcrumb.Item href="#">{name}</Breadcrumb.Item>
         <Breadcrumb.Item>{product.slice(1)}</Breadcrumb.Item>
       </Breadcrumb>
-      <div className="flex flex-row ">
-        <div className="w-60 bg-[#B4FFED] p-6">
+      <h1 className="mb-4 font-bold text-xl">Productos</h1>
+      <div className="flex flex-col sm:flex-row ">
+        <div className="sm:w-60 bg-[#B4FFED] p-6 sm:mb-0 mb-4 ">
           <h1>Filtros</h1>
-          <h2>Raza:</h2>
-          <div className="text-[#927D7D]">
+          <div className="flex sm:flex-col gap-10 sm:gap-4">
             <div>
-              <input
-                type="checkbox"
-                value={"pequeña"}
-                onChange={handleOnCheckbox}
-              />
-              <label>{"pequeña"}</label>
+              <h2>Raza:</h2>
+              <div>
+                <input
+                  type="checkbox"
+                  value={"pequeña"}
+                  onChange={handleOnCheckbox}
+                />
+                <label className="text-[#927D7D] pl-2">{"pequeña"}</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value={"mediana"}
+                  onChange={handleOnCheckbox}
+                />
+                <label className="text-[#927D7D] pl-2">{"mediana"}</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value={"grande"}
+                  onChange={handleOnCheckbox}
+                />
+                <label className="text-[#927D7D] pl-2">{"grande"}</label>
+              </div>
             </div>
-            <div>
-              <input
-                type="checkbox"
-                value={"mediana"}
-                onChange={handleOnCheckbox}
-              />
-              <label>{"mediana"}</label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                value={"grande"}
-                onChange={handleOnCheckbox}
-              />
-              <label>{"grande"}</label>
-            </div>
-          </div>
 
-          <h2>Kilogramos:</h2>
-          <div className="text-[#927D7D]">
             <div>
-              <input type="checkbox" value={"5"} onChange={handleOnCheckbox} />
-              <label>{"5 kg"}</label>
-            </div>
-            <div>
-              <input type="checkbox" value={"8"} onChange={handleOnCheckbox} />
-              <label>{"8 kg"}</label>
-            </div>
-            <div>
-              <input type="checkbox" value={"10"} onChange={handleOnCheckbox} />
-              <label>{"10 kg"}</label>
+              <h2>Kilogramos:</h2>
+              <div>
+                <input
+                  type="checkbox"
+                  value={"5"}
+                  onChange={handleOnCheckbox}
+                />
+                <label className="text-[#927D7D] pl-2">{"5 kg"}</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value={"8"}
+                  onChange={handleOnCheckbox}
+                />
+                <label className="text-[#927D7D] pl-2">{"8 kg"}</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value={"10"}
+                  onChange={handleOnCheckbox}
+                />
+                <label className="text-[#927D7D] pl-2">{"10 kg"}</label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-8 w-full">
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 2xl:gap-12 pl-8 xl:gap-8 gap-4 ">
           {filteredData.map((item) => {
             const commerceItems = item.comercios.map((item) => item);
 

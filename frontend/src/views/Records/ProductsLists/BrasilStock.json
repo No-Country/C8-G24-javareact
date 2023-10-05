@@ -1,7 +1,7 @@
 [
     {
-      "id": 1,
-      "product": "Royal Canin gastrointestinal en lata 400g, para raza grande",
+      "id": 2000,
+      "product": "Royal Canin gastrointestinal en lata de 400g, para perros de raza grande",
       "precio": 6500,
       "stock": 40,
       "cantidad": 1,
@@ -12,14 +12,14 @@
       "subtipo": "alimento húmedo",
       "img": "/src/assets/products/dogs/alimento-humedo/perros-humedo.webp",
       "comercios": [
-        { "negocio": "Sao Paulo Pets", "envio": 5, "precio": 76 , "stock":2 },
-        { "negocio": "Morumbi Pets", "envio": 4, "precio": 120 , "stock":20  },
-        { "negocio": "Fortaleza Pets", "envio": 5, "precio": 100 , "stock":10 }
+        { "negocio": "Sao Paulo Pets", "envio": 5, "precio": 76 , "stock":2, "id":200 },
+        { "negocio": "Morumbi Pets", "envio": 4, "precio": 120 , "stock":20 ,"id":201  },
+        { "negocio": "Fortaleza Pets", "envio": 5, "precio": 100 , "stock":10 , "id":202 }
       ]
     },
     {
-      "id": 2,
-      "product": "Criadores cordero y arroz en lata 400g, para perros grandes",
+      "id": 2001,
+      "product": "Criadores cordero y arroz en lata de 400g, para perros de raza grande",
       "precio": 2500,
       "stock": 20,
       "cantidad": 1,
@@ -30,14 +30,14 @@
       "subtipo": "alimento húmedo",
       "img": "/src/assets/products/dogs/alimento-humedo/perros-humedo-2.webp",
       "comercios": [
-        { "negocio": "Animais Rio Janeiro", "envio": 5, "precio": 150 , "stock":20 , "id":1 },
-        { "negocio": "Sao Paulo Pets", "envio": 4, "precio": 140 , "stock":23 , "id":2 },
-        { "negocio": "Fortaleza Pets", "envio": 5, "precio": 123 , "stock":10  , "id":3}
+        { "negocio": "Animais Rio Janeiro", "envio": 5, "precio": 150 , "stock":20 , "id":203 },
+        { "negocio": "Sao Paulo Pets", "envio": 4, "precio": 140 , "stock":23 , "id":204 },
+        { "negocio": "Fortaleza Pets", "envio": 5, "precio": 123 , "stock":10  , "id":205}
       ]
     },
     {
-      "id": 3,
-      "product": "Acana Classics Paire Poltry pollo 2kg para perros de mediana edad",
+      "id": 2002,
+      "product": "Acana Classics Paire Poltry pollo 2 kg para perros de mediana edad",
       "precio": 4500,
       "stock": 44,
       "cantidad": 1,
@@ -48,13 +48,13 @@
       "subtipo": "alimento seco",
       "img": "/src/assets/products/dogs/alimento-seco/perros-seco.webp",
       "comercios": [
-        { "negocio": "Fortaleza Pets", "envio": 5, "precio": 111 , "stock":10 , "id": 1},
-        { "negocio": "Sao Paulo Pets", "envio": 5, "precio": 120 , "stock":25 , "id": 2 }
+        { "negocio": "Fortaleza Pets", "envio": 5, "precio": 111 , "stock":10 , "id": 206},
+        { "negocio": "Sao Paulo Pets", "envio": 5, "precio": 120 , "stock":25 , "id": 207 }
       ]
     },
     {
-      "id": 4,
-      "product": "Alimento Royal Canin 8 Kg adulto, raza mediana",
+      "id": 2003,
+      "product": "Alimento Royal Canin 8 Kg adulto, para perros de raza mediana",
       "precio": 8500,
       "stock": 10,
       "peso": 8,
@@ -65,14 +65,14 @@
       "cantidad": 1,
       "img": "/src/assets/products/dogs/alimento-balanceado/royal_Canin4.webp",
       "comercios": [
-        { "negocio": "Animais Rio Janeiro", "envio": 5, "precio": 121 , "stock":10 , "id": 1},
-        { "negocio": "Fortaleza Pets", "envio": 4, "precio": 123 , "stock":2 , "id":2 },
-        { "negocio": "Morumbi Pets", "envio": 5, "precio": 158 , "stock":60 , "id":3}
+        { "negocio": "Animais Rio Janeiro", "envio": 5, "precio": 121 , "stock":10 , "id": 208},
+        { "negocio": "Fortaleza Pets", "envio": 4, "precio": 123 , "stock":2 , "id":209 },
+        { "negocio": "Morumbi Pets", "envio": 5, "precio": 158 , "stock":60 , "id":210}
       ]
     },
     {
-      "id": 5,
-      "product": "Alimento Royal Canin 8 Kg adulto, raza grande",
+      "id": 2004,
+      "product": "Alimento Royal Canin 8 Kg adulto, para perros de raza grande",
       "precio": 8500,
       "stock": 10,
       "peso": 8,
@@ -83,9 +83,9 @@
       "cantidad": 1,
       "img": "/src/assets/products/dogs/alimento-balanceado/royal_Canin.webp",
       "comercios": [
-        { "negocio": "Animais de Porto Alegre", "envio": 5, "precio": 145 , "stock":10 , "id":1},
-        { "negocio": "Sao Paulo Pets", "envio": 4, "precio": 123 , "stock":2 , "id":2 },
-        { "negocio": "Animais Rio Janeiro", "envio": 11, "precio": 148 , "stock":6 , "id" : 3}
+        { "negocio": "Animais de Porto Alegre", "envio": 5, "precio": 145 , "stock":10 , "id":211},
+        { "negocio": "Sao Paulo Pets", "envio": 4, "precio": 123 , "stock":2 , "id":212 },
+        { "negocio": "Animais Rio Janeiro", "envio": 11, "precio": 148 , "stock":6 , "id" : 213}
       ]
     }
 ]

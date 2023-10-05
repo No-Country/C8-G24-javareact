@@ -10,8 +10,7 @@ const SearchPage = () => {
   if (match.length >= 1) {
     return (
       <>
-        <div className="container mx-auto my-20">
-          <div className="grid sm:grid-cols-2 max-lg:gap-6 xl:grid-cols-3 gap-y-8">
+          <div className="grid sm:grid-cols-2  lg:grid-cols-3  xl:grid-cols-4 2xl:gap-12 py-16 px-8 md:px-18 lg:px-40 2xl:px-52 xl:gap-8 gap-4">
             {match.map((item) => {
                const commerceItems = (item.comercios.map((item) => item));
                 commerce(commerceItems)
@@ -34,7 +33,6 @@ const SearchPage = () => {
               );
             })}
           </div>
-        </div>
       </>
     );
   } else {

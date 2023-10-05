@@ -1,8 +1,10 @@
 import { Dropdown } from "flowbite-react";
 import { Label, TextInput, Checkbox, Button } from "flowbite-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useContext } from "react";
+import LocationContext from "../Context/LocationContext";
 
 const UserRegistration = ({ registerUser, setRegisterUser }) => {
+  const {countryState} = useContext(LocationContext)
   useEffect(() => {
     if (localStorage.getItem("users") !== null) {
       setOrder(JSON.parse(localStorage.getItem("users")));
@@ -14,7 +16,8 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
     name: "",
     surname: "",
     mail: "",
-    password: ""
+    password: "",
+    pais: countryState
   });
 
   //Inputs
@@ -61,6 +64,7 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
 
     setOrder((order) => [...order, formValue]);
     const orderProduct = [...order, formValue];
+    
     let pedidoJSON = JSON.stringify(orderProduct);
     localStorage.setItem("users", pedidoJSON);
     setRegisterUser(true);

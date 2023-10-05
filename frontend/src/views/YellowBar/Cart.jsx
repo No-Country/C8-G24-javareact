@@ -9,12 +9,12 @@ import CartContext from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart , setCart } = useContext(CartContext);
-  
+  const { cart, setCart } = useContext(CartContext);
+
   const [btnBuy, setBtnBuy] = useState(false);
-  const [subtotal, setSubtotal] = useState()
-  const [plusQuantity , setPlusQuantity] = useState();
-  
+  const [subtotal, setSubtotal] = useState();
+  const [plusQuantity, setPlusQuantity] = useState();
+
   useEffect(() => {
     if (cart !== null) {
       if (cart.length === 0) {
@@ -22,16 +22,14 @@ const Cart = () => {
       } else {
         setBtnBuy(true);
       }
-      setSubtotal(cart.reduce(
-        (acc, item) => acc + item.precio * item.cantidad,
-        0
-      )) 
-  
-      setPlusQuantity(cart.reduce((prev, curr) => prev + curr.cantidad, 0))
-      
+      setSubtotal(
+        cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+      );
+
+      setPlusQuantity(cart.reduce((prev, curr) => prev + curr.cantidad, 0));
     }
-    
-  }),[subtotal , plusQuantity];
+  }),
+    [subtotal, plusQuantity];
 
   const navigate = useNavigate();
   function buyCart() {
@@ -49,8 +47,12 @@ const Cart = () => {
               rounded={true}
               class="w-max rounded p-4 hover:bg-yellow-200"
             />
-            <span color="warning" className="self-start rounded-full bg-opacity-95 bg-yellow-100" id="rounded-full">
-            <p className="p-1 text-black text-sm">{plusQuantity}</p>  
+            <span
+              color="warning"
+              className="self-start rounded-full bg-opacity-95 bg-yellow-100 max-sm:top-0.5"
+              id="rounded-full"
+            >
+              <p className="p-1 text-black text-sm">{plusQuantity}</p>
             </span>
           </>
         }
@@ -82,7 +84,7 @@ const Cart = () => {
                 <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                   {cart.map((products) => {
                     return (
-                      <li className="py-3 sm:py-4" >
+                      <li className="py-3 sm:py-4" key={products.idItem}>
                         <div className="flex items-center space-x-4">
                           <div className="shrink-0">
                             <img
@@ -96,14 +98,14 @@ const Cart = () => {
                               {products.product}
                             </p>
                             <p className="truncate text-sm text-gray-500 dark:text-gray-400">
-                              {`${products.precio} + 500 de envío`}
+                              {`${products.precio} + 500 de envío en ${products.negocio}`}
                             </p>
                           </div>
                           <div className="flex flex-col items-center sm:w-28 ">
                             <p className="ml-5 mr-5">{products.cantidad}</p>
                           </div>
                           <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white sm:w-32">
-                            $ {products.precio}
+                            $ {products.precio * products.cantidad}
                           </div>
                         </div>
                       </li>
@@ -131,8 +133,6 @@ const Cart = () => {
           </>
         )}
       </Dropdown>
-    
-   
     </>
   );
 };

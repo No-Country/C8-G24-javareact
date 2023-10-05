@@ -25,11 +25,10 @@ const Card1 = ({
 
   //context --cardcontext
   const { handleCardFunctionX } = useContext(CardContext);
-  const { disabled, setDisabled, move , holas } = useContext(LocationContext);
+  const { disabled, setDisabled, move, holas } = useContext(LocationContext);
 
   useEffect(() => {
-    
-    holas()
+    holas();
     // Actualiza el título del documento usando la API del navegador
     const userSaved = JSON.parse(localStorage.getItem("usersLog"));
 
@@ -55,15 +54,15 @@ const Card1 = ({
     }
   }, [disabled, move, like, id, match]);
 
-
   const handleLike = () => {
-    
     setLike(!like);
 
     if (!disabled) {
-      return alert("Regístrate o inicia tu sesión para poder agregar favoritos");
-  }
-  
+      return alert(
+        "Regístrate o inicia tu sesión para poder agregar favoritos"
+      );
+    }
+
     const nuevoFavorito = { id, description, image, price };
 
     const likeSetUser = localStorage.getItem("usersLog");
@@ -72,7 +71,6 @@ const Card1 = ({
     //**ESTO ES PARA CUANDO ES LA PRIMERA VEZ QUE SE USA LA CUENTA */
 
     if (userLogLike[0].productsLike === undefined) {
-      
       const nuevosProductosFavoritos = [...productosFavoritos];
 
       if (!like) {
@@ -133,11 +131,6 @@ const Card1 = ({
         localStorage.setItem("users", JSON.stringify(loadDataLS));
       }
     }
-
-    
-    
-
-      
   };
 
   return (
@@ -158,7 +151,7 @@ const Card1 = ({
               <Avatar alt="User settings" img={hearthEmpty} rounded={true} />
             )}
           </button>
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             {description}
           </h5>
           <h4 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">

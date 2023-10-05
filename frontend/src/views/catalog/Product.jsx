@@ -1,6 +1,6 @@
 import { Card } from "flowbite-react";
 import Button from "./Button1";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "../Context/CartContext";
 import CardContext from "../Context/CardContext";
 
@@ -9,16 +9,34 @@ function Product() {
   const [product, setProduct] = useState(chosenCard);
   const [cantidad, setCantidad] = useState(1);
   const { cart, setCart } = useContext(CartContext);
+  const [stockProd, setStockProd] = useState([]);
+
+  useEffect(() => {
+    let findIds = cart.find((item) => item.idItem === product.idItem);
+    setStockProd(findIds);
+    if (findIds !== undefined) {
+      setStockProd(findIds.stock);
+    } else {
+      setStockProd(product.stock);
+    }
+  });
 
   const addToCart = () => {
     let findId = cart.find((item) => item.idItem === product.idItem);
 
     if (!findId) {
       product.cantidad = cantidad;
+      product.stock = product.stock - cantidad;
       setCart([...cart, product]);
       localStorage.setItem("usersCart", JSON.stringify([...cart, product]));
     } else {
-      product.cantidad = cantidad + findId.cantidad;
+      if (cantidad > findId.stock) {
+        product.stock = findId.stock - 1;
+        product.cantidad = 1 + findId.cantidad;
+      } else {
+        product.cantidad = cantidad + findId.cantidad;
+        product.stock = findId.stock - cantidad;
+      }
 
       const cartItemDelete = cart.filter(
         (item) => item.idItem !== product.idItem
@@ -51,25 +69,34 @@ function Product() {
               <li>
                 stock:{" "}
                 <span className="text-[#0E9A2D] font-bold">
-                  {`${product.stock} unidades`}
+                  {`${stockProd} unidades`}
                 </span>
               </li>
-              <li>
-                cantidad:{" "}
-                <select className="bg-[#D9D9D9]" onChange={handleChange}>
-                  {[...Array(product.stock).keys()].map((i) => (
-                    <option key={i} value={i + 1}>
-                      {i + 1}
-                    </option>
-                  ))}
-                </select>
-              </li>
+              {stockProd !== 0 && (
+                <li>
+                  cantidad:{" "}
+                  <select className="bg-[#D9D9D9]" onChange={handleChange}>
+                    {[...Array(stockProd).keys()].map((i) => (
+                      <option key={i} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                </li>
+              )}
             </ul>
           </Card>
           <div className="mt-5">
-            <button onClick={() => addToCart()}>
-              <Button tittle={"Agregar al carrito"} />
-            </button>
+            {stockProd !== 0 ? (
+              <button onClick={() => addToCart()}>
+                <Button tittle={"Agregar al carrito"} />
+              </button>
+            ) : (
+              <p className="mt-3 font-bold">
+                No tenemos más stock por el momento, espera unos dias y
+                tendremos novedades para tí
+              </p>
+            )}
           </div>
         </div>
       </div>

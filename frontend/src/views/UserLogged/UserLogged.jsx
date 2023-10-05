@@ -4,22 +4,18 @@ import { useContext, useEffect, useState } from "react";
 import LocationContext from "../Context/LocationContext";
 
 const UserLogged = ({ registerUser, setRegisterUser }) => {
-
-  const {setDisabled , setProductosFavoritos} = useContext(LocationContext)
-
-  
+  const { setDisabled, setProductosFavoritos , countryChoose } = useContext(LocationContext);
 
   function handleDisabled() {
-    setDisabled(false)
+    setDisabled(false);
   }
 
   function handleUpabled() {
-    setDisabled(true)
+    setDisabled(true);
   }
 
-
   const [log, setLog] = useState(true);
- 
+
   const [userMail, setUserMail] = useState();
   const [userName, setUserName] = useState();
   const [logValue, setLogValue] = useState({
@@ -54,6 +50,7 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
         if (localStorage.getItem("usersLog")) {
           setUserMail(userLoad[i].mail);
           setUserName(userLoad[i].name);
+          countryChoose(userLoad[i].pais)
           setLog(false);
         }
       }
@@ -62,8 +59,8 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
 
   function onHandleLogSubmit(e) {
     e.preventDefault();
-    handleUpabled() 
-   
+    handleUpabled();
+    
     for (let i = 0; i < userLoad.length; i++) {
       if (
         userLoad[i].mail === logValue.mail &&
@@ -72,7 +69,7 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
         console.log("usuario logueado");
         setUserMail(userLoad[i].mail);
         setUserName(userLoad[i].name);
-
+        countryChoose(userLoad[i].pais)
         let userLogged = [];
         userLogged = [...userLogged, userLoad[i]];
 
@@ -91,10 +88,9 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
 
   const handleClose = () => {
     localStorage.removeItem("usersLog");
-    setProductosFavoritos([])
+    setProductosFavoritos([]);
     setLog(true);
-    handleDisabled() 
-    
+    handleDisabled();
   };
 
   if (log) {
@@ -133,7 +129,8 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
           </Button>
           <span className="block text-sm">
             ¿Nuevo cliente?{" "}
-            <button type="button"
+            <button
+              type="button"
               onClick={() => {
                 setRegisterUser(false);
               }}

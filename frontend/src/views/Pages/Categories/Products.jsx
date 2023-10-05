@@ -2,8 +2,7 @@ import Filters from "../../CategoriesComponents/Filters/Filters";
 
 function Products({ name }) {
   return (
-    <div className="m-11">
-      <h1>Products</h1>
+    <div className="m-8 sm:m-11">
       <Filters name={name}/>
     </div>
   );

@@ -1,11 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-//Data - Records
+//Data - Records - stock
 import chiStock from "../Records/ProductsLists/ChileStock.json";
 import argStock from "../Records/ProductsLists/ArgentinaStock.json";
 import uruStock from "../Records/ProductsLists/UruguayPets.json";
 import braStock from "../Records/ProductsLists/BrasilStock.json";
+
+//Data records locations
+import countriesData from "../Records/CountriesData/CountriesData.json" 
 
 const LocationContext = createContext();
 
@@ -27,6 +30,7 @@ const LocationProvider = ({ children }) => {
   const [disabled, setDisabled] = useState();
   const [move, setMove] = useState();
   const [favourites , setFavourites] = useState();
+  
 
   const storeLocation = localStorage.getItem("country");
 
@@ -42,7 +46,17 @@ const LocationProvider = ({ children }) => {
 
   function countryChoose(country) {
     
-    setCountryState(country);
+    const userLoggedCountry = JSON.parse(localStorage.getItem("usersLog"));
+    if (userLoggedCountry !== null) {
+      
+      const holas = userLoggedCountry[0].pais
+ 
+      setCountryState(holas)
+    }else{
+      setCountryState(country);
+    }
+      
+    
     switch (country) {
       case "CHILE":
         setLocationProducts(chiStock);
@@ -50,7 +64,6 @@ const LocationProvider = ({ children }) => {
         if (location.pathname === "/search") {
           navigate("/");
         }
-        
         break;
       case "ARGENTINA":
         setLocationProducts(argStock);
@@ -77,6 +90,7 @@ const LocationProvider = ({ children }) => {
       default:
         break;
     }
+ 
   }
   const data = {
     countryChoose,
@@ -89,7 +103,8 @@ const LocationProvider = ({ children }) => {
     setMove,
     move,
     holas,
-    favourites 
+    favourites,
+    countriesData 
   };
 
   return (

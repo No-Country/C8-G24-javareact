@@ -24,7 +24,7 @@ const SocialNetworks = () => {
     {
       SocialNetworksLinks.map((item) =>{
         return(
-          <a href={item.link} className='w-9' key={item.id}>
+          <a href={item.link} className='w-4 sm:w-9' key={item.id}>
           <img src={item.img} alt={item.name}></img>
         </a>
         )

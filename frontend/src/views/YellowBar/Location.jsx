@@ -5,54 +5,84 @@ import locationVector from "../../assets/vectors/locationVector.svg";
 import { Dropdown, Avatar } from "flowbite-react";
 
 //Context
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import LocationContext from "../Context/LocationContext";
 
-const countriesData = [
-  { country: "ARGENTINA", placeholder: "Argentina", id: 1 },
-  { country: "BRASIL", placeholder: "Brasil", id: 2 },
-  { country: "CHILE", placeholder: "Chile", id: 3 },
-  { country: "URUGUAY", placeholder: "Uruguay", id: 4 }
-];
-
 const Location = () => {
-  const { countryChoose , countryState } = useContext(LocationContext);
-  
-  return (
-    <>
-      <Dropdown
-        label={
-          <>
-            <Avatar alt="User settings" img={locationVector} rounded={true} />
-            <div>
-              <p>{countryState}</p>
-            </div>
-          </>
-        }
-        class="hover:bg-yellow-200 rounded z-40"
-      >
-        <Dropdown.Header>
-          <span className="block text-sm font-medium truncate">
-            Selecciona tu país
-          </span>
-        </Dropdown.Header>
+  const { countryChoose, countryState, countriesData } = useContext(LocationContext);
+  const countryFlag = countriesData.filter((item) => item.country === countryState);
+  const [imgFlag, setImgFlag] = useState();
 
-        <div id="countries" class="w-52">
-          {countriesData.map((item) => {
-            return (
-              <Dropdown.Item key={item.id}>
-                <button
-                  className="w-full text-left"
-                  onClick={() => countryChoose(item.country)}
-                >
-                  {item.placeholder}
-                </button>
-              </Dropdown.Item>
-            );
-          })}
-        </div>
-      </Dropdown>
-    </>
+  useEffect(() => {
+    if (countryFlag.length < 1) {
+      setImgFlag("../../src/assets/001-argentina.png");
+    } else {
+      setImgFlag(countryFlag[0].img);
+    }
+  }, [imgFlag, countryFlag]);
+
+  return localStorage.getItem("usersLog") === null ? (
+    <Dropdown
+      label={
+        <>
+          <Avatar
+            alt="User settings"
+            img={locationVector}
+            rounded={true}
+            className="max-sm:hidden"
+          />
+          {countryState && (
+            <Avatar alt="User settings" img={imgFlag} className="sm:hidden" />
+          )}
+          <div>
+            <p className="text-xs sm:text-sm max-sm:hidden">{countryState}</p>
+          </div>
+        </>
+      }
+      class="hover:bg-yellow-200 rounded z-40"
+    >
+      <Dropdown.Header>
+        <span className="block text-sm font-medium truncate">
+          Selecciona tu país
+        </span>
+      </Dropdown.Header>
+
+      <div id="countries" class="w-52">
+        {countriesData.map((item) => {
+          return (
+            <Dropdown.Item key={item.id}>
+              <button
+                className="w-full text-left"
+                onClick={() => countryChoose(item.country)}
+              >
+                {item.placeholder}
+              </button>
+            </Dropdown.Item>
+          );
+        })}
+      </div>
+    </Dropdown>
+  ) : (
+    <Dropdown
+      label={
+        <>
+          <Avatar
+            alt="User settings"
+            img={locationVector}
+            rounded={true}
+            className="max-sm:hidden"
+          />
+          {countryState && (
+            <Avatar alt="User settings" img={imgFlag} className="sm:hidden" />
+          )}
+          <div>
+            <p className="text-xs sm:text-sm max-sm:hidden">{countryState}</p>
+          </div>
+        </>
+      }
+      class="hover:bg-yellow-200 rounded z-40"
+      disabled
+    ></Dropdown>
   );
 };
 

@@ -29,7 +29,7 @@ const UserInformation = () => {
         
        const userRegistered = localStorage.getItem("usersLog")
        if(userRegistered !== null){
-            alert("Estas registrado")
+            
             sessionStorage.setItem("orderClient", JSON.stringify(formsValues))
             navigate("/checkform/confirmation")
        }else{
