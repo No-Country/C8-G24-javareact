@@ -16,10 +16,7 @@ const NavBar = () => {
     <nav
       className="capitalize flex justify-between p-3 static w-screen max-w-full md:p-0 md:static md:flex bg-[#B4FFED] border-white px-8 sm:px-14"
       onClick={() => {
-        // if (document.querySelector('.menu').classList.contains('-translate-x-[110%]')) {
-        //   document.querySelector('.menu').classList.remove('-translate-x-[110%]');
-        //   document.querySelector('.menu').classList.add('translate-x-[0]');
-        // }
+        
         const menu = document.querySelector(".bars");
         menu.classList.toggle("hidden");
         const menuBars = document.querySelector(".close");

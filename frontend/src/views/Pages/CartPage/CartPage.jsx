@@ -11,11 +11,11 @@ import Datepicker from "react-tailwindcss-datepicker";
 
 import { useNavigate } from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CartContext from "../../Context/CartContext";
 
 export const CartPage = () => {
-  const { cart, setCart, cartItems, setCartItems } = useContext(CartContext);
+  const { cart, setCart, cartItems, setCartItems , handleDelete } = useContext(CartContext);
 
   const [optionText, setOptionText] = useState();
   const [print, setPrint] = useState();
@@ -55,7 +55,14 @@ export const CartPage = () => {
     "viernes",
     "sábado"
   ];
+  useEffect(() => {
+    if (cart.length === 0 ) {
+      navigate("/");
+    }
+   
+  });
 
+  
   function clickOn() {
     const today = new Date(); 
     let firstDay = new Date(today);
@@ -153,10 +160,10 @@ export const CartPage = () => {
   };
 
   return (
-    <div className="container mx-auto my-16">
-      <CartList products={cart} setCart={setCart} />
+    <div className="container mx-auto my-16 max-2xl:px-6">
+      <CartList products={cart} setCart={setCart} handleDelete={handleDelete} />
       <div className="mt-8 flex gap-2 sm:gap-6 md:gap-10 max-sm:flex-wrap max-sm:justify-center">
-        <Card className="basis-2/4 max-sm:basis-4/5">
+        <Card className="w-full">
           <form className="flex flex-col gap-4" onSubmit={handleSubmitCart}>
             <div>
               <TextInput
@@ -189,7 +196,7 @@ export const CartPage = () => {
             </Button>
           </form>
         </Card>
-        <Card className="basis-2/4 max-sm:basis-4/5 max-sm:mt-4">
+        <Card className="max-sm:mt-4 w-full">
           <div className="text-center">
             {impress ? (
               <div className="leading-8">
