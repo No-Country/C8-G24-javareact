@@ -16,7 +16,7 @@ const Account = () => {
       <Dropdown
         label={
           <>
-            <Avatar alt="User settings" img={user} rounded={true}  />
+            <Avatar alt="User settings" img={user} rounded={true} className="max-[380px]:w-10 max-sm:py-2" />
             <div>
               <p className="text-xs sm:text-sm max-sm:hidden">MI CUENTA</p>
             </div>

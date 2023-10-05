@@ -10,7 +10,7 @@ import CartContext from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, setCart , handleDelete } = useContext(CartContext);
+  const { cart, setCart, handleDelete } = useContext(CartContext);
 
   const [btnBuy, setBtnBuy] = useState(false);
   const [subtotal, setSubtotal] = useState();
@@ -57,11 +57,10 @@ const Cart = () => {
             </span>
           </>
         }
-        
         arrowIcon={false}
         inline={true}
         placement="bottom"
-        className=" mr-4"
+        className="ml-4 mr-4 positionLeft"
       >
         {btnBuy === true ? (
           <>
@@ -84,15 +83,15 @@ const Cart = () => {
                 </div>
               </span>
             </Dropdown.Header>
-           
+
             {/* <Item> */}
-              <div className="flow-root">
-                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                  {cart.map((products) => {
-                    return (
-                      <Dropdown.Item>
+            <div className="flow-root">
+              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                {cart.map((products) => {
+                  return (
+                    <Dropdown.Item>
                       <li className="py-3 sm:py-4" key={products.idItem}>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex max-sm:flex-col items-center space-x-4 ">
                           <div className="shrink-0">
                             <img
                               className="h-8 w-8 rounded"
@@ -115,34 +114,40 @@ const Cart = () => {
                             $ {products.precio * products.cantidad}
                           </div>
                           <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white sm:w-32">
-                          <Tooltip content="Eliminar producto">
-                          <Avatar
-                    className="h-16 max-sm:w-32 max-lg:w-10 rounded-md hover:bg-slate-200 cursor-pointer"
-                    img={deleteIcon}
-                    rounded={true}
-                    onClick={() => handleDelete(products)}
-                  />
-                  </Tooltip>
+                            <Tooltip content="Eliminar producto">
+                              <Avatar
+                                className="h-16 max-sm:w-32 max-lg:w-10 rounded-md hover:bg-slate-200 cursor-pointer"
+                                img={deleteIcon}
+                                rounded={true}
+                                onClick={() => handleDelete(products)}
+                              />
+                            </Tooltip>
                           </div>
                         </div>
                       </li>
-                      </Dropdown.Item>
-                    );
-                  })}
-                </ul>
-              </div>
-              {/* </Item> */}
-            
+                    </Dropdown.Item>
+                  );
+                })}
+              </ul>
+            </div>
+            {/* </Item> */}
+
             <Dropdown.Divider />
             <Dropdown.Item className="flex justify-between">
               <p className="text-lg">Subtotal</p>
               <p className="text-lg font-semibold">{`$ ${subtotal}`}</p>
             </Dropdown.Item>
-            <Dropdown.Item className="flex justify-center hover:bg-transparent" required={true}>
-              <Button onClick={buyCart} color="dark" className="hover:bg-slate-600">
+            <Dropdown.Item
+              className="flex justify-center hover:bg-transparent"
+              required={true}
+            >
+              <Button
+                onClick={buyCart}
+                color="dark"
+                className="hover:bg-slate-600"
+              >
                 Ir al carrito
               </Button>
-              
             </Dropdown.Item>
           </>
         ) : (

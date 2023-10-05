@@ -151,13 +151,13 @@ const Card1 = ({
               <Avatar alt="User settings" img={hearthEmpty} rounded={true} />
             )}
           </button>
-          <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-xl max-sm:text-sm font-bold tracking-tight text-gray-900 dark:text-white">
             {description}
           </h5>
-          <h4 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h4 className="text-xl max-sm:text-sm font-bold tracking-tight text-gray-900 dark:text-white">
             $ {price}
           </h4>
-          <p>
+          <p className="max-sm:text-sm">
             Envio ${shipments} en {shopping}{" "}
           </p>
         </Card>
@@ -172,7 +172,7 @@ const Card1 = ({
           {comercios.map((items) => {
             return (
               <Dropdown.Item
-                className="border-y w-96 flex justify-between"
+                className="border-y w-52 min-[400px]:w-96 flex justify-between"
                 onClick={() => {
                   handleCardFunctionX(
                     items,

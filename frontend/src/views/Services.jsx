@@ -6,16 +6,16 @@ const Services = () => {
         los mejores centros veterinarios, cercanos a tu domicilio.
       </p>
       <div className="flex flex-col-reverse md:flex-row max-xl:flex-wrap max-xl:justify-center bg-blue-400 w-full justify-between">
-        <ul className="flex flex-col justify-around items-center px-8 list-inside list-disc uppercase p-6">
+        <ul className="flex flex-col justify-around items-center list-inside list-disc uppercase">
           <li>consulta de veterinaria</li>
           <li>procedimientos quirúrjicos</li>
           <li>urgencias y asistencia médica</li>
         </ul>
-        <img
+        {/* <img
           className=""
           src="../src/assets/veterinaria.png"
           alt="veterinaria"
-        />
+        /> */}
       </div>
     </section>
   );

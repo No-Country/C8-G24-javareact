@@ -1,26 +1,31 @@
 import { Carousel } from "flowbite-react";
 
-export const Slide = ({slides}) => { 
+export const Slide = ({ slides }) => {
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+    <div className="h-40 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel id="carrousel">
         {slides.map((slide) => {
           return (
-            <div className={`flex h-full  dark:bg-gray-700 dark:text-white`} style={{backgroundColor: slide.bg}} key={slide.id}>
-              <div className="flex justify-center items-center w-1/3 ">
-                <p className="text-8xl max-md:text-4xl max-xl:text-6xl font-fontGotu ">
-                  {slide.descuento}
+            <div
+              className={`flex h-full  dark:bg-gray-700 dark:text-white`}
+              style={{ backgroundColor: slide.bg }}
+              key={slide.id}
+            >
+              
+              <div className="flex flex-col justify-center items-start w-2/3 font-fontGotu pl-8">
+                <p className="truncate  max-sm:text-sm text-3xl max-md:text-lg ">
+                  <span className="font-bold text-lg ">{slide.descuento}</span>{" "}
+                  {slide.titulo1}
                 </p>
-              </div>
-              <div className="flex flex-col justify-center items-center w-2/3 font-fontGotu">
-                <p className="text-3xl max-md:text-lg ">{slide.titulo1}</p>
-                <p className="text-7xl max-xl:text-5xl max-md:text-3xl max-md:my-4 my-8 ">
+                <p className="truncate max-sm:text-3xl max-sm:py-2  ">
                   {slide.titulo2}
                 </p>
-                <p className="text-3xl max-md:text-lg ">{slide.titulo3}</p>
+                <p className="text-3xl max-sm:text-xs max-md:text-lg ">
+                  {slide.titulo3}
+                </p>
               </div>
-              <div className="w-1/3 flex">
-                <img src={slide.url} alt="imagen mascota" />
+              <div className="flex pt-16 w-1/3">
+                <img src={slide.url} alt="imagen mascota"  />
               </div>
             </div>
           );

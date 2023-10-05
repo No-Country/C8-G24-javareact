@@ -38,14 +38,14 @@ function YellowTop() {
         id="zindex"
       >
         <Link to={"/"} className="flex flex-row">
-          <img src={image} className="w-32" alt="img-kaipet"></img>
-          <div className="flex flex-col justify-end mb-2 text-white font-logoFont gap-2 mr-44 max-lg:mr-0">
-            <p className="text-4xl">KAI</p>
-            <p className="text-4xl">PET</p>
+          <img src={image} className="w-16 sm:w-32" alt="img-kaipet"></img>
+          <div className="flex flex-col justify-end  text-white font-logoFont sm:gap-2 sm:mb-2 mr-44 max-lg:mr-0">
+            <p className="text-2xl sm:text-4xl">KAI</p>
+            <p className="text-2xl sm:text-4xl">PET</p>
           </div>
         </Link>
         <SearchInput />
-        <div className="flex gap-4 mt-12 lg:mt-3 mb-3">
+        <div className="flex gap-4 sm:mt-12 lg:mt-3 mb-3">
           <div className="flex flex-row items-center font-fontGafata gap-2 max-sm:hidden">
             <Favourites />
             <Cart />

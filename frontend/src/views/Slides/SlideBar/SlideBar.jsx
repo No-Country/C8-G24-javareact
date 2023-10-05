@@ -13,7 +13,7 @@ export const SlideBar = () => {
         },
         {
           descuento: "25%",
-          titulo1: "En accesorios para",
+          titulo1: "en accesorios para",
           titulo2: "¡TU MASCOTA!",
           titulo3: "Nuestros pequeños amigos",
           url: "../src/assets/cat.png",
