@@ -8,8 +8,8 @@ function Product() {
   const { chosenCard } = useContext(CardContext);
   const [product, setProduct] = useState(chosenCard);
   const [cantidad, setCantidad] = useState(1);
-  const { cart, setCart } = useContext(CartContext);
-  const [stockProd, setStockProd] = useState([]);
+  const { cart, setCart, stockProd, setStockProd, stockReset, setStockReset } =
+    useContext(CartContext);
 
   useEffect(() => {
     let findIds = cart.find((item) => item.idItem === product.idItem);
@@ -18,6 +18,18 @@ function Product() {
       setStockProd(findIds.stock);
     } else {
       setStockProd(product.stock);
+      if (stockReset === true) {
+        // se reestablecen cantidad de productos en stock y la cantidad
+        product.stock = product.stock + product.cantidad;
+        product.cantidad = product.stock + product.cantidad;
+        setStockProd(product.stock);
+
+        //se restablece cantidad a elegir
+        setCantidad(1);
+
+        //se vuelve a deshabilitar para cerrar
+        setStockReset(false);
+      }
     }
   });
 
