@@ -7,7 +7,7 @@ export const Slide = ({ slides }) => {
         {slides.map((slide) => {
           return (
             <div
-              className={`flex h-full  dark:bg-gray-700 dark:text-white`}
+              className={`flex h-full  dark:bg-gray-700 dark:text-white pl-8 pr-8`}
               style={{ backgroundColor: slide.bg }}
               key={slide.id}
             >

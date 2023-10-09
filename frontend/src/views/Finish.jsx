@@ -1,8 +1,11 @@
+import { Button } from "flowbite-react";
 import Success from "../assets/success.png";
+import { useNavigate } from "react-router-dom";
 
 function Finish() {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col bg-[#FFF6F6] text-center items-center p-5">
+    <div className="flex flex-col bg-[#FFF6F6] text-center items-center p-28">
       <img src={Success} alt="finish" />
       <p className="m-10">
         Enviaremos un e-mail de confimación a tu correo electrónico.
@@ -26,6 +29,7 @@ function Finish() {
         </div>
         <p>Todas tus operaciones bancarias son seguras</p>
       </div>
+      <Button className="mt-2" onClick={() => navigate("/")}>Volver al inicio</Button>
     </div>
   );
 }

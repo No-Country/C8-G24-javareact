@@ -54,7 +54,7 @@ const UserInformation = () => {
           />
         </div>
 
-        <div className="container grid grid-cols-2 gap-4 mt-2">
+        <div className="container grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-6 gap-4 mt-2">
           <TextInput
             placeholder="Nombre"
             name="nombre"
@@ -101,7 +101,7 @@ const UserInformation = () => {
             onChange={handleChangeInformation}
           />
         </div>
-        <div className="mt-2 grid grid-cols-3 gap-4">
+        <div className="mt-2 grid grid-cols-3 gap-4 max-sm:grid-cols-1 max-sm:gap-6 ">
           <TextInput
             id="codezip"
             type="text"

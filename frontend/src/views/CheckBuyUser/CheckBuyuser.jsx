@@ -20,12 +20,12 @@ const CheckBuyuser = () => {
   return (
     <div className="flex flex-col bg-white p-4 mb-8 mt-8">
       <div className="flex gap-10 pb-2 border-b-2">
-        <p>Contacto:</p>
-        <p>{mail}</p>
+       
+        <p>Contacto: {mail}</p>
       </div>
       <div className="flex gap-10 pt-2">
-        <p>Enviar a:</p>
-        <p>{ship.direccion}, {ship.localidad}, {ship.provincia} , {ship.codigoPostal}</p>
+        
+        <p>Enviar a: {ship.direccion}, {ship.localidad}, {ship.provincia} , {ship.codigoPostal}</p>
       </div>
     </div>
   );

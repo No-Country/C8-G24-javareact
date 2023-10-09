@@ -55,13 +55,6 @@ export const CartPage = () => {
     "viernes",
     "sábado"
   ];
-  useEffect(() => {
-    if (cart.length === 0 ) {
-      navigate("/");
-    }
-   
-  });
-
   
   function clickOn() {
     const today = new Date(); 
