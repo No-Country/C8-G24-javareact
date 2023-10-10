@@ -57,11 +57,12 @@ return (
                 </div>
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>
+           
               <div className="flow-root">
                 <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                   {itemsFav.map((products) => {
                     return (
+                      <Dropdown.Item>
                       <li className="py-3 sm:py-4" key={products.id}>
                         <div className="flex items-center space-x-4">
                           <div className="shrink-0">
@@ -84,11 +85,12 @@ return (
                           </div>
                         </div>
                       </li>
+                      </Dropdown.Item>
                     );
                   })}
                 </ul>
               </div>
-            </Dropdown.Item></> ) :  <>
+            </> ) :  <>
             <p className="text-lg m-6">
               No haz agregado ningún producto a tu lista de favoritos
             </p>

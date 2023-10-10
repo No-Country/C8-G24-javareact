@@ -2,10 +2,13 @@ import { Dropdown } from "flowbite-react";
 import { Label, TextInput, Checkbox, Button } from "flowbite-react";
 import { useContext, useEffect, useState } from "react";
 import LocationContext from "../Context/LocationContext";
+import CartContext from "../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const UserLogged = ({ registerUser, setRegisterUser }) => {
   const { setDisabled, setProductosFavoritos , countryChoose } = useContext(LocationContext);
-
+  const {cart , setCart} = useContext(CartContext)
+  const navigate = useNavigate();
   function handleDisabled() {
     setDisabled(false);
   }
@@ -58,10 +61,19 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
   }, []);
 
   function onHandleLogSubmit(e) {
+    
+
     e.preventDefault();
     handleUpabled();
+    const countryLogged = localStorage.getItem("country");
+
+    
+
     
     for (let i = 0; i < userLoad.length; i++) {
+      console.log(userLoad[i].pais , countryLogged)
+      
+      
       if (
         userLoad[i].mail === logValue.mail &&
         userLoad[i].password === logValue.password
@@ -77,6 +89,15 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
         localStorage.setItem("usersLog", usersJSON);
 
         setLog(false);
+
+        //IR PROBANDO - SI NO ESTA EN EL MISMO PAIS SE BORRA EL CARRITO Y SI ES DEL MISMO PAIS NO 
+        if(userLoad[i].pais !== countryLogged){
+          setCart([])
+          alert(
+            "Si tiene productos en el carrito se borraran porque son de otro país"
+          );
+          navigate("/");
+         }
       }
     }
   }
