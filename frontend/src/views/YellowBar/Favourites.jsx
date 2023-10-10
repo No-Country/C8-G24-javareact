@@ -41,11 +41,11 @@ return (
         }
         arrowIcon={false}
         inline={true}
-        placement="bottom-end" 
+        placement="bottom" 
       >
          {itemsFav.length !== 0  ?  (<>
          <Dropdown.Header>
-              <span className="block text-lg font-semibold truncate">
+              <span className="block text-sm md:text-lg md:font-semibold md:truncate">
                 Favoritos
               </span>
               <span className="flex max-sm:hidden">
@@ -72,13 +72,13 @@ return (
                             />
                           </div>
                           <div className="sm:w-72 flex-1">
-                            <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
+                            <p className="md:truncate text-xs sm:text-sm md:font-medium text-gray-900 dark:text-white">
                               {products.description}
                             </p>
                             
                           </div>
                           <div className="inline-flex justify-end items-center text-gray-900 dark:text-white sm:w-32">
-                          <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
+                          <p className="md:truncate text-xs sm:text-sm md:font-medium text-gray-900 dark:text-white">
                              $ {products.price}
                             </p>
                           </div>

@@ -73,7 +73,7 @@ const Location = () => {
             className="max-sm:hidden"
           />
           {countryState && (
-            <Avatar alt="User settings" img={imgFlag} className="sm:hidden" />
+            <Avatar alt="User settings" img={imgFlag} className="sm:hidden max-[380px]:w-10 max-sm:py-2" />
           )}
           <div>
             <p className="text-xs sm:text-sm max-sm:hidden">{countryState}</p>

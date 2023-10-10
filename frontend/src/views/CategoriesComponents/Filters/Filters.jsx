@@ -152,7 +152,7 @@ const Filters = ({ name }) => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 2xl:gap-12 pl-8 xl:gap-8 gap-4 ">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 2xl:gap-12 sm:pl-8 xl:gap-8 gap-4 ">
           {filteredData.map((item) => {
             const commerceItems = item.comercios.map((item) => item);
 

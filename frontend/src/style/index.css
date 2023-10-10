@@ -2,59 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /*The z-index is for navbar*/
 
-#zindexFixFirst div{
-    z-index: 25;
+#zindexFixFirst div {
+  z-index: 25;
 }
 
-#zindexFixFirst div:nth-child(2){
-    z-index: 35;
+#zindexFixFirst div:nth-child(2) {
+  z-index: 35;
 }
 
-#zindex div{
-    z-index: 20;
+#zindex div {
+  z-index: 20;
 }
 
 /*Slidebar corners*/
 
-#carrousel div{
-    border-radius: 0px;
+#carrousel div {
+  border-radius: 0px;
 }
 
 /*Stroke text*/
-.text-stroke{
-    -webkit-text-stroke: 1px black;
+.text-stroke {
+  -webkit-text-stroke: 1px black;
 }
 
-
 /*cart button badge*/
-#rounded-full{
-    position: relative;
-    border-radius: 99%;
-    right: 1rem;
-    bottom: 1rem;
-    padding: 0rem 0.5rem;
-    z-index: 99;
+#rounded-full {
+  position: relative;
+  border-radius: 99%;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0rem 0.5rem;
+  z-index: 99;
 }
 
 /*padding dropdown shops*/
 
-.padding-list div{
-    padding: 0rem;
+.padding-list div {
+  padding: 0rem;
 }
 
-.padding-list div ul{
-    padding: 0rem;
+.padding-list div ul {
+  padding: 0rem;
 }
 
-.positionLeft{
-    left: 0px !important;
+.paddingLeft {
+  left: 0px !important;
+}
+
+@media (900px < width < 1600px) {
+  .paddingLeft {
+    left: 40% !important;
+  }
+}
+
+@media (width > 1600px) {
+  .paddingLeft {
+    left: 50% !important;
+  }
+}
+
+@media (width > 1300px) {
+  #textSecondSectionHome {
+    line-height: 4.5rem;
+  }
 }

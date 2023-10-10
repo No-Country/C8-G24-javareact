@@ -4,7 +4,7 @@ export const SlideBar = () => {
     const slides = [
         {
           descuento: "50%",
-          titulo1: "APROVECHA NUESTRO",
+          titulo1: "Aprovecha nuestro",
           titulo2: "BLACK FRIDAY",
           titulo3: "¡¡OFERTAS IMPERDIBLES!!",
           url: "../src/assets/sonriendo1-ok.png",

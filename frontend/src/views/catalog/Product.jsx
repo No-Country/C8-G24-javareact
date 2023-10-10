@@ -65,15 +65,18 @@ function Product() {
   };
 
   return (
-    <div className="flex justify-around bg-[#F5F5F5] p-5">
-      <img src={product.img} alt="" className="w-1/3" />
-      <div className="text-center m-5 w-1/3 flex flex-col items-center">
-        <header className="bg-[#F8CF32] p-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <div className="flex justify-around bg-[#F5F5F5] p-5 max-md:flex-col md:px-20">
+       <header className=" md:hidden bg-[#F8CF32] p-5 text-md text-center font-bold tracking-tight text-gray-900 dark:text-white mb-8">
           <h1>Tienda: {chosenCard.negocio}</h1>
         </header>
-        <div className="flex flex-col items-center mt-5 w-3/4">
+      <img src={product.img} alt="imagen-producto" className="md:w-2/3 w-full max-md:self-center" />
+      <div className="text-center md:m-5 md:w-2/3  flex flex-col  items-center justify-center">
+        <header className="bg-[#F8CF32] max-md:hidden p-5 text-lg lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h1>Tienda: {chosenCard.negocio}</h1>
+        </header>
+        <div className="flex flex-col items-center mt-5 md:w-4/4">
           <Card href="#">
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="max-sm:text-sm md:text-md font-bold tracking-tight text-gray-900 dark:text-white">
               {product.product}
             </h5>
             <ul>

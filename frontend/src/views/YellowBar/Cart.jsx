@@ -60,7 +60,7 @@ const Cart = () => {
         arrowIcon={false}
         inline={true}
         placement="bottom"
-        className="ml-4 mr-4 positionLeft"
+        className="ml-2 mr-2 paddingLeft"
       >
         {btnBuy === true ? (
           <>
@@ -68,61 +68,59 @@ const Cart = () => {
               <span className="block text-lg font-semibold truncate">
                 Carrito
               </span>
-              <span className="flex max-sm:hidden">
-                <div className="sm:w-96 ">
+              <span className="flex max-sm:text-xs">
+                <div className="w-6/12">
                   <p>Productos</p>
                 </div>
-                <div className="flex items-center sm:w-28 ">
+                <div className="flex items-center w-1/12">
                   <p>Cantidad</p>
                 </div>
-                <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white sm:w-28 max-sm:10">
+                <div className="inline-flex justify-end items-center  dark:text-white w-3/12 max-[325px]:ml-1">
                   <p>Precio</p>
-                </div>
-                <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white sm:w-28 max-sm:10">
-                  <p></p>
                 </div>
               </span>
             </Dropdown.Header>
 
             {/* <Item> */}
             <div className="flow-root">
-              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+              <ul className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {cart.map((products) => {
                   return (
                     <Dropdown.Item>
-                      <li className="py-3 sm:py-4" key={products.idItem}>
-                        <div className="flex max-sm:flex-col items-center space-x-4 ">
-                          <div className="shrink-0">
-                            <img
-                              className="h-8 w-8 rounded"
-                              src={products.img}
-                              alt="Neil image"
-                            />
-                          </div>
-                          <div className="sm:w-72 flex-1">
-                            <p className="sm:truncate text-sm font-medium text-gray-900 dark:text-white">
+                      <li
+                        className="py-3 sm:py-4 flex items-center"
+                        key={products.idItem}
+                      >
+                        <div className="flex max-sm:flex-col items-center w-6/12  gap-4 ">
+                          <img
+                            className="h-10 w-10"
+                            src={products.img}
+                            alt="Neil image"
+                          />
+                          <div>
+                            <p className="max-sm:text-xs text-sm font-medium text-gray-900 dark:text-white">
                               {products.product}
                             </p>
-                            <p className="sm:truncate text-sm text-gray-500 dark:text-gray-400">
+                            <p className="sm:truncate text-sm text-gray-500 dark:text-gray-400 max-sm:text-xs">
                               {`${products.precio} + 500 de envío en ${products.negocio}`}
                             </p>
                           </div>
-                          <div className="flex flex-col items-center sm:w-28 ">
-                            <p className="ml-5 mr-5">{products.cantidad}</p>
-                          </div>
-                          <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white sm:w-32">
-                            $ {products.precio * products.cantidad}
-                          </div>
-                          <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white sm:w-32">
-                            <Tooltip content="Eliminar producto">
-                              <Avatar
-                                className="h-16 max-sm:w-32 max-lg:w-10 rounded-md hover:bg-slate-200 cursor-pointer"
-                                img={deleteIcon}
-                                rounded={true}
-                                onClick={() => handleDelete(products)}
-                              />
-                            </Tooltip>
-                          </div>
+                        </div>
+                        <div className="flex flex-col items-center w-1/12 ">
+                          <p className="ml-5 mr-5 max-sm:pl-3">{products.cantidad}</p>
+                        </div>
+                        <div className="max-sm:text-sm inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white w-3/12">
+                          $ {products.precio * products.cantidad}
+                        </div>
+                        <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white w-2/12">
+                          <Tooltip content="Eliminar producto">
+                            <Avatar
+                              className="h-16 max-lg:w-10 rounded-md hover:bg-slate-200 cursor-pointer"
+                              img={deleteIcon}
+                              rounded={true}
+                              onClick={() => handleDelete(products)}
+                            />
+                          </Tooltip>
                         </div>
                       </li>
                     </Dropdown.Item>
@@ -152,7 +150,7 @@ const Cart = () => {
           </>
         ) : (
           <>
-            <p className="text-lg m-6">
+            <p className="text-lg m-6 paddingLeft">
               No haz agregado ningún pedido al carrito de compras
             </p>
           </>
