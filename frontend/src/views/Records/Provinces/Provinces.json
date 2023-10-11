@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "provicia": "Buenos Aires"
+  },
+  {
+    "id": 2,
+    "provicia": "Ciudad Autónoma de Buenos Aires"
+  },
+  {
+    "id": 3,
+    "provicia": "Catamarca"
+  },
+  {
+    "id": 4,
+    "provicia": "Chaco"
+  },
+  {
+    "id": 5,
+    "provicia": "Chubut"
+  },
+  {
+    "id": 6,
+    "provicia": "Córdoba"
+  },
+  {
+    "id": 7,
+    "provicia": "Corrientes"
+  },
+  {
+    "id": 8,
+    "provicia": "Entre Ríos"
+  },
+  {
+    "id": 9,
+    "provicia": "Formosa"
+  },
+  {
+    "id": 10,
+    "provicia": "Jujuy"
+  },
+  {
+    "id": 11,
+    "provicia": "La Pampa"
+  },
+  {
+    "id": 12,
+    "provicia": "La Rioja"
+  },
+  {
+    "id": 12,
+    "provicia": "Mendoza"
+  },
+  {
+    "id": 13,
+    "provicia": "Misiones"
+  },
+  {
+    "id": 14,
+    "provicia": "Neuquén"
+  },
+  {
+    "id": 15,
+    "provicia": "Río Negro"
+  },
+  {
+    "id": 16,
+    "provicia": "Salta"
+  },
+  {
+    "id": 17,
+    "provicia": "San Juan"
+  },
+  {
+    "id": 18,
+    "provicia": "San Luis"
+  },
+  {
+    "id": 19,
+    "provicia": "Santa Cruz"
+  },
+  {
+    "id": 20,
+    "provicia": "Santa Fe"
+  },
+  {
+    "id": 21,
+    "provicia": "Santiago del Estero"
+  },
+  {
+    "id": 22,
+    "provicia": "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+  },
+  {
+    "id": 23,
+    "provicia": "Tucumán"
+  }
+]

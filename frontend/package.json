@@ -11,9 +11,14 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "aos": "^3.0.0-beta.6",
+    "flowbite": "^1.5.4",
+    "flowbite-react": "^0.3.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "react-tailwindcss-datepicker": "^1.1.2",
+    "spinners-react": "^1.0.7",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
