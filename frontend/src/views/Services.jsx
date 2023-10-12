@@ -1,3 +1,5 @@
+import veterinariaImg from '../assets/veterinarian.jpg'
+
 const Services = () => {
   return (
     <section className="lg:text-3xl text-md md:text-2xl 2xl:text-4xl font-new flex flex-wrap flex-row md:flex-row">
@@ -13,7 +15,7 @@ const Services = () => {
         </ul>
          <img
           className="w-1/2 lg:w-3/12 max-[360px]:w-2/5"
-          src="../src/assets/veterinarian.jpg"
+          src={veterinariaImg}
           alt="veterinaria"
           
         /> 

@@ -7,7 +7,7 @@ export const SlideBar = () => {
           titulo1: "Aprovecha nuestro",
           titulo2: "BLACK FRIDAY",
           titulo3: "¡¡OFERTAS IMPERDIBLES!!",
-          url: "../src/assets/sonriendo1-ok.png",
+          url: "/sonriendo1-ok.png",
           bg: "#F7D3F3",
           id: 1
         },
@@ -16,7 +16,7 @@ export const SlideBar = () => {
           titulo1: "en accesorios para",
           titulo2: "¡TU MASCOTA!",
           titulo3: "Nuestros pequeños amigos",
-          url: "../src/assets/cat.png",
+          url: "/cat.png",
           bg: "#90A8FF",
           id: 2
         }

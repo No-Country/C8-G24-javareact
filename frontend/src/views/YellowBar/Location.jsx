@@ -15,7 +15,7 @@ const Location = () => {
 
   useEffect(() => {
     if (countryFlag.length < 1) {
-      setImgFlag("../../src/assets/001-argentina.png");
+      setImgFlag("/001-argentina.png");
     } else {
       setImgFlag(countryFlag[0].img);
     }

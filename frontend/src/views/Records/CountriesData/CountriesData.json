@@ -3,24 +3,24 @@
       "country": "ARGENTINA",
       "placeholder": "Argentina",
       "id": 1,
-      "img": "../../src/assets/001-argentina.png"
+      "img": "/001-argentina.png"
     },
     {
       "country": "BRASIL",
       "placeholder": "Brasil",
       "id": 2,
-      "img": "../../src/assets/004-brasil.png"
+      "img": "/004-brasil.png"
     },
     {
       "country": "CHILE",
       "placeholder": "Chile",
       "id": 3,
-      "img": "../../src/assets/003-chile.png"
+      "img": "/003-chile.png"
     },
     {
       "country": "URUGUAY",
       "placeholder": "Uruguay",
       "id": 4,
-      "img": "../../src/assets/002-uruguay.png"
+      "img": "/002-uruguay.png"
     }
   ]
