@@ -1,6 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+//Firestore
+import { collection , getDocs } from "firebase/firestore";
+import db from "../../utils/firebaseConfig";
+
 //Data - Records - stock
 import chiStock from "../Records/ProductsLists/ChileStock.json";
 import argStock from "../Records/ProductsLists/ArgentinaStock.json";
@@ -22,6 +26,11 @@ const LocationProvider = ({ children }) => {
     localStorage.getItem("country") === null
       ? countryChoose("ARGENTINA")
       : countryChoose(storeLocation);
+
+      getStockFirestore()
+      .then((prods) => {
+        console.log("todos", prods)
+      })
   }, []);
 
   const [productosFavoritos, setProductosFavoritos] = useState([]);
@@ -33,6 +42,20 @@ const LocationProvider = ({ children }) => {
   
 
   const storeLocation = localStorage.getItem("country");
+
+
+  //Firebase data
+  const getStockFirestore = async () => {
+    const productsSnapshot = await getDocs(collection(db,"StockPrincipal"))
+    const productStocks = productsSnapshot.docs.map((doc) => {console.log("item completo:" ,   doc.data() , 'id item:' , doc.id) 
+    let products = doc.data();
+    products.id = doc.id;
+    return products
+  })
+    return productStocks
+
+  } 
+
 
  function holas(){
   const favouritesItems = JSON.parse(localStorage.getItem("usersLog"));
