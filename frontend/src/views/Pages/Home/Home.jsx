@@ -1,10 +1,24 @@
 import { SlideBar } from "../../Slides/SlideBar/SlideBar";
 import Services from "../../Services";
-import imgChicaHome from "../../../assets/img-chica-home.png";
 import Catalog from "../../catalog/Catalog";
 import NavBar from "../../navBar/NavBar";
 
+
+import { getStorage, ref , getDownloadURL } from "firebase/storage";
+import { useState } from "react";
+
 const Home = () => {
+  const [imgChicaHome , setChicaHome] = useState();
+  
+  const storage = getStorage();
+getDownloadURL(ref(storage, 'img-chica-home.png'))
+  .then((url) => {    
+    setChicaHome(url)
+  })
+  .catch((error) => {
+    // Handle any errors
+  });
+
   return (
     <>
       <NavBar />

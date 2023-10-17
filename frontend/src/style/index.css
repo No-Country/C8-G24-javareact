@@ -57,6 +57,7 @@
   left: 0px !important;
 }
 
+
 @media (900px < width < 1600px) {
   .paddingLeft {
     left: 40% !important;
@@ -74,3 +75,5 @@
     line-height: 4.5rem;
   }
 }
+
+

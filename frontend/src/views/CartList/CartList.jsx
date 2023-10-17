@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Avatar, Table } from "flowbite-react";
-import deleteIcon from "../../assets/vectors/delete.png";
+import { deleteIcon } from "../../assets/helpers/Images";
 
 export const CartList = ({ products, handleDelete, setCart }) => {
   return (

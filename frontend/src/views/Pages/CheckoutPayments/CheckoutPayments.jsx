@@ -1,6 +1,6 @@
 import CartProductsConfirmation from "../../CartProductsConfirmation/CartProductsConfirmation";
 import { Link } from "react-router-dom";
-import iconBack from "../../../assets/vectors/icon-back.svg";
+import { iconBack } from "../../../assets/helpers/Images";
 import PaymentsSets from "../../paymentsSets/PaymentsSets";
 import CartContext from "../../Context/CartContext";
 import { useContext} from "react";

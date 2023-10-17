@@ -1,12 +1,13 @@
 import { Button } from "flowbite-react";
-import Success from "../assets/success.png";
+import { success } from "../assets/helpers/Images";
 import { useNavigate } from "react-router-dom";
+
 
 function Finish() {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col bg-[#FFF6F6] text-center items-center p-28">
-      <img src={Success} alt="finish" />
+      <img src={success} alt="finish" />
       <p className="m-10">
         Enviaremos un e-mail de confimación a tu correo electrónico.
       </p>

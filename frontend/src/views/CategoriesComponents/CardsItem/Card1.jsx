@@ -1,11 +1,9 @@
 import { Card, Dropdown, Avatar } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import CardContext from "../../Context/CardContext";
 import LocationContext from "../../Context/LocationContext";
 
-import hearth from "../../../assets/vectors/hearth.svg";
-import hearthEmpty from "../../../assets/vectors/hearth-nofill.svg";
+import { hearth, hearthEmpty } from "../../../assets/helpers/Images";
 
 const Card1 = ({
   description,

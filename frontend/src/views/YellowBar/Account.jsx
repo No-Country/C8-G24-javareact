@@ -1,9 +1,10 @@
 import { Dropdown } from "flowbite-react";
-import { Avatar, Label, TextInput, Checkbox, Button } from "flowbite-react";
-import user from "../../assets/vectors/user.svg";
+import { Avatar } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import UserRegistration from "../UserRegistration/UserRegistration";
 import UserLogged from "../UserLogged/UserLogged";
+import userIcon from "../../assets/helpers/Images";
+
 const Account = () => {
   const [registerUser, setRegisterUser] = useState();
 
@@ -16,7 +17,12 @@ const Account = () => {
       <Dropdown
         label={
           <>
-            <Avatar alt="User settings" img={user} rounded={true} className="max-[380px]:w-10 max-sm:py-2" />
+            <Avatar
+              alt="User settings"
+              img={userIcon}
+              rounded={true}
+              className="max-[380px]:w-10 max-sm:py-2"
+            />
             <div>
               <p className="text-xs sm:text-sm max-sm:hidden">MI CUENTA</p>
             </div>

@@ -2,14 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 //Firestore
-import { collection , getDocs } from "firebase/firestore";
+import { addDoc, collection , getDocs } from "firebase/firestore";
 import db from "../../utils/firebaseConfig";
-
-//Data - Records - stock
-import chiStock from "../Records/ProductsLists/ChileStock.json";
-import argStock from "../Records/ProductsLists/ArgentinaStock.json";
-import uruStock from "../Records/ProductsLists/UruguayPets.json";
-import braStock from "../Records/ProductsLists/BrasilStock.json";
 
 //Data records locations
 import countriesData from "../Records/CountriesData/CountriesData.json" 
@@ -20,17 +14,15 @@ const LocationProvider = ({ children }) => {
   let location = useLocation();
   let navigate = useNavigate();
 
+  
   useEffect(() => {
+    //saveData(chiStock[11])
     setCountryState(storeLocation);
 
     localStorage.getItem("country") === null
       ? countryChoose("ARGENTINA")
       : countryChoose(storeLocation);
-
-      getStockFirestore()
-      .then((prods) => {
-        console.log("todos", prods)
-      })
+      
   }, []);
 
   const [productosFavoritos, setProductosFavoritos] = useState([]);
@@ -43,11 +35,19 @@ const LocationProvider = ({ children }) => {
 
   const storeLocation = localStorage.getItem("country");
 
+  //Firebase Set
+
+  // const saveData = async(newOrder) =>{
+  //   const orderFirebase = collection(db, 'chiStock')
+  //   const orderDoc = await addDoc(orderFirebase, newOrder)
+    
+  // }
+
 
   //Firebase data
-  const getStockFirestore = async () => {
-    const productsSnapshot = await getDocs(collection(db,"StockPrincipal"))
-    const productStocks = productsSnapshot.docs.map((doc) => {console.log("item completo:" ,   doc.data() , 'id item:' , doc.id) 
+  const getStockFirestore = async (prop) => {
+    const productsSnapshot = await getDocs(collection(db,prop))
+    const productStocks = productsSnapshot.docs.map((doc) => {
     let products = doc.data();
     products.id = doc.id;
     return products
@@ -82,28 +82,45 @@ const LocationProvider = ({ children }) => {
     
     switch (country) {
       case "CHILE":
-        setLocationProducts(chiStock);
+      
+        getStockFirestore("chiStock")
+      .then((prods) => {
+        setLocationProducts(prods);
+       
+      })
         localStorage.setItem("country", country);
         if (location.pathname === "/search") {
           navigate("/");
         }
         break;
       case "ARGENTINA":
-        setLocationProducts(argStock);
+       
+        getStockFirestore("argStock")
+        .then((prods) => {
+          setLocationProducts(prods);
+        })
         localStorage.setItem("country", country);
         if (location.pathname === "/search") {
           navigate("/");
         }
         break;
       case "BRASIL":
-        setLocationProducts(braStock);
+        getStockFirestore("braStock")
+        .then((prods) => {
+          setLocationProducts(prods);
+          
+        })
         localStorage.setItem("country", country);
         if (location.pathname === "/search") {
           navigate("/");
         }
         break;
       case "URUGUAY":
-        setLocationProducts(uruStock);
+        getStockFirestore("uruStock")
+        .then((prods) => {
+          setLocationProducts(prods);
+          
+        })
         localStorage.setItem("country", country);
         if (location.pathname === "/search") {
           navigate("/");

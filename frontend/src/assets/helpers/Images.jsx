@@ -1,0 +1,24 @@
+//Import images from Firestore
+
+const userIcon = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fuser.svg?alt=media&token=1846fbc6-ebac-4162-9e6f-f65cccb08b84&_gl=1*ore106*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjEzNzYuNTguMC4w"
+const cartImg = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fcart.svg?alt=media&token=ab8f0fb4-0e9c-4419-9608-25ecc90d3c0d&_gl=1*k3i094*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjI1MzEuNDMuMC4w";
+const deleteIcon = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fdelete.png?alt=media&token=4ea00b4c-4a9f-4d8f-be83-e738c0d7caaa&_gl=1*xe1ja6*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjI1NjEuMTMuMC4w";
+const hearth = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fhearth.svg?alt=media&token=8b662046-b51b-4d17-9307-b021c2dc5ca6&_gl=1*4ypsge*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjI5NzYuNjAuMC4w"
+const hearthEmpty = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fhearth-nofill.svg?alt=media&token=540437f1-2db4-4ae5-9599-dcc5be0c9fe0&_gl=1*1v2sk7l*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzI1NTMuNjAuMC4w"
+const locationVector = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Flocationvector.svg?alt=media&token=74298715-c7b2-4924-b8e1-8df1f3c379fb&_gl=1*8958qm*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjMwOTguNjAuMC4w"
+const instagram = 'https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Finstagram.svg?alt=media&token=d25a00d5-75a4-4b6e-bed0-169b4bb2c724&_gl=1*qbdd1*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjQxNjkuNTcuMC4w'
+const facebook = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Ffacebook.svg?alt=media&token=46e3b9d5-8290-4fb5-9728-212b7680608f&_gl=1*c6vx5f*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjQxOTQuMzIuMC4w"
+const imageKaiPetLogo = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/img-kai_pet.png?alt=media&token=cf8e612b-3b33-43d4-8bf2-e8d8f3188215&_gl=1*30ri1y*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjQ4MTQuNTYuMC4w"
+const dogSlide = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/sonriendo1-ok.png?alt=media&token=e02ef53a-c27b-4a09-9557-6a4330fad0c3&_gl=1*zr148b*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjQ5OTQuNjAuMC4w" 
+const catSlide = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/cat.png?alt=media&token=226ec975-daa2-495b-a742-bd1eda6c13cb&_gl=1*10lqmnx*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjUwMTYuMzguMC4w"
+const veterinaria = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/veterinarian.jpg?alt=media&token=acaa8aac-81c9-4a43-8142-629ed9dd177f&_gl=1*1matmhe*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjUxNjkuNjAuMC4w"
+const success = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/success.png?alt=media&token=ec86e829-5123-4aca-b350-471c465d5270&_gl=1*1s63kvi*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzEzNjUuNTYuMC4w"
+const iconBack = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Ficon-back.svg?alt=media&token=bfce6f86-4fc2-469f-a9bc-ed1ce585d2a5&_gl=1*v7n33c*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE0OTUuNTYuMC4w"
+const AmericanExpress = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2FAmericanExpress.svg?alt=media&token=bd1e2cf1-e2fa-45b7-9d9f-bcdfa414deec&_gl=1*10cyddm*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NDEuNjAuMC4w"
+const Visa = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fvisalogo.svg?alt=media&token=f9db3e2c-7798-425e-8183-a08b3226d04c&_gl=1*xxx9gu*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NTUuNDYuMC4w"
+const Mastercard = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2FMastercard.svg?alt=media&token=24b119ae-1ef5-4c26-9363-0fa1bd102ba8&_gl=1*1h9hwqq*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NzQuMjcuMC4w" 
+
+
+
+export default userIcon 
+export {cartImg , deleteIcon , hearth , hearthEmpty , locationVector , facebook , instagram , imageKaiPetLogo , dogSlide , catSlide , veterinaria , success , iconBack , Mastercard , Visa , AmericanExpress}

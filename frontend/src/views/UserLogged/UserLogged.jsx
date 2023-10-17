@@ -140,12 +140,7 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
               </div>
             );
           })}
-
-          {/* <div className="flex items-center gap-2">
-            <Checkbox id="remember" />
-            <Label htmlFor="remember">Remember me</Label>
-          </div> */}
-          <Button type="submit" color="dark">
+          <Button type="submit" color="dark" className="bg-black">
             ENTRAR
           </Button>
           <span className="block text-sm">
@@ -159,9 +154,6 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
               Crear cuenta
             </button>
           </span>
-          {/* <span className="block text-sm font-medium truncate">
-            ¿Olvidaste tu contraseña? <span>Recuperar contraseña</span>
-          </span> */}
         </form>
       </>
     );

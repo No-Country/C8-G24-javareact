@@ -1,6 +1,5 @@
 import { useState , useEffect, useContext } from "react";
-import hearth from "../../assets/vectors/hearth.svg";
-
+import { hearth } from "../../assets/helpers/Images";
 //Components from flowbite
 import { Dropdown, Avatar } from "flowbite-react";
 import LocationContext from "../Context/LocationContext";

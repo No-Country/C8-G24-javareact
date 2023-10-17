@@ -1,4 +1,4 @@
-import veterinariaImg from '../assets/veterinarian.jpg'
+import { veterinaria } from '../assets/helpers/Images';
 
 const Services = () => {
   return (
@@ -15,7 +15,7 @@ const Services = () => {
         </ul>
          <img
           className="w-1/2 lg:w-3/12 max-[360px]:w-2/5"
-          src={veterinariaImg}
+          src={veterinaria}
           alt="veterinaria"
           
         /> 

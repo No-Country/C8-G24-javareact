@@ -1,5 +1,5 @@
 //Vector or image
-import locationVector from "../../assets/vectors/locationVector.svg";
+import { locationVector } from "../../assets/helpers/Images";
 
 //Components Flowbite
 import { Dropdown, Avatar } from "flowbite-react";

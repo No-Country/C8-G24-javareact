@@ -13,7 +13,7 @@ module.exports = {
       "fontGaldeano": ['Galdeano', 'sans-serif']
     }},
     backgroundImage:  {
-      'onboarding-background': "url('../assets/cat-dog-background.png')",
+      'onboarding-background': "url('https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/cat-dog-background.png?alt=media&token=11419c5f-bdc2-402a-868e-a08fcbe30c5a&_gl=1*obhw2n*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ2MDIxNS4xMS4xLjE2OTc0NjkxNTEuNTQuMC4w')",
     },
   },
   plugins: [

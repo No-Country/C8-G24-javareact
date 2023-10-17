@@ -1,5 +1,6 @@
-import instagram from '../../assets/vectors/instagram.svg'
-import facebook from '../../assets/vectors/facebook.svg'
+//import instagram from '../../assets/vectors/instagram.svg'
+import { instagram } from "../../assets/helpers/Images";
+import { facebook } from "../../assets/helpers/Images";
 
 const SocialNetworksLinks = [
   {

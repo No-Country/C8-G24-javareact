@@ -1,10 +1,10 @@
 import { Dropdown } from "flowbite-react";
-import { Label, TextInput, Checkbox, Button } from "flowbite-react";
-import { useState, useEffect , useContext } from "react";
+import { TextInput, Button } from "flowbite-react";
+import { useState, useEffect, useContext } from "react";
 import LocationContext from "../Context/LocationContext";
 
 const UserRegistration = ({ registerUser, setRegisterUser }) => {
-  const {countryState} = useContext(LocationContext)
+  const { countryState } = useContext(LocationContext);
   useEffect(() => {
     if (localStorage.getItem("users") !== null) {
       setOrder(JSON.parse(localStorage.getItem("users")));
@@ -53,7 +53,6 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
   ];
 
   const handleChange = (e) => {
-    
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
   };
 
@@ -64,7 +63,7 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
 
     setOrder((order) => [...order, formValue]);
     const orderProduct = [...order, formValue];
-    
+
     let pedidoJSON = JSON.stringify(orderProduct);
     localStorage.setItem("users", pedidoJSON);
     setRegisterUser(true);
@@ -95,17 +94,13 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
             </div>
           );
         })}
-
-        {/* <div className="flex items-center gap-2">
-          <Checkbox id="remember" />
-          <Label htmlFor="remember">Remember me</Label>
-        </div> */}
-        <Button type="submit" color="dark" className="mb-2">
+        <Button type="submit" color="dark" className="mb-2 bg-black">
           CREAR MI CUENTA
         </Button>
         <span className="block text-sm">
           ¿Ya eres cliente?{" "}
-          <button type="button"
+          <button
+            type="button"
             onClick={() => {
               setRegisterUser(true);
             }}

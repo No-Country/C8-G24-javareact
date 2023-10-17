@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-//Images and vectors
-import image from "../../assets/img-kai_pet.png";
+//Image logo 
+import { imageKaiPetLogo } from "../../assets/helpers/Images";
 
 //Components
 import Location from "./Location";
@@ -38,7 +38,7 @@ function YellowTop() {
         id="zindex"
       >
         <Link to={"/"} className="flex flex-row">
-          <img src={image} className="w-16 sm:w-32" alt="img-kaipet"></img>
+          <img src={imageKaiPetLogo} className="w-16 sm:w-32" alt="img-kaipet"></img>
           <div className="flex flex-col justify-end  text-white font-logoFont sm:gap-2 sm:mb-2 mr-44 max-lg:mr-0">
             <p className="text-2xl sm:text-4xl">KAI</p>
             <p className="text-2xl sm:text-4xl">PET</p>

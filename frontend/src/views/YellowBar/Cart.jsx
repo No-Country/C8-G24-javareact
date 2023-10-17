@@ -1,6 +1,6 @@
-//Img or vector file
-import cartImg from "../../assets/vectors/cart.svg";
-import deleteIcon from "../../assets/vectors/delete.png";
+//Img or vector import
+import { cartImg } from "../../assets/helpers/Images";
+import { deleteIcon } from "../../assets/helpers/Images";
 
 //Components from flowbite
 import { Dropdown, Avatar, Button, Tooltip } from "flowbite-react";
@@ -142,7 +142,7 @@ const Cart = () => {
               <Button
                 onClick={buyCart}
                 color="dark"
-                className="hover:bg-slate-600"
+                className="hover:bg-slate-600 bg-black"
               >
                 Ir al carrito
               </Button>

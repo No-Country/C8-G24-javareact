@@ -1,5 +1,6 @@
 import { Table , Avatar  } from "flowbite-react";
-import deleteIcon from "../../assets/vectors/delete.png";
+import { deleteIcon } from "../../assets/helpers/Images";
+
 const CartProductsConfirmation = ({ cart ,  setCart , handleDelete  }) => {
  
   return (

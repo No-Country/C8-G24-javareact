@@ -1,5 +1,5 @@
 import { Label, TextInput, Checkbox, Button, Select } from "flowbite-react";
-import iconBack from "../../assets/vectors/icon-back.svg";
+import { iconBack } from "../../assets/helpers/Images";
 import { Link, useNavigate } from "react-router-dom";
 import Provinces from "../Records/Provinces/Provinces.json";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
-import iconBack from "../../assets/vectors/icon-back.svg";
+import { iconBack } from "../../assets/helpers/Images";
 import CheckBuyuser from "../CheckBuyUser/CheckBuyuser";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 

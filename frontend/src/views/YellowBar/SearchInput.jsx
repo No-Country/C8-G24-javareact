@@ -1,9 +1,3 @@
-// import { useState } from "react"
-// import { Link } from "react-router-dom";
-
-// import { useNavigate } from "react-router-dom";
-// import SearchPage from "../Pages/SearchPage/SearchPage";
-
 import { useContext } from "react";
 import SearchContext from "../Context/SearchContext";
 
@@ -22,6 +16,5 @@ const SearchInput = () => {
 </form>
   )
 }
-
 
 export default SearchInput
