@@ -5,6 +5,11 @@ import LocationContext from "../Context/LocationContext";
 import CartContext from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 
+
+//logueo de usuario firebase
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+
 const UserLogged = ({ registerUser, setRegisterUser }) => {
   const { setDisabled, setProductosFavoritos , countryChoose } = useContext(LocationContext);
   const {cart , setCart} = useContext(CartContext)
@@ -64,8 +69,32 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
     
 
     e.preventDefault();
+
+
     handleUpabled();
     const countryLogged = localStorage.getItem("country");
+
+
+  ////////******************/////////
+  //logueo de usuario firebase
+    const auth = getAuth();
+signInWithEmailAndPassword(auth, logValue.mail, logValue.password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    
+   
+   
+    // accederia al id
+    console.log(user.uid)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(error , errorMessage)
+  });
+
+
 
     
 
