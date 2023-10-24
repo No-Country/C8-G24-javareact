@@ -1,0 +1,80 @@
+{
+  "hash": "4015f17e",
+  "browserHash": "23e4e3b7",
+  "optimized": {
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "81ae2249",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "f0e5f28c",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "a028c31a",
+      "needsInterop": true
+    },
+    "firebase/storage": {
+      "src": "../../node_modules/firebase/storage/dist/esm/index.esm.js",
+      "file": "firebase_storage.js",
+      "fileHash": "15f13b83",
+      "needsInterop": false
+    },
+    "flowbite-react": {
+      "src": "../../node_modules/flowbite-react/lib/esm/index.js",
+      "file": "flowbite-react.js",
+      "fileHash": "b3895dfd",
+      "needsInterop": false
+    },
+    "spinners-react": {
+      "src": "../../node_modules/spinners-react/lib/esm/index.js",
+      "file": "spinners-react.js",
+      "fileHash": "7456eda5",
+      "needsInterop": false
+    },
+    "firebase/firestore": {
+      "src": "../../node_modules/firebase/firestore/dist/esm/index.esm.js",
+      "file": "firebase_firestore.js",
+      "fileHash": "98a1d150",
+      "needsInterop": false
+    },
+    "firebase/auth": {
+      "src": "../../node_modules/firebase/auth/dist/esm/index.esm.js",
+      "file": "firebase_auth.js",
+      "fileHash": "a08e4850",
+      "needsInterop": false
+    },
+    "react-tailwindcss-datepicker": {
+      "src": "../../node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+      "file": "react-tailwindcss-datepicker.js",
+      "fileHash": "b4fe5288",
+      "needsInterop": false
+    },
+    "firebase/app": {
+      "src": "../../node_modules/firebase/app/dist/esm/index.esm.js",
+      "file": "firebase_app.js",
+      "fileHash": "e17e66ae",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-DZXRV6RW": {
+      "file": "chunk-DZXRV6RW.js"
+    },
+    "chunk-ZAUFE7H7": {
+      "file": "chunk-ZAUFE7H7.js"
+    },
+    "chunk-LJC52MOA": {
+      "file": "chunk-LJC52MOA.js"
+    },
+    "chunk-UXIASGQL": {
+      "file": "chunk-UXIASGQL.js"
+    }
+  }
+}
