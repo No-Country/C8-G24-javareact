@@ -12,4 +12,27 @@ function commerce (item) {
      });
 }
 
-export default commerce
+
+export const confirmationUser = ({...objects}) => {
+  console.log(objects.auth)
+   if (objects.auth !== null) {
+     switch (objects.locationPath) {
+       case "/checkform":
+        const userSession = {...objects.values , "mail": objects.auth.email}
+         sessionStorage.setItem(objects.session, JSON.stringify(userSession));
+         break;
+        case "/checkform/payments":
+          sessionStorage.setItem(objects.session, JSON.stringify(objects.creditCard));
+          objects.setCart([]);
+          break;
+      default:
+         break;
+     }
+     objects.functionNav(objects.pageTo);
+   } else {
+     alert("Registrate apretando el boton mi cuenta");
+   }
+}
+
+export default commerce 
+

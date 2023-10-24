@@ -29,7 +29,7 @@ export const CartList = ({ products, handleDelete, setCart }) => {
         <Table.Body className="divide-y">
           {products.map((item) => {
             return (
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800 max-sm:flex max-sm:flex-col max-sm:items-center">
+              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800 max-sm:flex max-sm:flex-col max-sm:items-center" key={item.id}> 
                 <Table.Cell className="font-medium text-gray-900 dark:text-white flex flex-row items-center sm:py-14  max-sm:flex-col max-sm:text-center">
                   <Avatar img={item.img} className="max-sm:mb-4 w-20"></Avatar>
                   {item.product}

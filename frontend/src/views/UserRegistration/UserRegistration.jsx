@@ -3,26 +3,20 @@ import { TextInput, Button } from "flowbite-react";
 import { useState, useEffect, useContext } from "react";
 import LocationContext from "../Context/LocationContext";
 
-
-
-
 //PARA AUTH
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword , signOut , sendEmailVerification } from "firebase/auth";
 // PARA GUARDAR
-import { addDoc, collection , getDocs } from "firebase/firestore";
+import { addDoc, collection , getDocs, setDoc ,  doc } from "firebase/firestore";
 import db from "../../utils/firebaseConfig";
 
 
-
-
-
-const UserRegistration = ({ registerUser, setRegisterUser }) => {
+const UserRegistration = ({ registerUser, setRegisterUser , log , setLog }) => {
   const { countryState } = useContext(LocationContext);
-  useEffect(() => {
-    if (localStorage.getItem("users") !== null) {
-      setOrder(JSON.parse(localStorage.getItem("users")));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("users") !== null) {
+  //     setOrder(JSON.parse(localStorage.getItem("users")));
+  //   }
+  // }, []);
 
   //Hook state of objects to fill through inputs and send them to back
   const [formValue, setFormValue] = useState({
@@ -70,22 +64,15 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
   };
 
 
-
-
-
 /// GUARDADO DE USUARIO CON FIREBASE --- HABRIA QUE VER COMPROBACION 
   const saveData = async(newOrder) =>{
-    
-    const orderFirebase = collection(db, 'users')
-     const orderDoc = await addDoc(orderFirebase, newOrder)
-    
-   }
+  //  console.log(newOrder.id) 
+    // const orderFirebase = collection(db, 'users')
+    //  const orderDoc = await setDoc(orderFirebase, newOrder , {id:22})
 
-
-
-
-
-
+     await setDoc(doc(db, "users", newOrder.id), newOrder);
+     
+   }  
 
 
   const [order, setOrder] = useState([]);
@@ -97,29 +84,25 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
     const orderProduct = [...order, formValue];
 
     
-
-
-
-
-
-
     /// AUTH CON FIREBASE  
-    const auth = getAuth();
+   const auth = getAuth();
     createUserWithEmailAndPassword(auth, formValue.mail,formValue.password)
-  .then((userCredential) => {
+      .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user)
-   
+  
     const uid = auth.currentUser.uid;
 
 
       /// GUARDADO DE USUARIO CON FIREBASE --- HABRIA QUE VER COMPROBACION 
       saveData({...formValue , id : uid})
-   
-  // ...
 
+      //envia mail de verificacion firebase
+      sendEmailVerification(auth.currentUser)
 
+      setRegisterUser(true);
+
+      console.log("creando cuenta")
 
   })
   .catch((error) => {
@@ -129,31 +112,8 @@ const UserRegistration = ({ registerUser, setRegisterUser }) => {
     console.log(errorMessage)
 
     console.log(errorCode)
-    // ..
-  });
- 
- 
-
-
-
-
-
-    let pedidoJSON = JSON.stringify(orderProduct);
-    localStorage.setItem("users", pedidoJSON);
-    setRegisterUser(true);
-  };
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  }); };
 
 
   return (

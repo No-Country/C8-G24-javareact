@@ -16,7 +16,7 @@ const SearchPage = () => {
                 commerce(commerceItems)
              
               return (
-                <>
+                <div key={item.id}>
                   <Card1
                     image={item.img}
                     description={item.product}
@@ -29,7 +29,7 @@ const SearchPage = () => {
                     setProductosFavoritos={setProductosFavoritos}
                     match={match}
                   />
-                </>
+                </div>
               );
             })}
           </div>

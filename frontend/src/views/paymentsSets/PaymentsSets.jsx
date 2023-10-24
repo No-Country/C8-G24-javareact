@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import CheckBuyuser from "../CheckBuyUser/CheckBuyuser";
 import { Button, TextInput } from "flowbite-react";
 import { Mastercard, AmericanExpress, Visa } from "../../assets/helpers/Images";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import LocationContext from "../Context/LocationContext";
+import { confirmationUser } from "../helpers/helpers";
 const PaymentsSets = ({ setCart, cart }) => {
+  const { authUser } = useContext(LocationContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [creditCard, setCreditCard] = useState({
     numero: "",
@@ -25,15 +28,22 @@ const PaymentsSets = ({ setCart, cart }) => {
 
   function checkPayments(e) {
     e.preventDefault();
-
-    const userRegistered = localStorage.getItem("usersLog");
-    if (userRegistered !== null) {
-      sessionStorage.setItem("creditCard", JSON.stringify(creditCard));
-      console.log(cart);
-      setCart([]);
-      navigate("/checkform/validation");
-    } else {
-      alert("Registrate apretando el boton mi cuenta");
+    if (
+      creditCard.cvv.length >= 3 &&
+      creditCard.dni.length >= 8 &&
+      creditCard.expiracion != "" &&
+      creditCard.nombre != "" &&
+      creditCard.numero.length >= 19
+    ) {
+      confirmationUser({
+        auth: authUser,
+        creditCard: creditCard,
+        session: "creditCard",
+        pageTo: "/checkform/validation",
+        functionNav: navigate,
+        locationPath: location.pathname,
+        setCart: setCart
+      });
     }
   }
   return (
@@ -54,12 +64,15 @@ const PaymentsSets = ({ setCart, cart }) => {
             name="numero"
             id="creditCard"
             type="number"
-            maxlength="12"
             placeholder="Ingrese los numeros de su tarjeta"
             required={true}
             shadow={true}
             value={creditCard.numero}
-            onChange={creditCard.numero.length < 19 ? handleChangeCard : ""}
+            onChange={(e) => {
+              if (e.target.value.length <= 19) {
+                handleChangeCard(e);
+              }
+            }}
           />
         </div>
         <div className="mt-4">
@@ -94,7 +107,11 @@ const PaymentsSets = ({ setCart, cart }) => {
               required={true}
               shadow={true}
               value={creditCard.cvv}
-              onChange={creditCard.cvv.length < 3 ? handleChangeCard : ""}
+              onChange={(e) => {
+                if (e.target.value.length <= 3) {
+                  handleChangeCard(e);
+                }
+              }}
             />
             <TextInput
               id="dni"
@@ -104,7 +121,11 @@ const PaymentsSets = ({ setCart, cart }) => {
               required={true}
               shadow={true}
               value={creditCard.dni}
-              onChange={creditCard.dni.length < 8 ? handleChangeCard : ""}
+              onChange={(e) => {
+                if (e.target.value.length <= 8) {
+                  handleChangeCard(e);
+                }
+              }}
             />
           </div>
         </div>

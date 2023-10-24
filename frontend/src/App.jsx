@@ -24,17 +24,17 @@ import CheckoutPayments from "./views/Pages/CheckoutPayments/CheckoutPayments";
 import Finish from "./views/Finish";
 
 function App() {
-  const [load, setLoad] = useState(true);
+  // const [load, setLoad] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoad(false);
-    }, 3550);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoad(false);
+  //   }, 3550);
+  // }, []);
 
-  if (load) {
-     return <Onboarding />;
-   } else {
+  // if (load) {
+  //    return <Onboarding />;
+  //  } else {
   return (
     <div className="Container">
       <LocationProvider>
@@ -90,6 +90,6 @@ function App() {
     </div>
   );
 }
- }
+// }
 
 export default App;

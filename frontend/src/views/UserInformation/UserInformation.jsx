@@ -1,46 +1,52 @@
 import { Label, TextInput, Checkbox, Button, Select } from "flowbite-react";
 import { iconBack } from "../../assets/helpers/Images";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Provinces from "../Records/Provinces/Provinces.json";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
+import LocationContext from "../Context/LocationContext";
+import { confirmationUser } from "../helpers/helpers";
 
 const UserInformation = () => {
-    const navigate = useNavigate();
+  const { authUser } = useContext(LocationContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const [formsValues, setFormsValues] = useState({
-      region : "",
-      nombre: "",
-      apellido: "",
-      direccion : "",
-      zona: "",
-      codigoPostal: "",
-      localidad: "",
-      provincia:"",
-      telefono: ""
-})
+  const [formsValues, setFormsValues] = useState({
+    region: "",
+    nombre: "",
+    apellido: "",
+    direccion: "",
+    zona: "",
+    codigoPostal: "",
+    localidad: "",
+    provincia: "",
+    telefono: ""
+  });
 
-    const handleChangeInformation = (e) => {
-      setFormsValues({ ...formsValues, [e.target.name]: e.target.value });
-    };
-    
-    function handleConfirmationUserOrder(e){
-        e.preventDefault()
-        
-       const userRegistered = localStorage.getItem("usersLog")
-       if(userRegistered !== null){
-            
-            sessionStorage.setItem("orderClient", JSON.stringify(formsValues))
-            navigate("/checkform/confirmation")
-       }else{
-            alert("Registrate apretando el boton mi cuenta")
-        }
-    }
+  const handleChangeInformation = (e) => {
+    setFormsValues({ ...formsValues, [e.target.name]: e.target.value });
+  };
+
+  function handleConfirmationUserOrder(e) {
+    e.preventDefault();
+    confirmationUser({
+      auth: authUser,
+      values: formsValues,
+      session: "orderClient",
+      pageTo: "/checkform/confirmation",
+      functionNav: navigate,
+      locationPath: location.pathname
+    });
+  }
 
   return (
     <>
-      <form className="flex flex-col gap-4 xl:ml-12" onSubmit={handleConfirmationUserOrder}>
-      <BreadcrumbSetting/>
+      <form
+        className="flex flex-col gap-4 xl:ml-12"
+        onSubmit={handleConfirmationUserOrder}
+      >
+        <BreadcrumbSetting />
         <div className="mt-2">
           <TextInput
             id="region"
@@ -49,11 +55,10 @@ const UserInformation = () => {
             placeholder="Región"
             required={true}
             shadow={true}
-            value = {formsValues.region}
+            value={formsValues.region}
             onChange={handleChangeInformation}
           />
         </div>
-
         <div className="container grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-6 gap-4 mt-2">
           <TextInput
             placeholder="Nombre"
@@ -62,11 +67,9 @@ const UserInformation = () => {
             type="text"
             required={true}
             shadow={true}
-            value = {formsValues.nombre}
+            value={formsValues.nombre}
             onChange={handleChangeInformation}
-            
           />
-
           <TextInput
             placeholder="Apellido"
             name="apellido"
@@ -74,7 +77,7 @@ const UserInformation = () => {
             type="text"
             required={true}
             shadow={true}
-            value = {formsValues.apellido}
+            value={formsValues.apellido}
             onChange={handleChangeInformation}
           />
         </div>
@@ -92,7 +95,7 @@ const UserInformation = () => {
         </div>
         <div className="mt-2">
           <TextInput
-          name="zona"
+            name="zona"
             id="zone"
             type="text"
             placeholder="Barrio, departamento, local, etc (Opcional)"
@@ -123,16 +126,18 @@ const UserInformation = () => {
             onChange={handleChangeInformation}
           />
           <div id="selectProvince">
-            <Select id="province" required={true}  onChange={handleChangeInformation} value={formsValues.provincia} name="provincia">
-              <option disabled selected>
+            <Select
+              id="province"
+              required={true}
+              onChange={handleChangeInformation}
+              value={formsValues.provincia}
+              name="provincia"
+            >
+              <option disabled value="">
                 Provincia
               </option>
               {Provinces.map((item) => {
-                return (
-                  <>
-                    <option>{item.provicia}</option>
-                  </>
-                );
+                return <option key={item.id}>{item.provicia}</option>;
               })}
             </Select>
           </div>
@@ -156,7 +161,10 @@ const UserInformation = () => {
           </Label>
         </div>
         <div className="flex justify-center mt-6">
-          <Button type="submit"  className="pr-4 pl-4 bg-[#37cbfa] hover:bg-[#269cc0]" >
+          <Button
+            type="submit"
+            className="pr-4 pl-4 bg-[#37cbfa] hover:bg-[#269cc0]"
+          >
             Continuar
           </Button>
         </div>

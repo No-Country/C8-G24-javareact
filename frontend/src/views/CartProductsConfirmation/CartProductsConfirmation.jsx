@@ -22,7 +22,7 @@ const CartProductsConfirmation = ({ cart ,  setCart , handleDelete  }) => {
     <Table.Body className="divide-y">
       {cart.map((item) => {
         return (
-          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800 max-sm:flex max-sm:flex-col max-sm:items-center">
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800 max-sm:flex max-sm:flex-col max-sm:items-center" key={item.id}>
             <Table.Cell className="font-medium  text-gray-900 dark:text-white flex flex-row items-center xl:py-6 max-sm:flex-col max-sm:text-center max-2xl:pr-0 max-2xl:pl-3">
               <Avatar img={item.img} className="max-sm:mb-4 w-20"></Avatar>
               {item.product}

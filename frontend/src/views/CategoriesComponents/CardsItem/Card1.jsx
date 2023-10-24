@@ -4,6 +4,7 @@ import CardContext from "../../Context/CardContext";
 import LocationContext from "../../Context/LocationContext";
 
 import { hearth, hearthEmpty } from "../../../assets/helpers/Images";
+import { doc, getFirestore, updateDoc, getDoc } from "firebase/firestore";
 
 const Card1 = ({
   description,
@@ -23,36 +24,46 @@ const Card1 = ({
 
   //context --cardcontext
   const { handleCardFunctionX } = useContext(CardContext);
-  const { disabled, setDisabled, move, holas } = useContext(LocationContext);
+  const { disabled, setDisabled, move, holas, authUser } =
+    useContext(LocationContext);
 
-  useEffect(() => {
-    holas();
-    // Actualiza el título del documento usando la API del navegador
-    const userSaved = JSON.parse(localStorage.getItem("usersLog"));
+  //Obbtiene datos de un doc de la colleccion
+  const getUsersData = async () => {
+    const db = getFirestore();
+    const docRef = doc(db, "users", authUser.uid);
+    const docSnap = await getDoc(docRef);
 
-    if (userSaved !== null) {
-      setDisabled(true);
-      setLike(false);
-      const everyNumber = userSaved[0].productsLike;
-
-      if (everyNumber !== undefined) {
-        for (let i = 0; i < everyNumber.length; i++) {
-          const element = everyNumber[i].id;
-
-          if (id === element) {
-            setLike(true);
-          }
+    const docDataFav = docSnap.data().productsLike;
+    setLike(false);
+    if (docDataFav) {
+      for (let i = 0; i < docDataFav.length; i++) {
+        if (id === docDataFav[i].id) {
+          //resetea el like en match
+          setLike(true);
         }
       }
+    }
+  };
+
+  const updateData = (data) => {
+    const db = getFirestore();
+    const orderDoc = doc(db, "users", authUser.uid);
+    updateDoc(orderDoc, { productsLike: data });
+  };
+
+  useEffect(() => {
+    if (authUser !== null) {
+      setDisabled(true);
+      getUsersData();
     } else {
       setDisabled(false);
     }
     if (!disabled) {
       setLike(false);
     }
-  }, [disabled, move, like, id, match]);
+  }, [authUser, match]);
 
-  const handleLike = () => {
+  const handleLike = async () => {
     setLike(!like);
 
     if (!disabled) {
@@ -63,19 +74,22 @@ const Card1 = ({
 
     const nuevoFavorito = { id, description, image, price };
 
-    const likeSetUser = localStorage.getItem("usersLog");
-    const userLogLike = JSON.parse(likeSetUser);
-
     //**ESTO ES PARA CUANDO ES LA PRIMERA VEZ QUE SE USA LA CUENTA */
 
-    if (userLogLike[0].productsLike === undefined) {
+    const db = getFirestore();
+    const docRef = doc(db, "users", authUser.uid);
+    const docSnap = await getDoc(docRef);
+
+    const productLikeUser = docSnap.data();
+
+    if (productLikeUser.productsLike === undefined) {
       const nuevosProductosFavoritos = [...productosFavoritos];
 
       if (!like) {
-        // Agrega el producto a la lista de productos favoritos
+        //     // Agrega el producto a la lista de productos favoritos
         nuevosProductosFavoritos.push(nuevoFavorito);
       } else {
-        // Elimina el producto de la lista de productos favoritos
+        //     // Elimina el producto de la lista de productos favoritos
         const index = nuevosProductosFavoritos.findIndex(
           (producto) => producto.id === id
         );
@@ -86,14 +100,10 @@ const Card1 = ({
 
       setProductosFavoritos(nuevosProductosFavoritos);
 
-      const likeUser = [
-        { ...userLogLike[0], productsLike: nuevosProductosFavoritos }
-      ];
-
-      localStorage.setItem("usersLog", JSON.stringify(likeUser));
-    } else if (userLogLike[0].productsLike !== undefined) {
-      // setLike(!like);
-      const nameData = userLogLike[0].productsLike;
+      updateData(nuevosProductosFavoritos);
+    } else if (productLikeUser.productsLike !== undefined) {
+      setLike(!like);
+      const nameData = productLikeUser.productsLike;
 
       if (!like) {
         nameData.push(nuevoFavorito);
@@ -107,28 +117,9 @@ const Card1 = ({
 
       setProductosFavoritos(nameData);
 
-      const likeUser = [{ ...userLogLike[0], productsLike: nameData }];
-
-      localStorage.setItem("usersLog", JSON.stringify(likeUser));
+      updateData(nameData);
     }
-    const loadDataLS = JSON.parse(localStorage.getItem("users"));
-    const loadLogDataLS = JSON.parse(localStorage.getItem("usersLog"));
-
-    for (let i = 0; i < loadDataLS.length; i++) {
-      const element = loadDataLS[i].mail;
-
-      if (element === loadLogDataLS[0].mail) {
-        const actualizeUser = loadDataLS[i];
-
-        const productsLike = loadLogDataLS[0].productsLike;
-
-        const userSet = { ...actualizeUser, productsLike };
-
-        loadDataLS[i] = userSet;
-
-        localStorage.setItem("users", JSON.stringify(loadDataLS));
-      }
-    }
+    holas(authUser.uid);
   };
 
   return (
@@ -171,6 +162,7 @@ const Card1 = ({
             return (
               <Dropdown.Item
                 className="border-y w-52 min-[400px]:w-96 flex justify-between"
+                key={items.id}
                 onClick={() => {
                   handleCardFunctionX(
                     items,

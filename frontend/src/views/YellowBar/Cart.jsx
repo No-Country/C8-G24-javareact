@@ -46,7 +46,7 @@ const Cart = () => {
               alt="cart"
               img={cartImg}
               rounded={true}
-              class="w-max rounded p-4 hover:bg-yellow-200"
+              className="w-max rounded p-4 hover:bg-yellow-200"
             />
             <span
               color="warning"
@@ -86,10 +86,9 @@ const Cart = () => {
               <ul className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {cart.map((products) => {
                   return (
-                    <Dropdown.Item>
-                      <li
-                        className="py-3 sm:py-4 flex items-center"
-                        key={products.idItem}
+                    <Dropdown.Item key={products.idItem}>
+                      <div
+                        className="py-3 sm:py-4 flex items-center"  
                       >
                         <div className="flex max-sm:flex-col items-center w-6/12  gap-4 ">
                           <img
@@ -122,7 +121,7 @@ const Cart = () => {
                             />
                           </Tooltip>
                         </div>
-                      </li>
+                      </div>
                     </Dropdown.Item>
                   );
                 })}

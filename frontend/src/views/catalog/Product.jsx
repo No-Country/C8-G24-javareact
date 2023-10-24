@@ -1,5 +1,5 @@
-import { Card } from "flowbite-react";
-import Button from "./Button1";
+import { Card  , Button} from "flowbite-react";
+// import Button from "./Button1";
 import { useContext, useEffect, useState } from "react";
 import CartContext from "../Context/CartContext";
 import CardContext from "../Context/CardContext";
@@ -103,9 +103,9 @@ function Product() {
           </Card>
           <div className="mt-5">
             {stockProd !== 0 ? (
-              <button onClick={() => addToCart()}>
-                <Button tittle={"Agregar al carrito"} />
-              </button>
+              <Button onClick={() => addToCart()} >
+                Agregar al carrito
+              </Button>
             ) : (
               <p className="mt-3 font-bold">
                 No tenemos más stock por el momento, espera unos dias y

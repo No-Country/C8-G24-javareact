@@ -83,7 +83,7 @@ const Filters = ({ name }) => {
   return (
     <div>
       <Breadcrumb aria-label="Default breadcrumb example" className="mb-4">
-        <Breadcrumb.Item exact href="/">
+        <Breadcrumb.Item href="/">
           Home
         </Breadcrumb.Item>
         <Breadcrumb.Item href="#">{name}</Breadcrumb.Item>
@@ -159,6 +159,7 @@ const Filters = ({ name }) => {
             commerce(commerceItems);
 
             return (
+              <div key={item.id}>
               <Card
                 image={item.img}
                 description={item.product}
@@ -170,6 +171,7 @@ const Filters = ({ name }) => {
                 productosFavoritos={productosFavoritos}
                 setProductosFavoritos={setProductosFavoritos}
               />
+              </div>
             );
           })}
         </div>

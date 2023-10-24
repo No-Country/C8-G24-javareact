@@ -172,8 +172,8 @@ export const CartPage = () => {
             <div className="flex items-center">
               <Datepicker onChange={handleValueChange} value={value} />
             </div>
-            <Select id="turns" required={true} onChange={handleChangeTurns}>
-              <option disabled selected>
+            <Select id="turns" required={true} onChange={handleChangeTurns} defaultValue="">
+              <option disabled value="">
                 Selecciona un horario para la recogida
               </option>
               <option value="morning">Mañana (Entre las 9 y las 14hs)</option>

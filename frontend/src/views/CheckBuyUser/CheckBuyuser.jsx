@@ -8,8 +8,8 @@ const CheckBuyuser = () => {
   const [ship , setShip] = useState([]);
 
   useEffect(() => {
-    const usersLog = JSON.parse(localStorage.getItem("usersLog"))
-    setMail(usersLog.map((item) => item.mail))
+    // const usersLog = JSON.parse(localStorage.getItem("usersLog"))
+    // setMail(usersLog.map((item) => item.mail))
     
     const orderClientSet = JSON.parse(sessionStorage.getItem('orderClient'));
     setShip(orderClientSet)
@@ -21,7 +21,7 @@ const CheckBuyuser = () => {
     <div className="flex flex-col bg-white p-4 mb-8 mt-8">
       <div className="flex gap-10 pb-2 border-b-2">
        
-        <p>Contacto: {mail}</p>
+        <p>Contacto: {ship.mail}</p>
       </div>
       <div className="flex gap-10 pt-2">
         

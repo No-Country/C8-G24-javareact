@@ -9,11 +9,14 @@ const Favourites = () => {
 const { favourites } = useContext(LocationContext) 
 
 const [itemsFav , setItemsFav] = useState([]);
+
 useEffect(() => {
   
   if(favourites !== undefined){
 
    setItemsFav(favourites)
+
+   
   }else{
    const setFav = JSON.parse(localStorage.getItem("usersLog"))
    
@@ -33,7 +36,7 @@ return (
               alt="cart"
               img={hearth}
               rounded={true}
-              class="w-max rounded p-4 hover:bg-yellow-200"
+              className="w-max rounded p-4 hover:bg-yellow-200"
               
             />
           </>
@@ -61,8 +64,8 @@ return (
                 <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                   {itemsFav.map((products) => {
                     return (
-                      <Dropdown.Item>
-                      <li className="py-3 sm:py-4" key={products.id}>
+                      <Dropdown.Item key={products.id}>
+                      <div className="py-3 sm:py-4" >
                         <div className="flex items-center space-x-4">
                           <div className="shrink-0">
                             <img
@@ -83,7 +86,7 @@ return (
                             </p>
                           </div>
                         </div>
-                      </li>
+                      </div>
                       </Dropdown.Item>
                     );
                   })}

@@ -1,19 +1,17 @@
 import { Dropdown } from "flowbite-react";
-import { Label, TextInput, Checkbox, Button } from "flowbite-react";
-import { useContext, useEffect, useState } from "react";
+import {  TextInput, Button } from "flowbite-react";
+import { useContext, useState } from "react";
 import LocationContext from "../Context/LocationContext";
-import CartContext from "../Context/CartContext";
-import { useNavigate } from "react-router-dom";
-
 
 //logueo de usuario firebase
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword , signOut } from "firebase/auth";
 
 
-const UserLogged = ({ registerUser, setRegisterUser }) => {
-  const { setDisabled, setProductosFavoritos , countryChoose } = useContext(LocationContext);
-  const {cart , setCart} = useContext(CartContext)
-  const navigate = useNavigate();
+const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , userName }) => {
+  const auth = getAuth();
+  
+ const { setDisabled, setProductosFavoritos , holas } = useContext(LocationContext);
+  
   function handleDisabled() {
     setDisabled(false);
   }
@@ -22,10 +20,6 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
     setDisabled(true);
   }
 
-  const [log, setLog] = useState(true);
-
-  const [userMail, setUserMail] = useState();
-  const [userName, setUserName] = useState();
   const [logValue, setLogValue] = useState({
     mail: "",
     password: ""
@@ -48,87 +42,27 @@ const UserLogged = ({ registerUser, setRegisterUser }) => {
     }
   ];
 
-  const UserLogged = localStorage.getItem("users");
-
-  const userLoad = JSON.parse(UserLogged);
-
-  useEffect(() => {
-    if (userLoad !== null) {
-      for (let i = 0; i < userLoad.length; i++) {
-        if (localStorage.getItem("usersLog")) {
-          setUserMail(userLoad[i].mail);
-          setUserName(userLoad[i].name);
-          countryChoose(userLoad[i].pais)
-          setLog(false);
-        }
-      }
-    }
-  }, []);
 
   function onHandleLogSubmit(e) {
-    
-
     e.preventDefault();
-
-
     handleUpabled();
-    const countryLogged = localStorage.getItem("country");
-
-
-  ////////******************/////////
-  //logueo de usuario firebase
-    const auth = getAuth();
-signInWithEmailAndPassword(auth, logValue.mail, logValue.password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
     
-   
-   
-    // accederia al id
-    console.log(user.uid)
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(error , errorMessage)
-  });
-
-
-
-    
-
-    
-    for (let i = 0; i < userLoad.length; i++) {
-      console.log(userLoad[i].pais , countryLogged)
+  signInWithEmailAndPassword(auth, logValue.mail, logValue.password)
+      .then((userCredential) => {
+       
+        // Signed in 
+        const user = userCredential.user;
       
-      
-      if (
-        userLoad[i].mail === logValue.mail &&
-        userLoad[i].password === logValue.password
-      ) {
-        console.log("usuario logueado");
-        setUserMail(userLoad[i].mail);
-        setUserName(userLoad[i].name);
-        countryChoose(userLoad[i].pais)
-        let userLogged = [];
-        userLogged = [...userLogged, userLoad[i]];
+        // accederia al id**
+        // console.log(user.uid)
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error , errorMessage)
+      });
 
-        let usersJSON = JSON.stringify(userLogged);
-        localStorage.setItem("usersLog", usersJSON);
-
-        setLog(false);
-
-        //IR PROBANDO - SI NO ESTA EN EL MISMO PAIS SE BORRA EL CARRITO Y SI ES DEL MISMO PAIS NO 
-        if(userLoad[i].pais !== countryLogged){
-          setCart([])
-          alert(
-            "Si tiene productos en el carrito se borraran porque son de otro país"
-          );
-          navigate("/");
-         }
-      }
-    }
   }
 
   const handleChange = (e) => {
@@ -137,10 +71,9 @@ signInWithEmailAndPassword(auth, logValue.mail, logValue.password)
   };
 
   const handleClose = () => {
-    localStorage.removeItem("usersLog");
     setProductosFavoritos([]);
-    setLog(true);
     handleDisabled();
+    signOut(auth)
   };
 
   if (log) {
@@ -155,7 +88,7 @@ signInWithEmailAndPassword(auth, logValue.mail, logValue.password)
         <form className="flex flex-col gap-4 mx-4" onSubmit={onHandleLogSubmit}>
           {logUsers.map((item) => {
             return (
-              <div>
+              <div key={item.id}>
                 <TextInput
                   id={item.id}
                   type={item.type}
