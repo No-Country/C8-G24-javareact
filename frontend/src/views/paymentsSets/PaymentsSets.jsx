@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-
+import ModalAuth from "../Modal/Modal";
 import CheckBuyuser from "../CheckBuyUser/CheckBuyuser";
 import { Button, TextInput } from "flowbite-react";
 import { Mastercard, AmericanExpress, Visa } from "../../assets/helpers/Images";
@@ -12,6 +12,8 @@ const PaymentsSets = ({ setCart, cart }) => {
   const { authUser } = useContext(LocationContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [openModal, setOpenModal] = useState();
+  const props = { openModal, setOpenModal };
 
   const [creditCard, setCreditCard] = useState({
     numero: "",
@@ -35,7 +37,7 @@ const PaymentsSets = ({ setCart, cart }) => {
       creditCard.nombre != "" &&
       creditCard.numero.length >= 19
     ) {
-      confirmationUser({
+      confirmationUser(props,{
         auth: authUser,
         creditCard: creditCard,
         session: "creditCard",
@@ -138,6 +140,7 @@ const PaymentsSets = ({ setCart, cart }) => {
           </Button>
         </div>
       </form>
+      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
     </div>
   );
 };

@@ -13,8 +13,7 @@ function commerce (item) {
 }
 
 
-export const confirmationUser = ({...objects}) => {
-  console.log(objects.auth)
+export const confirmationUser = (props,{...objects}) => {
    if (objects.auth !== null) {
      switch (objects.locationPath) {
        case "/checkform":
@@ -30,7 +29,7 @@ export const confirmationUser = ({...objects}) => {
      }
      objects.functionNav(objects.pageTo);
    } else {
-     alert("Registrate apretando el boton mi cuenta");
+    return props.setOpenModal('pop-up');
    }
 }
 

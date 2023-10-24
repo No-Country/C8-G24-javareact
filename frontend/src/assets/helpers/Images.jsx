@@ -18,7 +18,5 @@ const AmericanExpress = "https://firebasestorage.googleapis.com/v0/b/kaipet-38ae
 const Visa = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fvisalogo.svg?alt=media&token=f9db3e2c-7798-425e-8183-a08b3226d04c&_gl=1*xxx9gu*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NTUuNDYuMC4w"
 const Mastercard = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2FMastercard.svg?alt=media&token=24b119ae-1ef5-4c26-9363-0fa1bd102ba8&_gl=1*1h9hwqq*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NzQuMjcuMC4w" 
 
-
-
 export default userIcon 
 export {cartImg , deleteIcon , hearth , hearthEmpty , locationVector , facebook , instagram , imageKaiPetLogo , dogSlide , catSlide , veterinaria , success , iconBack , Mastercard , Visa , AmericanExpress}

@@ -1,4 +1,7 @@
 import { Card, Dropdown, Avatar } from "flowbite-react";
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import Modal from "../../Modal/Modal";
+import ModalAuth from "../../Modal/Modal";
 import { useContext, useEffect, useState } from "react";
 import CardContext from "../../Context/CardContext";
 import LocationContext from "../../Context/LocationContext";
@@ -21,6 +24,9 @@ const Card1 = ({
   // const navigate = useNavigate();
 
   const [like, setLike] = useState(false);
+
+  const [openModal, setOpenModal] = useState();
+  const props = { openModal, setOpenModal };
 
   //context --cardcontext
   const { handleCardFunctionX } = useContext(CardContext);
@@ -63,13 +69,13 @@ const Card1 = ({
     }
   }, [authUser, match]);
 
+ 
+
   const handleLike = async () => {
     setLike(!like);
 
     if (!disabled) {
-      return alert(
-        "Regístrate o inicia tu sesión para poder agregar favoritos"
-      );
+     return props.setOpenModal('pop-up');
     }
 
     const nuevoFavorito = { id, description, image, price };
@@ -188,7 +194,9 @@ const Card1 = ({
           })}
         </Dropdown>
       </div>
+      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
     </div>
+    
   );
 };
 

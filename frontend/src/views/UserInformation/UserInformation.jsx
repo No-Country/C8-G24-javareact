@@ -6,12 +6,15 @@ import { useContext, useState } from "react";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 import LocationContext from "../Context/LocationContext";
 import { confirmationUser } from "../helpers/helpers";
+import ModalAuth from "../Modal/Modal";
 
 const UserInformation = () => {
   const { authUser } = useContext(LocationContext);
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [openModal, setOpenModal] = useState();
+  const props = { openModal, setOpenModal };
   const [formsValues, setFormsValues] = useState({
     region: "",
     nombre: "",
@@ -30,7 +33,7 @@ const UserInformation = () => {
 
   function handleConfirmationUserOrder(e) {
     e.preventDefault();
-    confirmationUser({
+    confirmationUser(props,{
       auth: authUser,
       values: formsValues,
       session: "orderClient",
@@ -176,6 +179,7 @@ const UserInformation = () => {
           compras
         </Link>
       </div>
+      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
     </>
   );
 };
