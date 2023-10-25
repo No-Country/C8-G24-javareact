@@ -1,11 +1,8 @@
 import { Card, Dropdown, Avatar } from "flowbite-react";
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import Modal from "../../Modal/Modal";
 import ModalAuth from "../../Modal/Modal";
 import { useContext, useEffect, useState } from "react";
 import CardContext from "../../Context/CardContext";
 import LocationContext from "../../Context/LocationContext";
-
 import { hearth, hearthEmpty } from "../../../assets/helpers/Images";
 import { doc, getFirestore, updateDoc, getDoc } from "firebase/firestore";
 

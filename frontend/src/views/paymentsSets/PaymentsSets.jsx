@@ -8,6 +8,9 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LocationContext from "../Context/LocationContext";
 import { confirmationUser } from "../helpers/helpers";
+import { setDoc ,  doc , addDoc , collection, orderBy, query, limit , getDocs , updateDoc} from "firebase/firestore";
+import db from "../../utils/firebaseConfig";
+
 const PaymentsSets = ({ setCart, cart }) => {
   const { authUser } = useContext(LocationContext);
   const navigate = useNavigate();
@@ -28,6 +31,35 @@ const PaymentsSets = ({ setCart, cart }) => {
     setCreditCard({ ...creditCard, [e.target.name]: e.target.value });
   };
 
+  const saveDataOrder = async() =>{
+
+    const cartListOrder = JSON.parse(localStorage.getItem("usersCart"));
+    const orderClient = JSON.parse(sessionStorage.getItem("orderClient"));
+    const shippingSet = JSON.parse(sessionStorage.getItem("shippingSet"));
+    const orderFinalUser = []
+    let dateNow = new Date();
+    let dateOrder = dateNow.toString();  
+    const order = {...orderFinalUser, cartListOrder , orderClient , shippingSet , creditCard ,  dateOrder}
+    
+    const docRef = await addDoc(collection(db, "orders"), order);
+   
+    const userDocRef = doc(db, "users", authUser.uid);
+    
+    const nuevoNombreCampo = `pedido ${docRef.id}`; // Ponemos el nombre del pedido
+
+    const nuevoCampo = {};
+    nuevoCampo[nuevoNombreCampo] = order;
+
+    setDoc(userDocRef, { userRequest: nuevoCampo }, { merge: true })
+    .then(() => {
+      console.log("Datos de userrequest guardados con éxito");
+    })
+    .catch(error => {
+      console.error("Error al guardar datos de userrequest: ", error);
+    });
+
+     }  
+
   function checkPayments(e) {
     e.preventDefault();
     if (
@@ -37,6 +69,8 @@ const PaymentsSets = ({ setCart, cart }) => {
       creditCard.nombre != "" &&
       creditCard.numero.length >= 19
     ) {
+      saveDataOrder()
+      
       confirmationUser(props,{
         auth: authUser,
         creditCard: creditCard,

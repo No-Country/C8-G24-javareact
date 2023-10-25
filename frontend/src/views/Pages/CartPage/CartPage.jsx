@@ -71,9 +71,9 @@ export const CartPage = () => {
     ) {
       setImpress(true);
 
-      const objHola = [
+      const objHola = 
         { ...storageShipping, optionText, formValue, inDateItems, outDateItems }
-      ];
+      ;
 
       sessionStorage.setItem("shippingSet", JSON.stringify(objHola));
     }

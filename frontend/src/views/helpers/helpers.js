@@ -23,6 +23,7 @@ export const confirmationUser = (props,{...objects}) => {
         case "/checkform/payments":
           sessionStorage.setItem(objects.session, JSON.stringify(objects.creditCard));
           objects.setCart([]);
+          localStorage.removeItem("usersCart");
           break;
       default:
          break;

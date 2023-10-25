@@ -2,12 +2,13 @@ import { Dropdown } from "flowbite-react";
 import {  TextInput, Button } from "flowbite-react";
 import { useContext, useState } from "react";
 import LocationContext from "../Context/LocationContext";
+import { Link } from "react-router-dom";
 
 //logueo de usuario firebase
 import { getAuth, signInWithEmailAndPassword , signOut } from "firebase/auth";
 
 
-const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , userName }) => {
+const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , userName , cart }) => {
   const auth = getAuth();
   
  const { setDisabled, setProductosFavoritos , holas } = useContext(LocationContext);
@@ -129,9 +130,10 @@ const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , 
               {userMail}
             </span>
           </Dropdown.Header>
-          <Dropdown.Item>Ir al carrito</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Item><Link>Datos del usuario</Link></Dropdown.Item>
+          <Dropdown.Item><Link>Favoritos</Link></Dropdown.Item>
+          <Dropdown.Item><Link>Pedidos</Link></Dropdown.Item>
+          <Dropdown.Item> {cart.length >= 1 ?  <Link to={"/cart"}>Carrito</Link> : "Carrito" }  </Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleClose}>Cerrar sesión</Dropdown.Item>
         </div>

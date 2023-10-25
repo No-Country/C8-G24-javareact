@@ -30,7 +30,7 @@ const Account = () => {
 
   useEffect(() => {
     setRegisterUser(true);
-
+    
     const auth = getAuth();
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -112,6 +112,7 @@ const getUsersFirestore = async (id , countryLogged) => {
             setLog={setLog}
             userMail={userMail}
             userName={userName}
+            cart={cart}
           />
         ) : (
           <UserRegistration
