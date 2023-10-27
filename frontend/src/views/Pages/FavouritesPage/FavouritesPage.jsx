@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import { CartList } from "../../CartList/CartList";
 import LocationContext from "../../Context/LocationContext";
@@ -9,24 +9,23 @@ const FavouritesPage = () => {
   const { authUser } = useContext(LocationContext);
   const [productsLike, setProductsLike] = useState([]);
   const [showComponent, setShowComponent] = useState(false);
-  const auth = getAuth();
-
+  // const auth = getAuth();
+  
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    
+   setTimeout(() => {
+    
       setShowComponent(true);
+
     }, 800);
+   
+    if (authUser) {
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        getUsersFirestore(user.uid, setProductsLike, false);
-      }
-    });
+      getUsersFirestore(authUser.uid, setProductsLike, false);
 
-    return () => {
-      // Cancela la suscripción cuando el componente se desmonte
-      unsubscribe(); 
-    };
-  }, []);
+    }
+ 
+  }, [authUser]);
 
   return (
     <div className="container mx-auto my-16 max-2xl:px-6">
