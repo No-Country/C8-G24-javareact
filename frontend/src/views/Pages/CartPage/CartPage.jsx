@@ -154,7 +154,7 @@ export const CartPage = () => {
 
   return (
     <div className="container mx-auto my-16 max-2xl:px-6">
-      <CartList products={cart} setCart={setCart} handleDelete={handleDelete} />
+      <CartList products={cart} setCart={setCart} handleDelete={handleDelete} title={"Carrito de compras"} />
       <div className="mt-8 flex gap-2 sm:gap-6 md:gap-10 max-sm:flex-wrap max-sm:justify-center">
         <Card className="w-full">
           <form className="flex flex-col gap-4" onSubmit={handleSubmitCart}>

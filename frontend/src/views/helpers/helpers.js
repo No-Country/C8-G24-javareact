@@ -1,3 +1,5 @@
+import { collection , getFirestore , doc, getDoc} from 'firebase/firestore'
+
 function commerce (item) {
    
     item.sort(function (a, b) {
@@ -32,6 +34,19 @@ export const confirmationUser = (props,{...objects}) => {
    } else {
     return props.setOpenModal('pop-up');
    }
+}
+
+
+export const getUsersFirestore = async (id, setUserDatabase, returnUserData = false) => {
+  const db = getFirestore();
+  const usersCollection = collection(db, "users");
+  const currentUserDoc = doc(usersCollection, id);
+  const userDoc = await getDoc(currentUserDoc);
+  const userData = userDoc.data();
+
+  if (userData) {
+    setUserDatabase(returnUserData ? userData : userData.productsLike);
+  }
 }
 
 export default commerce 

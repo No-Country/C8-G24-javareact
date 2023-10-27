@@ -67,8 +67,7 @@ const LocationProvider = ({ children }) => {
   };
   
   const holas = async (param) => {
-    const favouritesItems = JSON.parse(localStorage.getItem("usersLog"));
-
+    
     if (param !== null) {
       const db = getFirestore();
 
@@ -86,16 +85,9 @@ const LocationProvider = ({ children }) => {
   };
 
   function countryChoose(country) {
-    // const userLoggedCountry = JSON.parse(localStorage.getItem("usersLog"));
-    // if (userLoggedCountry !== null) {
-
-    //   const holas = userLoggedCountry[0].pais
-
-    //   setCountryState(holas)
-    // }else{
+   
     setCountryState(country);
-    // }
-
+   
     switch (country) {
       case "CHILE":
         getStockFirestore("chiStock").then((prods) => {

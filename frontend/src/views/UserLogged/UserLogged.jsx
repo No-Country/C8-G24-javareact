@@ -130,8 +130,8 @@ const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , 
               {userMail}
             </span>
           </Dropdown.Header>
-          <Dropdown.Item><Link>Datos del usuario</Link></Dropdown.Item>
-          <Dropdown.Item><Link>Favoritos</Link></Dropdown.Item>
+          <Dropdown.Item><Link to={"/user"}>Datos del usuario</Link></Dropdown.Item>
+          <Dropdown.Item><Link to={"/favourites"}>Favoritos</Link></Dropdown.Item>
           <Dropdown.Item><Link>Pedidos</Link></Dropdown.Item>
           <Dropdown.Item> {cart.length >= 1 ?  <Link to={"/cart"}>Carrito</Link> : "Carrito" }  </Dropdown.Item>
           <Dropdown.Divider />
