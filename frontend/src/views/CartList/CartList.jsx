@@ -2,17 +2,14 @@ import React from "react";
 import { Avatar, Table } from "flowbite-react";
 import { deleteIcon } from "../../assets/helpers/Images";
 import { useLocation } from "react-router-dom";
+import TitleAccount from "../TitleAccount/TitleAccount";
 
 export const CartList = ({ products, handleDelete, setCart, title }) => {
   const location = useLocation();
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between">
-        <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-          {title}
-        </h5>
-      </div>
+      <TitleAccount title={title}/>
       <Table>
         <Table.Head>
           <Table.HeadCell className="max-sm:text-center">

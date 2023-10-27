@@ -14,6 +14,13 @@ function commerce (item) {
      });
 }
 
+export function countriesSelected(countriesData , itemFilter) {
+  const resultadoFiltrado = countriesData.filter(
+    (item) => item.country === itemFilter
+  );
+  return resultadoFiltrado;
+}
+
 
 export const confirmationUser = (props,{...objects}) => {
    if (objects.auth !== null) {
