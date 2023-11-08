@@ -50,13 +50,9 @@ const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , 
     
   signInWithEmailAndPassword(auth, logValue.mail, logValue.password)
       .then((userCredential) => {
-       
-        // Signed in 
+               // Signed in 
         const user = userCredential.user;
-      
-        // accederia al id**
-        // console.log(user.uid)
-        
+   
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -132,8 +128,8 @@ const UserLogged = ({ registerUser, setRegisterUser , log , setLog , userMail , 
           </Dropdown.Header>
           <Dropdown.Item><Link to={"/user"}>Datos del usuario</Link></Dropdown.Item>
           <Dropdown.Item><Link to={"/favourites"}>Favoritos</Link></Dropdown.Item>
-          <Dropdown.Item><Link>Pedidos</Link></Dropdown.Item>
-          <Dropdown.Item> {cart.length >= 1 ?  <Link to={"/cart"}>Carrito</Link> : "Carrito" }  </Dropdown.Item>
+          <Dropdown.Item><Link to={"/orders"}>Pedidos</Link></Dropdown.Item>
+          <Dropdown.Item> <Link to={"/cart"}>Carrito</Link></Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleClose}>Cerrar sesión</Dropdown.Item>
         </div>

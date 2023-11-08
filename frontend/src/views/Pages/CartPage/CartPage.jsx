@@ -8,15 +8,29 @@ import { Card, TextInput, Button, Select } from "flowbite-react";
 import { useState } from "react";
 
 import Datepicker from "react-tailwindcss-datepicker";
+import { Spinner } from "flowbite-react";
 
 import { useNavigate } from "react-router-dom";
 
 import { useContext, useEffect } from "react";
 import CartContext from "../../Context/CartContext";
+import TitleAccount from "../../TitleAccount/TitleAccount";
+import ButtonsPageNotProducts from "../../ButtonsPageNotProducts/ButtonsPageNotProducts";
+
 
 export const CartPage = () => {
-  const { cart, setCart, cartItems, setCartItems , handleDelete } = useContext(CartContext);
 
+  useEffect(() => {
+    setTimeout(() => {
+    
+      setShowComponent(true);
+
+    }, 800);
+  },[])
+
+
+  const { cart, setCart, cartItems, setCartItems , handleDelete } = useContext(CartContext);
+  const [showComponent, setShowComponent] = useState(false);
   const [optionText, setOptionText] = useState();
   const [print, setPrint] = useState();
   const [impress, setImpress] = useState();
@@ -153,8 +167,13 @@ export const CartPage = () => {
   };
 
   return (
-    <div className="container mx-auto my-16 max-2xl:px-6">
-      <CartList products={cart} setCart={setCart} handleDelete={handleDelete} title={"Carrito de compras"} />
+<div className="container mx-auto my-16 max-2xl:px-6">
+<TitleAccount title={"Carrito de compras"}/>
+{showComponent ? (
+    cart.length >= 1  ?  
+   ( <div >
+     
+      <CartList products={cart} setCart={setCart} handleDelete={handleDelete}  />
       <div className="mt-8 flex gap-2 sm:gap-6 md:gap-10 max-sm:flex-wrap max-sm:justify-center">
         <Card className="w-full">
           <form className="flex flex-col gap-4" onSubmit={handleSubmitCart}>
@@ -214,6 +233,13 @@ export const CartPage = () => {
           </Button>
         </Card>
       </div>
+    </div>) :  <ButtonsPageNotProducts title={"No tienes productos en el carrito"} btnText={"Volver a la pagina principal"} color={"warning"} click={() => navigate("/")}/> ) : (<div className="text-center flex justify-center items-center h-96">
+          <Spinner
+            aria-label="Extra large Center-aligned spinner"
+            className="w-20 h-20"
+            color="warning"
+          />
+        </div>) }
     </div>
   );
 };

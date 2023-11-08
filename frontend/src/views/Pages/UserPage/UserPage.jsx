@@ -8,11 +8,13 @@ import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import TitleAccount from "../../TitleAccount/TitleAccount";
 import UserProfile from "../../UserProfile/UserProfile";
+import AdressProfile from "../../AdressProfile/AdressProfile";
+import PaymentsMethodsProfile from "../../PaymentsMethodsProfile/PaymentsMethodsProfile";
+import SessionProfile from "../../SessionProfile/SessionProfile";
 
 const UserPage = () => {
-  const auth = getAuth();
   const { authUser } = useContext(LocationContext);
-  const [userDatabase, setUserDatase] = useState([]);
+  const [userDatabase, setUserDatase] = useState();
   const [showComponent, setShowComponent] = useState(false);
 
   useEffect(() => {
@@ -33,31 +35,27 @@ const UserPage = () => {
           <div className="mb-2" id="paddingTabItem">
             <TabsComponent aria-label="Tabs with underline" style="underline">
               <TabItem active={true} title="Perfil" icon={HiUserCircle}>
-                <UserProfile data={userDatabase} auth={authUser} />
+                {userDatabase && (
+                  <UserProfile data={userDatabase} auth={authUser} />
+                )}
               </TabItem>
               <TabItem
                 active={false}
-                title="Direcciones"
+                title="Dirección y telefóno"
                 icon={MdDashboard}
                 style={{ padding: "20px" }}
               >
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Content 12
-                </p>
+                {userDatabase && <AdressProfile data={userDatabase} />}
               </TabItem>
               <TabItem
                 active={false}
                 title="Metodos de pago"
                 icon={HiAdjustments}
               >
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Content 13
-                </p>
+                {userDatabase && <PaymentsMethodsProfile data={userDatabase} />}
               </TabItem>
-              <TabItem active={false} title="Overview">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Content 1
-                </p>
+              <TabItem active={false} title="Sesión usuario">
+                {userDatabase && <SessionProfile auth={authUser} />}
               </TabItem>
             </TabsComponent>
           </div>
@@ -68,7 +66,7 @@ const UserPage = () => {
         <div className="text-center flex justify-center items-center h-96">
           <Spinner
             aria-label="Extra large Center-aligned spinner"
-            size="xl"
+            className="w-20 h-20"
             color="warning"
           />
         </div>

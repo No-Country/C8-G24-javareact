@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LocationContext from "../Context/LocationContext";
 import { confirmationUser } from "../helpers/helpers";
-import { setDoc ,  doc , addDoc , collection, orderBy, query, limit , getDocs , updateDoc} from "firebase/firestore";
+import { setDoc ,  doc , addDoc , collection, orderBy, query, limit , getDocs , updateDoc , getDoc} from "firebase/firestore";
 import db from "../../utils/firebaseConfig";
 
 const PaymentsSets = ({ setCart, cart }) => {
@@ -39,25 +39,48 @@ const PaymentsSets = ({ setCart, cart }) => {
     const orderFinalUser = []
     let dateNow = new Date();
     let dateOrder = dateNow.toString();  
-    const order = {...orderFinalUser, cartListOrder , orderClient , shippingSet , creditCard ,  dateOrder}
     
+    const order = { ...orderFinalUser, cartListOrder, orderClient, shippingSet, creditCard, dateOrder };
+
+    //esto lo saque pero hay QUE PROBARLO
     const docRef = await addDoc(collection(db, "orders"), order);
-   
+
+    const idOrder = (docRef.id)
+
+    //añade el ID del pedido a la lista de pedidos del usuario
+    const addIdOrder = {...order, idOrder}
+
     const userDocRef = doc(db, "users", authUser.uid);
     
-    const nuevoNombreCampo = `pedido ${docRef.id}`; // Ponemos el nombre del pedido
-
-    const nuevoCampo = {};
-    nuevoCampo[nuevoNombreCampo] = order;
-
-    setDoc(userDocRef, { userRequest: nuevoCampo }, { merge: true })
-    .then(() => {
-      console.log("Datos de userrequest guardados con éxito");
-    })
-    .catch(error => {
-      console.error("Error al guardar datos de userrequest: ", error);
-    });
-
+    // Obtén el documento del usuario actual
+    const userDoc = await getDoc(userDocRef);
+    
+    // Verifica si ya existe un campo "userRequest" en el documento del usuario
+    if (userDoc.exists()) {
+      // Si existe, obtén el valor actual y agrégale el nuevo pedido al array
+      const userRequest = userDoc.data().userRequest || [];
+      userRequest.push(addIdOrder);
+    
+      // Actualiza el campo "userRequest" con el nuevo array
+      setDoc(userDocRef, { userRequest }, { merge: true })
+        .then(() => {
+          console.log("Pedido agregado con éxito a userRequest");
+        })
+        .catch((error) => {
+          console.error("Error al agregar el pedido a userRequest: ", error);
+        });
+    } else {
+      // Si no existe un campo "userRequest" en el documento del usuario, crea uno nuevo
+      setDoc(userDocRef, { userRequest: [addIdOrder] })
+        .then(() => {
+          console.log("Pedido agregado con éxito a userRequest");
+        })
+        .catch((error) => {
+          console.error("Error al agregar el pedido a userRequest: ", error);
+        });
+    }
+    
+    
      }  
 
   function checkPayments(e) {

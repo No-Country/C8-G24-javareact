@@ -4,7 +4,7 @@ import countriesData from "../../views/Records/CountriesData/CountriesData.json"
 import { countriesSelected } from "../helpers/helpers";
 
 const UserProfile = ({ data, auth }) => {
-  // const [userFlag, setUserFlag] = useState(null);
+
   const country = countriesSelected(countriesData, data.pais);
 
   function reaplaceNumbers(numbers) {
@@ -23,6 +23,7 @@ const UserProfile = ({ data, auth }) => {
           firstData={data.name}
           secondData={data.surname}
           thirdCol={true}
+          thirdColTitle= {"País"}
           flag={imgagessss}
         />
       </div>

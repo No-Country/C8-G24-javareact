@@ -24,6 +24,7 @@ import CheckoutPayments from "./views/Pages/CheckoutPayments/CheckoutPayments";
 import Finish from "./views/Finish";
 import FavouritesPage from "./views/Pages/FavouritesPage/FavouritesPage";
 import UserPage from "./views/Pages/UserPage/UserPage";
+import OrdersPage from "./views/Pages/OrdersPage/OrdersPage";
 
 function App() {
   // const [load, setLoad] = useState(true);
@@ -67,6 +68,7 @@ function App() {
                   element={<Products name="servicios" />}
                 ></Route>
                 <Route path="/favourites" element={<FavouritesPage/>}></Route>
+                <Route path="/orders" element={<OrdersPage/>}></Route>
                 <Route path="/user" element={<UserPage/>}></Route>
                 <Route path="/producto/:id" element={<ProductCard />}></Route>
                 <Route path="/search" element={<SearchPage />}></Route>

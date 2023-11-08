@@ -56,5 +56,34 @@ export const getUsersFirestore = async (id, setUserDatabase, returnUserData = fa
   }
 }
 
+
+export function notRepeatItems(item ,sectionRepeat ,itemRepeat) {
+ return item.filter((item, index, array) =>
+  array.findIndex((element) => element[sectionRepeat][itemRepeat] === item[sectionRepeat][itemRepeat]) === index
+);
+}
+
+export const multiply = (itemOne , itemTwo) => {
+  return itemOne * itemTwo
+ }
+
+
+export function calculateTotal(cartListOrder) {
+  const total = cartListOrder.reduce((accumulator, product) => {
+    return accumulator + multiply(product.cantidad, product.precio);
+  }, 0);
+  return total;
+}
+
+export function translateDateToSpanish(date, optionDate){
+  return date.toLocaleDateString('es-ES', optionDate); 
+ }
+
+ export function dateShipping(year, month , day , formatOptions) {
+  const dateOrderShipping = new Date( `${year}-${month}-${day}`) 
+  const dateOrderShippingString = translateDateToSpanish(dateOrderShipping , formatOptions)
+  return dateOrderShippingString.replace(/[^,]*,([^,]*),.*/, '$1');
+ }
+
 export default commerce 
 

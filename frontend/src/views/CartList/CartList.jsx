@@ -2,20 +2,18 @@ import React from "react";
 import { Avatar, Table } from "flowbite-react";
 import { deleteIcon } from "../../assets/helpers/Images";
 import { useLocation } from "react-router-dom";
-import TitleAccount from "../TitleAccount/TitleAccount";
 
-export const CartList = ({ products, handleDelete, setCart, title }) => {
+export const CartList = ({ products, handleDelete }) => {
   const location = useLocation();
 
   return (
-    <div>
-      <TitleAccount title={title}/>
+    <div >
       <Table>
         <Table.Head>
           <Table.HeadCell className="max-sm:text-center">
             Producto
           </Table.HeadCell>
-          {location.pathname === "/cart" && (
+          {(location.pathname === "/cart" || "/orders") && (
             <Table.HeadCell className="text-center max-sm:hidden">
               Cantidad
             </Table.HeadCell>
@@ -37,13 +35,13 @@ export const CartList = ({ products, handleDelete, setCart, title }) => {
             return (
               <Table.Row
                 className="bg-white dark:border-gray-700 dark:bg-gray-800 max-sm:flex max-sm:flex-col max-sm:items-center"
-                key={item.id}
+                key={item.idItem}
               >
                 <Table.Cell className="font-medium text-gray-900 dark:text-white flex flex-row items-center sm:py-14  max-sm:flex-col max-sm:text-center">
                   <Avatar img={image} className="max-sm:mb-4 w-20"></Avatar>
                   {titleProduct}
                 </Table.Cell>
-                {location.pathname === "/cart" && (
+                {(location.pathname === "/cart" || "/orders") && (
                   <Table.Cell className="text-center">
                     <p className="sm:hidden">Cantidad</p> {item.cantidad}
                   </Table.Cell>
