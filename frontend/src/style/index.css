@@ -83,13 +83,22 @@
 
 @media (width > 1600px) {
   .paddingLeft {
-    left: 50% !important;
+    left: 60% !important;
   }
 }
 
 @media (width > 1300px) {
   #textSecondSectionHome {
     line-height: 4.5rem;
+  }
+}
+
+@media (width < 450px){
+  #paddingTabItem button{
+    font-size: 0px;
+  }
+  #paddingTabItem svg{
+    margin-right: 0px;
   }
 }
 

@@ -8,7 +8,18 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LocationContext from "../Context/LocationContext";
 import { confirmationUser } from "../helpers/helpers";
-import { setDoc ,  doc , addDoc , collection, orderBy, query, limit , getDocs , updateDoc , getDoc} from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  addDoc,
+  collection,
+  orderBy,
+  query,
+  limit,
+  getDocs,
+  updateDoc,
+  getDoc
+} from "firebase/firestore";
 import db from "../../utils/firebaseConfig";
 
 const PaymentsSets = ({ setCart, cart }) => {
@@ -31,36 +42,42 @@ const PaymentsSets = ({ setCart, cart }) => {
     setCreditCard({ ...creditCard, [e.target.name]: e.target.value });
   };
 
-  const saveDataOrder = async() =>{
-
+  const saveDataOrder = async () => {
     const cartListOrder = JSON.parse(localStorage.getItem("usersCart"));
     const orderClient = JSON.parse(sessionStorage.getItem("orderClient"));
     const shippingSet = JSON.parse(sessionStorage.getItem("shippingSet"));
-    const orderFinalUser = []
+    const orderFinalUser = [];
     let dateNow = new Date();
-    let dateOrder = dateNow.toString();  
-    
-    const order = { ...orderFinalUser, cartListOrder, orderClient, shippingSet, creditCard, dateOrder };
+    let dateOrder = dateNow.toString();
+
+    const order = {
+      ...orderFinalUser,
+      cartListOrder,
+      orderClient,
+      shippingSet,
+      creditCard,
+      dateOrder
+    };
 
     //esto lo saque pero hay QUE PROBARLO
     const docRef = await addDoc(collection(db, "orders"), order);
 
-    const idOrder = (docRef.id)
+    const idOrder = docRef.id;
 
     //añade el ID del pedido a la lista de pedidos del usuario
-    const addIdOrder = {...order, idOrder}
+    const addIdOrder = { ...order, idOrder };
 
     const userDocRef = doc(db, "users", authUser.uid);
-    
+
     // Obtén el documento del usuario actual
     const userDoc = await getDoc(userDocRef);
-    
+
     // Verifica si ya existe un campo "userRequest" en el documento del usuario
     if (userDoc.exists()) {
       // Si existe, obtén el valor actual y agrégale el nuevo pedido al array
       const userRequest = userDoc.data().userRequest || [];
       userRequest.push(addIdOrder);
-    
+
       // Actualiza el campo "userRequest" con el nuevo array
       setDoc(userDocRef, { userRequest }, { merge: true })
         .then(() => {
@@ -79,9 +96,7 @@ const PaymentsSets = ({ setCart, cart }) => {
           console.error("Error al agregar el pedido a userRequest: ", error);
         });
     }
-    
-    
-     }  
+  };
 
   function checkPayments(e) {
     e.preventDefault();
@@ -92,9 +107,9 @@ const PaymentsSets = ({ setCart, cart }) => {
       creditCard.nombre != "" &&
       creditCard.numero.length >= 19
     ) {
-      saveDataOrder()
-      
-      confirmationUser(props,{
+      saveDataOrder();
+
+      confirmationUser(props, {
         auth: authUser,
         creditCard: creditCard,
         session: "creditCard",
@@ -197,7 +212,15 @@ const PaymentsSets = ({ setCart, cart }) => {
           </Button>
         </div>
       </form>
-      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
+      <ModalAuth
+        props={props}
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+        title={"Por registrate o ingresa como usuario"}
+        buttonText={"Entendido"}
+        modaCloseFunction={() => props.setOpenModal(undefined)}
+        icon={"register"}
+      />
     </div>
   );
 };

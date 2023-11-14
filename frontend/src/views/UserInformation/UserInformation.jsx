@@ -179,7 +179,7 @@ const UserInformation = () => {
           compras
         </Link>
       </div>
-      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
+      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} title={"Por registrate o ingresa como usuario"} buttonText={"Entendido"} modaCloseFunction={() => props.setOpenModal(undefined)} icon={"register"} />
     </>
   );
 };

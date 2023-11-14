@@ -67,7 +67,6 @@ const Card1 = ({
   }, [authUser, match]);
 
  
-
   const handleLike = async () => {
     setLike(!like);
 
@@ -191,9 +190,8 @@ const Card1 = ({
           })}
         </Dropdown>
       </div>
-      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
-    </div>
-    
+      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} title={"Por registrate o ingresa como usuario"} buttonText={"Entendido"} modaCloseFunction={() => props.setOpenModal(undefined)} icon={"register"}/>
+    </div>  
   );
 };
 

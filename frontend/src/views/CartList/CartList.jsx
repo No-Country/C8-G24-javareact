@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Avatar, Table } from "flowbite-react";
 import { deleteIcon } from "../../assets/helpers/Images";
 import { useLocation } from "react-router-dom";
 
 export const CartList = ({ products, handleDelete }) => {
   const location = useLocation();
-
+  
   return (
-    <div >
+    <div>
       <Table>
         <Table.Head>
           <Table.HeadCell className="max-sm:text-center">
             Producto
           </Table.HeadCell>
-          {(location.pathname === "/cart" || "/orders") && (
-            <Table.HeadCell className="text-center max-sm:hidden">
-              Cantidad
-            </Table.HeadCell>
-          )}
+          <Table.HeadCell className="text-center max-sm:hidden">
+            {(location.pathname === "/cart" ||
+              location.pathname === "/orders") &&
+              "Cantidad"}
+          </Table.HeadCell>
           <Table.HeadCell className="text-center max-sm:hidden">
             Precio
           </Table.HeadCell>
@@ -31,11 +31,11 @@ export const CartList = ({ products, handleDelete }) => {
           {products.map((item) => {
             const precio = item.price || item.precio;
             const image = item.img || item.image;
-            const titleProduct = item.product || item.description
+            const titleProduct = item.product || item.description;
             return (
               <Table.Row
                 className="bg-white dark:border-gray-700 dark:bg-gray-800 max-sm:flex max-sm:flex-col max-sm:items-center"
-                key={item.idItem}
+                key={item.id}
               >
                 <Table.Cell className="font-medium text-gray-900 dark:text-white flex flex-row items-center sm:py-14  max-sm:flex-col max-sm:text-center">
                   <Avatar img={image} className="max-sm:mb-4 w-20"></Avatar>

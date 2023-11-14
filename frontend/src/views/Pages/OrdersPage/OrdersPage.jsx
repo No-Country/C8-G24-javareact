@@ -8,7 +8,7 @@ import { CartList } from "../../CartList/CartList";
 import { calculateTotal } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
 import ButtonsPageNotProducts from "../../ButtonsPageNotProducts/ButtonsPageNotProducts";
-import { Spinner } from "flowbite-react";
+import SpinnerContainer from "../../SpinnerContainer/SpinnerContainer";
 
 const OrdersPage = () => {
   const { authUser } = useContext(LocationContext);
@@ -27,7 +27,6 @@ const OrdersPage = () => {
   }, [authUser]);
 
   const dataClient = productsLike.userRequest;
-
   return (
     <div className="container mx-auto my-16 max-2xl:px-6">
       <TitleAccount title={"Mis pedidos"} />
@@ -36,7 +35,7 @@ const OrdersPage = () => {
         dataClient ? (
           dataClient.map((item, index) => {
             return (
-              <div className="lg:flex lg:gap-8 mt-10 mb-20" key={item.idItem}>
+              <div className="lg:flex lg:gap-8 mt-10 mb-20" key={item.idOrder}>
                 <div className="lg:w-3/6">
                   <OrderDataProfile data={{ item, index: index + 1 }} />
                 </div>
@@ -58,13 +57,7 @@ const OrdersPage = () => {
           />
         )
       ) : (
-        <div className="text-center flex justify-center items-center h-96">
-          <Spinner
-            aria-label="Extra large Center-aligned spinner"
-            className="w-20 h-20"
-            color="warning"
-          />
-        </div>
+        <SpinnerContainer/>
       )}
     </div>
   );

@@ -4,9 +4,10 @@ import { iconBack } from "../../../assets/helpers/Images";
 import PaymentsSets from "../../paymentsSets/PaymentsSets";
 import CartContext from "../../Context/CartContext";
 import { useContext} from "react";
+import ModalAuth from "../../Modal/Modal";
 
 const CheckoutPayments = () => {
-  const { cart, setCart , handleDelete } = useContext(CartContext);
+  const { cart, setCart , handleDelete , props , openModal , setOpenModal , goToHome } = useContext(CartContext);
   
   return (
     <div className="grid xl:grid-cols-7 max-lg:grid-cols-1">
@@ -20,6 +21,7 @@ const CheckoutPayments = () => {
       <div className="grid xl:col-span-3 max-sm:px-6  justify-items-stretch px-14 xl:px-6 2xl:px-12 items-center xl:mr-12 py-12 max-xl:bg-[#FFCC0A]">
         <CartProductsConfirmation cart={cart} handleDelete={handleDelete} setCart={setCart} />
       </div>
+      <ModalAuth props={props} title={"No tienes más productos en el carrito, selecciona más productos"} modaCloseFunction={()=>goToHome()} buttonText={"Ir a pagina de inicio"} icon={"cart"} setOpenModal={setOpenModal} openModal={openModal} />
     </div>
   );
 };

@@ -11,12 +11,12 @@ const UserProfile = ({ data, auth }) => {
     return numbers.replace(/\d/g, ".");
   }
 
-  const textoConPuntos = reaplaceNumbers(data.password);
-  const imgagessss = country[0].img;
+  const textPointsContainer = reaplaceNumbers(data.password);
+  const imgFlagCountry = country[0].img;
 
   return (
-    <div className="flex gap-12 mt-4">
-      <div className="w-1/2">
+    <div className="flex gap-6 xl:gap-8 mt-4 mb-4 max-2xl:flex-col">
+      <div className="2xl:w-1/2">
         <ProfileTable
           title={"Nombre"}
           subtitle={"Apellidos"}
@@ -24,15 +24,15 @@ const UserProfile = ({ data, auth }) => {
           secondData={data.surname}
           thirdCol={true}
           thirdColTitle= {"País"}
-          flag={imgagessss}
+          flag={imgFlagCountry}
         />
       </div>
-      <div className="w-1/2">
+      <div className="2xl:w-1/2">
         <ProfileTable
           title={"Correo electrónico"}
           subtitle={"Contraseña"}
           firstData={auth.auth.currentUser.email}
-          secondData={textoConPuntos}
+          secondData={textPointsContainer}
           thirdCol={false}
         />
       </div>

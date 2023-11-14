@@ -59,38 +59,36 @@ const Cart = () => {
         }
         arrowIcon={false}
         inline={true}
-        placement="bottom"
-        className="ml-2 mr-2 paddingLeft"
+        placement="bottom-end"
+        className="ml-2 mr-2 w-3/4  2xl:w-1/3 "
       >
         {btnBuy === true ? (
           <>
-            <Dropdown.Header>
+            <Dropdown.Header >
               <span className="block text-lg font-semibold truncate">
                 Carrito
               </span>
-              <span className="flex max-sm:text-xs">
-                <div className="w-6/12">
+              <span className="max-sm:text-xs grid grid-cols-5">
+                <div className="col-span-2">
                   <p>Productos</p>
                 </div>
-                <div className="flex items-center w-1/12">
-                  <p>Cantidad</p>
+                <div>
+                  <p className="text-center">Cantidad</p>
                 </div>
-                <div className="inline-flex justify-end items-center  dark:text-white w-3/12 max-[325px]:ml-1">
-                  <p>Precio</p>
+                <div className="dark:text-white max-[325px]:ml-1">
+                  <p className="text-center">Precio</p>
                 </div>
               </span>
             </Dropdown.Header>
-
-            {/* <Item> */}
             <div className="flow-root">
               <ul className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {cart.map((products) => {
                   return (
                     <Dropdown.Item key={products.idItem}>
                       <div
-                        className="py-3 sm:py-4 flex items-center"  
+                        className="py-3 sm:py-4  items-center grid grid-cols-5"  
                       >
-                        <div className="flex max-sm:flex-col items-center w-6/12  gap-4 ">
+                        <div className="flex max-sm:flex-col items-center gap-4 col-span-2">
                           <img
                             className="h-10 w-10"
                             src={products.img}
@@ -105,13 +103,13 @@ const Cart = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex flex-col items-center w-1/12 ">
-                          <p className="ml-5 mr-5 max-sm:pl-3">{products.cantidad}</p>
+                        <div className="flex flex-col   ">
+                          <p className="text-center max-sm:pl-3">{products.cantidad}</p>
                         </div>
-                        <div className="max-sm:text-sm inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white w-3/12">
-                          $ {products.precio * products.cantidad}
+                        <div className="max-sm:text-sm  font-semibold text-gray-900 dark:text-white">
+                         <p className="text-center">$ {products.precio * products.cantidad}</p>  
                         </div>
-                        <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white w-2/12">
+                        <div className="inline-flex justify-end items-center text-base font-semibold text-gray-900 dark:text-white ">
                           <Tooltip content="Eliminar producto">
                             <Avatar
                               className="h-16 max-lg:w-10 rounded-md hover:bg-slate-200 cursor-pointer"

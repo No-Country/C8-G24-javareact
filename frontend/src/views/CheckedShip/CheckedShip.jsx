@@ -7,6 +7,7 @@ import CheckBuyuser from "../CheckBuyUser/CheckBuyuser";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 import LocationContext from "../Context/LocationContext";
 import { confirmationUser } from "../helpers/helpers";
+
 const CheckedShip = () => {
   const { authUser } = useContext(LocationContext);
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const CheckedShip = () => {
           <img src={iconBack} className="w-8"></img> Volver a información
         </Link>
       </div>
-      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} />
+      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} title={"Por registrate o ingresa como usuario"} buttonText={"Entendido"} modaCloseFunction={() => props.setOpenModal(undefined)} icon={"register"} />
     </div>
   );
 };

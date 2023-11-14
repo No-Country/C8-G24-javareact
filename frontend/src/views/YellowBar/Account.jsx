@@ -9,19 +9,22 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 //Firestore
-import { addDoc, collection , getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import db from "../../utils/firebaseConfig";
 
 //Context
 import LocationContext from "../Context/LocationContext";
 import CartContext from "../Context/CartContext";
 
-const Account = () => {
+//Modal
+import ModalAuth from "../Modal/Modal";
 
+const Account = () => {
   const navigate = useNavigate();
 
-  const {cart , setCart} = useContext(CartContext)
-  const {countryChoose , holas} = useContext(LocationContext);
+  const { cart, setCart, openModal, setOpenModal, props, goToHome } =
+    useContext(CartContext);
+  const { countryChoose, holas } = useContext(LocationContext);
 
   const [registerUser, setRegisterUser] = useState();
   const [log, setLog] = useState(true);
@@ -30,25 +33,25 @@ const Account = () => {
 
   useEffect(() => {
     setRegisterUser(true);
-    
+
     const auth = getAuth();
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       console.log("Ha cambiado el estado");
-      
+
       if (user) {
         // sign in...
         console.log("sign in");
         setLog(false);
         const countryLogged = localStorage.getItem("country");
         const uid = user.uid;
-        getUsersFirestore(uid , countryLogged)
-        holas(uid)
+        getUsersFirestore(uid, countryLogged);
+        holas(uid);
       } else {
         // User is signed out
         console.log("sign out");
         setLog(true);
-        holas(null)
+        holas(null);
       }
     });
 
@@ -58,32 +61,28 @@ const Account = () => {
     };
   }, []);
 
-  
-//Firebase data
-const getUsersFirestore = async (id , countryLogged) => {
-  const productsSnapshot = await getDocs(collection(db,"users"))
-  const productStocks = productsSnapshot.docs.map((doc) => {
-  let products = doc.data();
-  
-  return products
-})
+  //Firebase data
+  const getUsersFirestore = async (id, countryLogged) => {
+    const productsSnapshot = await getDocs(collection(db, "users"));
+    const productStocks = productsSnapshot.docs.map((doc) => {
+      let products = doc.data();
 
-  const productFind = productStocks.find((element) => element.id === id) 
+      return products;
+    });
 
-  setUserMail(productFind.mail);
-  setUserName(productFind.name);
-  countryChoose(productFind.pais)
+    const productFind = productStocks.find((element) => element.id === id);
 
-  if(productFind.pais !== countryLogged){
-        
-      setCart([])
+    setUserMail(productFind.mail);
+    setUserName(productFind.name);
+    countryChoose(productFind.pais);
+
+    if (productFind.pais !== countryLogged) {
+      setCart([]);
       localStorage.removeItem("usersCart");
-    alert(
-       "Si tiene productos en el carrito se borraran porque son de otro país"
-     );
-     navigate("/");
+      setOpenModal("pop-up");
+      navigate("/");
     }
-  }
+  };
 
   return (
     <>
@@ -102,7 +101,7 @@ const getUsersFirestore = async (id , countryLogged) => {
           </>
         }
         className="rounded"
-         id="bgColorNavBar"
+        id="bgColorNavBar"
       >
         {registerUser ? (
           <UserLogged
@@ -123,6 +122,17 @@ const getUsersFirestore = async (id , countryLogged) => {
           />
         )}
       </Dropdown>
+      <ModalAuth
+        props={props}
+        title={
+          "Tiene productos de otro país, se borraran para mejorar su experiencia"
+        }
+        modaCloseFunction={() => goToHome()}
+        buttonText={"Cerrar"}
+        icon={"location"}
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
     </>
   );
 };

@@ -67,9 +67,9 @@ function App() {
                   path="/servicios/:product"
                   element={<Products name="servicios" />}
                 ></Route>
-                <Route path="/favourites" element={<FavouritesPage/>}></Route>
-                <Route path="/orders" element={<OrdersPage/>}></Route>
-                <Route path="/user" element={<UserPage/>}></Route>
+                <Route path="/favourites" element={<FavouritesPage />}></Route>
+                <Route path="/orders" element={<OrdersPage />}></Route>
+                <Route path="/user" element={<UserPage />}></Route>
                 <Route path="/producto/:id" element={<ProductCard />}></Route>
                 <Route path="/search" element={<SearchPage />}></Route>
                 <Route path="/cart" element={<CartPage />}></Route>

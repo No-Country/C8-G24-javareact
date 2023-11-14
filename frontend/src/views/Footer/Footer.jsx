@@ -3,6 +3,9 @@ import SocialNetworks from "../YellowBar/SocialNetworks";
 import { Link } from "react-router-dom";
 
 const Footers = () => {
+
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <Footer container={true} className="rounded-none">
@@ -22,7 +25,7 @@ const Footers = () => {
           </div>
           <Footer.Divider />
           <div className="w-full sm:justify-between flex max-sm:flex-col-reverse max-sm:items-center max-sm:gap-5">
-            <Footer.Copyright href="#" by="KAIPET™" year={2022} />
+            <Footer.Copyright href="#" by="KAIPET™" year={currentYear} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <SocialNetworks />
             </div>

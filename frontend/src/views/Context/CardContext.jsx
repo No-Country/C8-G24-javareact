@@ -19,7 +19,7 @@ const CardProvider = ({ children }) => {
     price,
     id
   ) => {
-    navigate(`/producto/:${id}`);
+    navigate(`/producto/:${id}-${items.id}`);
 
     const informationChosenCard = {
       id: id,

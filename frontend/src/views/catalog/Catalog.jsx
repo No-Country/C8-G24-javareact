@@ -1,5 +1,3 @@
-// import records from "../Records/ProductsLists/ProductLists.json";
-
 import Card1 from "../CategoriesComponents/CardsItem/Card1";
 import commerce from "../helpers/helpers";
 import { useContext } from "react";

@@ -1,12 +1,22 @@
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import { CartList } from "../../CartList/CartList";
 import LocationContext from "../../Context/LocationContext";
 import { getUsersFirestore } from "../../helpers/helpers";
-import { Spinner } from "flowbite-react";
 import TitleAccount from "../../TitleAccount/TitleAccount";
 import { useNavigate } from "react-router-dom";
 import ButtonsPageNotProducts from "../../ButtonsPageNotProducts/ButtonsPageNotProducts";
+import SpinnerContainer from "../../SpinnerContainer/SpinnerContainer";
+import { getFirestore, collection, doc, getDoc } from 'firebase/firestore';
+
+const getUsersFirestoreData = async (id, returnUserData = false) => {
+  const db = getFirestore();
+  const usersCollection = collection(db, 'users');
+  const currentUserDoc = doc(usersCollection, id);
+  const userDoc = await getDoc(currentUserDoc);
+  const userData = userDoc.data();
+
+  return returnUserData ? userData : userData.productsLike || [];
+};
 
 const FavouritesPage = () => {
   const { authUser } = useContext(LocationContext);
@@ -17,28 +27,25 @@ const FavouritesPage = () => {
   const navigate = useNavigate()
   
   useEffect(() => {
-    
-   setTimeout(() => {
-    
-      setShowComponent(true);
-
-    }, 800);
-   
-    if (authUser) {
-
-      getUsersFirestore(authUser.uid, setProductsLike, false);
-
-    }
-    
-    if (productsLike) {
-      if (productsLike.length >= 1) {
-        setProductsView(true)
-      }else{
-        setProductsView(false)
+    const fetchData = async () => {
+      try {
+        if (authUser) {
+          const userProducts = await getUsersFirestoreData(authUser.uid, false);
+          setProductsLike(userProducts);
+          setProductsView(userProducts.length >= 1);
+        }
+      } finally {
+        setShowComponent(true);
       }
-    }
+    };
 
-  }, [authUser, productsLike]);
+    // Llamamos a fetchData después de un retardo de 800 ms
+    const timeoutId = setTimeout(fetchData, 800);
+
+    // Limpiamos el timeout en la limpieza del efecto
+    return () => clearTimeout(timeoutId);
+
+  }, [authUser]);
 
   return (
     <div className="container mx-auto my-16 max-2xl:px-6">
@@ -54,13 +61,7 @@ const FavouritesPage = () => {
           <p className="text-center my-72 text-3xl">no conectado</p>
         )
       ) : (
-        <div className="text-center flex justify-center items-center h-96">
-          <Spinner
-            aria-label="Extra large Center-aligned spinner"
-            className="w-20 h-20"
-            color="warning"
-          />
-        </div>
+        <SpinnerContainer/>
       )}
     </div>
   );
