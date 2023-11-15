@@ -5,6 +5,7 @@ import CartContext from "../Context/CartContext";
 import CardContext from "../Context/CardContext";
 import { useParams } from "react-router-dom";
 import LocationContext from "../Context/LocationContext";
+import toast from "react-hot-toast";
 
 function Product() {
   const { locationProducts } = useContext(LocationContext);
@@ -75,7 +76,7 @@ function Product() {
 
   const addToCart = () => {
     let findId = cart.find((item) => item.idItem === product.idItem);
-
+    toast.success('Producto agregado al carrito');
     if (!findId) {
       product.cantidad = cantidad;
       product.stock = product.stock - cantidad;

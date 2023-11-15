@@ -1,14 +1,15 @@
 import React from "react";
 import { Button } from "flowbite-react";
+import Layout from "../Layout/Layout";
 
 const ButtonsPageNotProducts = ({ title, btnText, click, color }) => {
   return (
-    <div className="h-96 flex flex-col items-center justify-center gap-8">
+    <Layout>
       <p className="text-3xl">{title}</p>
       <Button color={color} onClick={click}>
         {btnText}
       </Button>
-    </div>
+    </Layout>
   );
 };
 

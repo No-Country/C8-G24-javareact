@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -30,8 +32,8 @@ const CartProvider = ({ children }) => {
   }
 
   const handleDelete = (item) => {
-    // setReset(item.stock);
-    // setQuantityStock(item.cantidad);
+   
+    toast.error('Producto eliminado del carrito');
     const deleteItems = cart.filter(
       (element) => element.idItem !== item.idItem
     );
@@ -46,7 +48,6 @@ const CartProvider = ({ children }) => {
         path === "/checkform/confirmation" ||
         path === "/checkform/payments")
     ) {
-      console.log("hola")
       return props.setOpenModal("pop-up");
     }
   };

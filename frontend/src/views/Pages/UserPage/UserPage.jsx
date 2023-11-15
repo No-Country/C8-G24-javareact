@@ -12,6 +12,7 @@ import AdressProfile from "../../AdressProfile/AdressProfile";
 import PaymentsMethodsProfile from "../../PaymentsMethodsProfile/PaymentsMethodsProfile";
 import SessionProfile from "../../SessionProfile/SessionProfile";
 import SpinnerContainer from "../../SpinnerContainer/SpinnerContainer";
+import Layout from "../../Layout/Layout";
 
 const UserPage = () => {
   const { authUser } = useContext(LocationContext);
@@ -27,14 +28,14 @@ const UserPage = () => {
       getUsersFirestore(authUser.uid, setUserDatase, true);
     }
   }, [authUser]);
-  
+
   return (
     <div className="container mx-auto my-16 max-2xl:px-6">
       <TitleAccount title={"Perfil"} />
       {showComponent ? (
         authUser ? (
           <div className="mb-2" id="paddingTabItem">
-            <TabsComponent aria-label="Tabs with underline" style="underline" >
+            <TabsComponent aria-label="Tabs with underline" style="underline">
               <TabItem active={true} title="Perfil" icon={HiUserCircle}>
                 {userDatabase && (
                   <UserProfile data={userDatabase} auth={authUser} />
@@ -55,16 +56,22 @@ const UserPage = () => {
               >
                 {userDatabase && <PaymentsMethodsProfile data={userDatabase} />}
               </TabItem>
-              <TabItem active={false} title="Sesión usuario" icon={HiClipboardList}>
+              <TabItem
+                active={false}
+                title="Sesión usuario"
+                icon={HiClipboardList}
+              >
                 {userDatabase && <SessionProfile auth={authUser} />}
               </TabItem>
             </TabsComponent>
           </div>
         ) : (
-          <h1>No conectado</h1>
+          <Layout>
+            <p className="text-3xl">No conectado</p>
+          </Layout>
         )
       ) : (
-        <SpinnerContainer/>
+        <SpinnerContainer />
       )}
     </div>
   );

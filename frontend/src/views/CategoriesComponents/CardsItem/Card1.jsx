@@ -5,6 +5,9 @@ import CardContext from "../../Context/CardContext";
 import LocationContext from "../../Context/LocationContext";
 import { hearth, hearthEmpty } from "../../../assets/helpers/Images";
 import { doc, getFirestore, updateDoc, getDoc } from "firebase/firestore";
+import toast from "react-hot-toast";
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 const Card1 = ({
   description,
@@ -76,8 +79,7 @@ const Card1 = ({
 
     const nuevoFavorito = { id, description, image, price };
 
-    //**ESTO ES PARA CUANDO ES LA PRIMERA VEZ QUE SE USA LA CUENTA */
-
+    
     const db = getFirestore();
     const docRef = doc(db, "users", authUser.uid);
     const docSnap = await getDoc(docRef);
@@ -90,6 +92,7 @@ const Card1 = ({
       if (!like) {
         //     // Agrega el producto a la lista de productos favoritos
         nuevosProductosFavoritos.push(nuevoFavorito);
+        toast.success("Producto agregado a favoritos",{icon:<FaHeart />})
       } else {
         //     // Elimina el producto de la lista de productos favoritos
         const index = nuevosProductosFavoritos.findIndex(
@@ -97,6 +100,7 @@ const Card1 = ({
         );
         if (index !== -1) {
           nuevosProductosFavoritos.splice(index, 1);
+          toast.error("Producto eliminado de favoritos",{icon:<FaRegHeart />})
         }
       }
 
@@ -108,9 +112,11 @@ const Card1 = ({
       const nameData = productLikeUser.productsLike;
 
       if (!like) {
+        toast.success("Producto agregado a favoritos",{icon:<FaHeart />})
         nameData.push(nuevoFavorito);
       } else {
         // Elimina el producto de la lista de productos favoritos
+        toast.error("Producto eliminado de favoritos",{icon:<FaRegHeart />})
         const index = nameData.findIndex((producto) => producto.id === id);
         if (index !== -1) {
           nameData.splice(index, 1);

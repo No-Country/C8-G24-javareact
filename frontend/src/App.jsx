@@ -26,6 +26,8 @@ import FavouritesPage from "./views/Pages/FavouritesPage/FavouritesPage";
 import UserPage from "./views/Pages/UserPage/UserPage";
 import OrdersPage from "./views/Pages/OrdersPage/OrdersPage";
 
+import { Toaster } from "react-hot-toast";
+
 function App() {
   // const [load, setLoad] = useState(true);
 
@@ -93,6 +95,11 @@ function App() {
           </CardProvider>
         </CartProvider>
       </LocationProvider>
+      <Toaster
+        toastOptions={{ duration: 4000 }}
+        reverseOrder={true}
+        position="bottom-right"
+      />
     </div>
   );
 }

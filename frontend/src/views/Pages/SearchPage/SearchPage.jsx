@@ -3,6 +3,7 @@ import SearchContext from "../../Context/SearchContext";
 import LocationContext from "../../Context/LocationContext";
 import Card1 from "../../CategoriesComponents/CardsItem/Card1";
 import commerce from "../../helpers/helpers";
+import Layout from "../../Layout/Layout";
 const SearchPage = () => {
   const { match } = useContext(SearchContext);
   const { productosFavoritos, setProductosFavoritos } =
@@ -38,13 +39,11 @@ const SearchPage = () => {
     );
   } else {
     return (
-      <>
-        <div className="h-96 flex flex-col items-center justify-center">
-          <p className="text-3xl">
-            NO PUDIMOS ENCONTRAR EL PRODUCTO, INTENTALO DE VUELTA
-          </p>
-        </div>
-      </>
+      <Layout>
+        <p className="text-3xl">
+          No pudimos encontrar el producto, intentalo otra vez
+        </p>
+      </Layout>
     );
   }
 };
