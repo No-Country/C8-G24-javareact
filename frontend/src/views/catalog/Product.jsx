@@ -112,7 +112,7 @@ function Product() {
     return (
       <div className="flex justify-around bg-[#F5F5F5] p-5 max-md:flex-col md:px-20 md:py-36 items-center">
         <header className=" md:hidden bg-[#F8CF32] p-5 text-md text-center font-bold tracking-tight text-gray-900 dark:text-white mb-8">
-          <h1>Tienda: {product.negocio} n</h1>
+          <h1>Tienda: {product.negocio}</h1>
         </header>
         <img
           src={product.img}
