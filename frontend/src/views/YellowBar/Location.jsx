@@ -7,13 +7,21 @@ import { Dropdown, Avatar } from "flowbite-react";
 //Context
 import { useContext, useState, useEffect } from "react";
 import LocationContext from "../Context/LocationContext";
+import { countriesSelected } from "../helpers/helpers";
 
 const Location = () => {
   const { countryChoose, countryState, countriesData, authUser, setAuthUser } =
     useContext(LocationContext);
-  const countryFlag = countriesData.filter(
-    (item) => item.country === countryState
-  );
+    
+    const countryFlag = countriesSelected(countriesData, countryState);
+
+  // function CountriesSelected(itemFilter) {
+  //   const resultadoFiltrado = countriesData.filter(
+  //     (item) => item.country === itemFilter
+  //   );
+  //   return resultadoFiltrado;
+  // }
+
   const [imgFlag, setImgFlag] = useState();
 
   useEffect(() => {

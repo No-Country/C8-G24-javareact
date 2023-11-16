@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const FormPayment = () => {
   const navigate = useNavigate();
-
+  const creditCard = JSON.parse(sessionStorage.getItem("creditCard"));
   useEffect(() => {
     setTimeout(() => {
       navigate("/checkform/finish");
+      sessionStorage.clear();
     }, 4000);
   }, []);
 
@@ -24,12 +25,9 @@ const FormPayment = () => {
       </div>
       <h1>Procesando Pago</h1>
       <div className="w-full flex flex-col items-center ">
-        <div className="bg-white w-3/4 p-4 m-4">Visa **** **** **** 1515</div>
-        <div className="bg-white w-3/4 p-4 m-4">Juan Perez</div>
-        <p className="bg-white w-3/4 p-4 m-4">
-          Alimento ProPlan x 10Kg a Lisandro de la Torre 39, Godoy Cruz-Mendoza.
-          Total $7000
-        </p>
+        <div className="bg-white w-3/4 p-4 m-4">Numero de tarjeta {creditCard.numero}</div>
+        <div className="bg-white w-3/4 p-4 m-4">Nombre y apellido del titular {creditCard.nombre}</div>
+       
         <div className="flex flex-row m-4">
           <div>
             <svg

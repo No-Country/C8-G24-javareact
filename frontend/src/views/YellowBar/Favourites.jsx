@@ -33,7 +33,7 @@ return (
         label={
           <>
             <Avatar
-              alt="cart"
+              alt="favourites"
               img={hearth}
               rounded={true}
               className="w-max rounded p-4 hover:bg-yellow-200"

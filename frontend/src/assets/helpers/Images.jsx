@@ -17,8 +17,10 @@ const iconBack = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appsp
 const AmericanExpress = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2FAmericanExpress.svg?alt=media&token=bd1e2cf1-e2fa-45b7-9d9f-bcdfa414deec&_gl=1*10cyddm*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NDEuNjAuMC4w"
 const Visa = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2Fvisalogo.svg?alt=media&token=f9db3e2c-7798-425e-8183-a08b3226d04c&_gl=1*xxx9gu*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NTUuNDYuMC4w"
 const Mastercard = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/Vectors%2FMastercard.svg?alt=media&token=24b119ae-1ef5-4c26-9363-0fa1bd102ba8&_gl=1*1h9hwqq*_ga*MTc0Njg3NzI5NC4xNjk3MDIxMjE2*_ga_CW55HF8NVT*MTY5NzQ3MTM2MS4xMi4xLjE2OTc0NzE3NzQuMjcuMC4w" 
-
-
+const puppys = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/group-portrait-adorable-puppies.jpg?alt=media&token=7569773d-fb87-4eef-b9e7-b1f35ffb9e63"
+const natural = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/green-leaf-texture-leaf-texture-background.jpg?alt=media&token=b909086c-0a9a-47ff-9318-db38941e2cfd"
+const food = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/supermarket-banner-with-various-items.jpg?alt=media&token=bc9d5135-6750-4fdd-8c62-d2a2382cbc18"
+const dogSmile = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/still-life-domestic-animal-food-composition.jpg?alt=media&token=0bc937d7-5ddd-4958-aa01-f7b9d957db0b"
 
 export default userIcon 
-export {cartImg , deleteIcon , hearth , hearthEmpty , locationVector , facebook , instagram , imageKaiPetLogo , dogSlide , catSlide , veterinaria , success , iconBack , Mastercard , Visa , AmericanExpress}
+export {dogSmile, food  ,cartImg , natural , deleteIcon , hearth , hearthEmpty , locationVector , facebook , instagram , imageKaiPetLogo , dogSlide , catSlide , veterinaria , success , iconBack , Mastercard , Visa , AmericanExpress , puppys}

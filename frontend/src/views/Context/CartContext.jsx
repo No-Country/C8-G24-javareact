@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -8,17 +10,30 @@ const CartProvider = ({ children }) => {
   );
   const [cartItems, setCartItems] = useState([]);
   const [stockProd, setStockProd] = useState([]);
+  const [reset, setReset] = useState();
+  const [quantityStock, setQuantityStock] = useState();
   const [stockReset, setStockReset] = useState(false);
+  const [openModal, setOpenModal] = useState();
+  const props = { openModal, setOpenModal };
   const navigate = useNavigate();
   const location = useLocation();
+
   const path = location.pathname;
+
   useEffect(() => {
     if (cart === null) {
       setCart([]);
     }
   });
 
+  function goToHome() {
+    props.setOpenModal(undefined);
+    navigate("/");
+  }
+
   const handleDelete = (item) => {
+   
+    toast.error('Producto eliminado del carrito');
     const deleteItems = cart.filter(
       (element) => element.idItem !== item.idItem
     );
@@ -33,10 +48,7 @@ const CartProvider = ({ children }) => {
         path === "/checkform/confirmation" ||
         path === "/checkform/payments")
     ) {
-      alert(
-        "No tienes productos en el carrito, te reedirigimos a la pagina principal para que puedas encontrar el producto que deseas"
-      );
-      navigate("/");
+      return props.setOpenModal("pop-up");
     }
   };
 
@@ -49,7 +61,14 @@ const CartProvider = ({ children }) => {
     stockProd,
     setStockProd,
     stockReset,
-    setStockReset
+    setStockReset,
+    setReset,
+    reset,
+    quantityStock,
+    openModal,
+    setOpenModal,
+    props,
+    goToHome
   };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

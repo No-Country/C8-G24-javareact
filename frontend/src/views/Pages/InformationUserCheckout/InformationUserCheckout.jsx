@@ -3,8 +3,11 @@ import CartProductsConfirmation from "../../CartProductsConfirmation/CartProduct
 
 import CheckedShip from "../../CheckedShip/CheckedShip";
 import CartContext from "../../Context/CartContext";
+
+import ModalAuth from "../../Modal/Modal";
+
 const InformationUserCheckout = () => {
-  const { cart, setCart, handleDelete } = useContext(CartContext);
+  const { cart, setCart, handleDelete , props , openModal , setOpenModal , goToHome } = useContext(CartContext);
 
   return (
     <div className="grid xl:grid-cols-7 max-lg:grid-cols-1">
@@ -18,6 +21,7 @@ const InformationUserCheckout = () => {
           setCart={setCart}
         />
       </div>
+      <ModalAuth props={props} title={"No tienes más productos en el carrito, selecciona más productos"} modaCloseFunction={()=>goToHome()} buttonText={"Ir a pagina de inicio"} icon={"cart"} setOpenModal={setOpenModal} openModal={openModal} />
     </div>
   );
 };
