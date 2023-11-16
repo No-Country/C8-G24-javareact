@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Avatar } from "flowbite-react";
-import { TabItem } from "flowbite-react/lib/esm/components/Tab/TabItem";
+// import { TabItem } from "flowbite-react/lib/esm/components/Tab/TabItem";
 
 const ProfileTable = ({
   title,
