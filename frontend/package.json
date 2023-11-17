@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-legacy": "^4.1.1",
-    "@vitejs/plugin-react": "^4.1.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "animate.css": "^4.1.1",
     "aos": "^3.0.0-beta.6",
     "dayjs": "^1.11.10",

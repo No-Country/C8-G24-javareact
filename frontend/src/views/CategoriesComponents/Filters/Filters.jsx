@@ -92,7 +92,7 @@ const Filters = ({ name }) => {
       <h1 className="mb-4 font-bold text-xl">Productos</h1>
       <div className="flex flex-col sm:flex-row ">
         <div className="sm:w-60 bg-[#B4FFED] p-6 sm:mb-0 mb-4 ">
-          <h1>Filtros</h1>
+          <h3>Filtros</h3>
           <div className="flex sm:flex-col gap-10 sm:gap-4">
             <div>
               <h2>Raza:</h2>
