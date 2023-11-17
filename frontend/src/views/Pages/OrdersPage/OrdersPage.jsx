@@ -1,11 +1,11 @@
 import React from "react";
 import LocationContext from "../../Context/LocationContext";
 import { useContext, useState, useEffect } from "react";
-import { getUsersFirestore } from "../../helpers/helpers";
+import { getUsersFirestore } from "../../helpers/helpers.mjs";
 import TitleAccount from "../../TitleAccount/TitleAccount";
 import OrderDataProfile from "../../OrdersDataProfile/OrderDataProfile";
 import { CartList } from "../../CartList/CartList";
-import { calculateTotal } from "../../helpers/helpers";
+import { calculateTotal } from "../../helpers/helpers.mjs";
 import { useNavigate } from "react-router-dom";
 import ButtonsPageNotProducts from "../../ButtonsPageNotProducts/ButtonsPageNotProducts";
 import SpinnerContainer from "../../SpinnerContainer/SpinnerContainer";

@@ -6,7 +6,7 @@ import { iconBack } from "../../assets/helpers/Images";
 import CheckBuyuser from "../CheckBuyUser/CheckBuyuser";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 import LocationContext from "../Context/LocationContext";
-import { confirmationUser } from "../helpers/helpers";
+import { confirmationUser } from "../helpers/helpers.mjs";
 
 const CheckedShip = () => {
   const { authUser } = useContext(LocationContext);

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>9/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>9/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -175,30 +175,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -281,30 +281,30 @@ import { hearth } from "../../assets/helpers/Images";
 import { Dropdown, Avatar } from "flowbite-react";
 import LocationContext from "../Context/LocationContext";
 &nbsp;
-const Favourites = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+const Favourites = () =&gt; {
 &nbsp;
-const { favourites } = <span class="cstat-no" title="statement not covered" >useContext(LocationContext) </span>
+const { favourites } = useContext(LocationContext) 
 &nbsp;
-const [itemsFav , setItemsFav] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
+const [itemsFav , setItemsFav] = useState([]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+useEffect(() =&gt; {
   
-<span class="cstat-no" title="statement not covered" >  if(favourites !== undefined){</span>
+  if(favourites !== undefined){
 &nbsp;
-<span class="cstat-no" title="statement not covered" >   setItemsFav(favourites)</span>
+   setItemsFav(favourites)
 &nbsp;
    
   }else{
-   const setFav = <span class="cstat-no" title="statement not covered" >JSON.parse(localStorage.getItem("usersLog"))</span>
+   const setFav = JSON.parse(localStorage.getItem("usersLog"))
    
-<span class="cstat-no" title="statement not covered" >   if(setFav === undefined || setFav !== null){</span>
+   <span class="missing-if-branch" title="if path not taken" >I</span>if(setFav === undefined || setFav !== null){
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    setFav[0].productsLike === null &amp;&amp; setItemsFav(setFav[0].productsLike)</span>
    } 
   }
 },[favourites])
 &nbsp;
-<span class="cstat-no" title="statement not covered" >return (</span>
+return (
     &lt;&gt;
       &lt;Dropdown
         label={
@@ -322,7 +322,7 @@ const [itemsFav , setItemsFav] = <span class="cstat-no" title="statement not cov
         inline={true}
         placement="bottom" 
       &gt;
-         {itemsFav.length !== 0  ?  (&lt;&gt;
+         {itemsFav.length !== 0  ?  (<span class="branch-0 cbranch-no" title="branch not covered" >&lt;&gt;</span>
          &lt;Dropdown.Header&gt;
               &lt;span className="block text-sm md:text-lg md:font-semibold md:truncate"&gt;
                 Favoritos
@@ -388,7 +388,7 @@ export default Favourites;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-16T18:51:48.022Z
+                at 2023-11-17T12:14:00.882Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

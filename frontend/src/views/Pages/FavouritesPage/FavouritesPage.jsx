@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartList } from "../../CartList/CartList";
 import LocationContext from "../../Context/LocationContext";
-import { getUsersFirestore } from "../../helpers/helpers";
+import { getUsersFirestore } from "../../helpers/helpers.mjs";
 import TitleAccount from "../../TitleAccount/TitleAccount";
 import { useNavigate } from "react-router-dom";
 import ButtonsPageNotProducts from "../../ButtonsPageNotProducts/ButtonsPageNotProducts";

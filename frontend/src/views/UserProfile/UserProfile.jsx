@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileTable from "../ProfileTable/ProfileTable";
 import countriesData from "../../views/Records/CountriesData/CountriesData.json";
-import { countriesSelected } from "../helpers/helpers";
+import { countriesSelected } from "../helpers/helpers.mjs";
 
 const UserProfile = ({ data, auth }) => {
 

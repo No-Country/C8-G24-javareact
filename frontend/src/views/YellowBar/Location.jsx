@@ -7,7 +7,7 @@ import { Dropdown, Avatar } from "flowbite-react";
 //Context
 import { useContext, useState, useEffect } from "react";
 import LocationContext from "../Context/LocationContext";
-import { countriesSelected } from "../helpers/helpers";
+import { countriesSelected } from "../helpers/helpers.mjs";
 
 const Location = () => {
   const { countryChoose, countryState, countriesData, authUser, setAuthUser } =

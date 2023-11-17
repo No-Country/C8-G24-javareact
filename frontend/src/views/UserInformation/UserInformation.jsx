@@ -5,7 +5,7 @@ import Provinces from "../Records/Provinces/Provinces.json";
 import { useContext, useState } from "react";
 import { BreadcrumbSetting } from "../Breadcrumb/Breadcrumb";
 import LocationContext from "../Context/LocationContext";
-import { confirmationUser } from "../helpers/helpers";
+import { confirmationUser } from "../helpers/helpers.mjs";
 import ModalAuth from "../Modal/Modal";
 
 const UserInformation = () => {

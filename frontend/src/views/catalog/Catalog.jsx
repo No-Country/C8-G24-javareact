@@ -1,5 +1,5 @@
 import Card1 from "../CategoriesComponents/CardsItem/Card1";
-import commerce from "../helpers/helpers";
+import commerce from "../helpers/helpers.mjs";
 import { useContext } from "react";
 import LocationContext from "../Context/LocationContext";
 

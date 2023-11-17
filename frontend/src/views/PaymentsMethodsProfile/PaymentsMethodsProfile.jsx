@@ -1,6 +1,6 @@
 import React, { useEffect , useState } from "react";
 import ProfileTable from "../ProfileTable/ProfileTable";
-import { notRepeatItems } from "../helpers/helpers";
+import { notRepeatItems } from "../helpers/helpers.mjs";
 
 const PaymentsMethodsProfile = ({ data }) => {
   const dataMeta = data.userRequest;

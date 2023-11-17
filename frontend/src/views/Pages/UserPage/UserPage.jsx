@@ -1,7 +1,7 @@
 import { getAuth } from "firebase/auth";
 import React, { useEffect, useContext, useState } from "react";
 import LocationContext from "../../Context/LocationContext";
-import { getUsersFirestore } from "../../helpers/helpers";
+import { getUsersFirestore } from "../../helpers/helpers.mjs";
 import { Spinner, TabsComponent } from "flowbite-react";
 import { TabItem } from "flowbite-react/lib/esm/components/Tab/TabItem";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
