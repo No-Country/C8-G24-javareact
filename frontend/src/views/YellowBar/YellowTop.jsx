@@ -31,7 +31,6 @@ function YellowTop() {
           <Cart />
         </div>
         <Account />
-       
       </div>
       <div
         className="flex flex-row justify-between mx-48 items-center max-lg:flex-wrap max-lg:mx-24 max-sm:mx-8 max-lg:justify-center"

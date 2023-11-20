@@ -30,7 +30,6 @@ const OrdersPage = () => {
   return (
     <div className="container mx-auto my-16 max-2xl:px-6">
       <TitleAccount title={"Mis pedidos"} />
-
       {showComponent ? (
         dataClient ? (
           dataClient.map((item, index) => {
