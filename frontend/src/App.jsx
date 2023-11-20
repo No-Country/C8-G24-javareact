@@ -46,7 +46,7 @@ function App() {
         <CartProvider>
           <CardProvider>
             <SearchProvider>
-              <YellowTop />
+               <YellowTop /> 
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route

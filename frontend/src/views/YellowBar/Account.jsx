@@ -1,4 +1,3 @@
-import { Dropdown } from "flowbite-react";
 import { Avatar } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import UserRegistration from "../UserRegistration/UserRegistration";
@@ -18,6 +17,10 @@ import CartContext from "../Context/CartContext";
 
 //Modal
 import ModalAuth from "../Modal/Modal";
+
+import { Menu } from "@headlessui/react";
+
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const Account = () => {
   const navigate = useNavigate();
@@ -86,23 +89,19 @@ const Account = () => {
 
   return (
     <>
-      <Dropdown
-        label={
-          <>
-            <Avatar
-              alt="User settings"
-              img={userIcon}
-              rounded={true}
-              className="max-[380px]:w-10 max-sm:py-2"
-            />
-            <div>
-              <p className="text-xs sm:text-sm max-sm:hidden">MI CUENTA</p>
-            </div>
-          </>
-        }
-        className="rounded"
-        id="bgColorNavBar"
-      >
+      <Menu as="div" className="relative inline-block text-left">
+        <Menu.Button className=" inline-flex w-full justify-center hover:bg-[#fce96a] cursor-pointer rounded-md  px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 items-center gap-1">
+          <Avatar
+            alt="User settings"
+            img={userIcon}
+            rounded={true}
+            className="max-[380px]:w-10 max-sm:py-2"
+          />
+          <div>
+            <p className="text-xs sm:text-sm max-sm:hidden">MI CUENTA</p>
+          </div>
+          <ChevronDownIcon className="max-sm:hidden w-6" />
+        </Menu.Button>
         {registerUser ? (
           <UserLogged
             registerUser={registerUser}
@@ -121,7 +120,7 @@ const Account = () => {
             setLog={setLog}
           />
         )}
-      </Dropdown>
+      </Menu>
       <ModalAuth
         props={props}
         title={

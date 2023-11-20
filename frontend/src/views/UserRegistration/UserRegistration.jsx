@@ -8,7 +8,9 @@ import { getAuth, createUserWithEmailAndPassword , signOut , sendEmailVerificati
 // PARA GUARDAR
 import { addDoc, collection , getDocs, setDoc ,  doc } from "firebase/firestore";
 import db from "../../utils/firebaseConfig";
+import TitlesDropdownsSectionContainer from "../TitlesDropdownsSectionContainer/TitlesDropdownsSectionContainer";
 
+import DropdownContainer from "../DropdownContainer/DropdownContainer";
 
 const UserRegistration = ({ registerUser, setRegisterUser , log , setLog }) => {
   const { countryState } = useContext(LocationContext);
@@ -118,13 +120,9 @@ const UserRegistration = ({ registerUser, setRegisterUser , log , setLog }) => {
 
   return (
     <>
-      <Dropdown.Header>
-        <span className="block text-sm">Crear mi cuenta</span>
-        <span className="block text-sm font-medium truncate">
-          Por favor complete la información a continuación:
-        </span>
-      </Dropdown.Header>
-      <form className="flex flex-col gap-4 mx-4" onSubmit={handleSubmit}>
+      <DropdownContainer boxStyles={"right-0 divide-y-0"}>
+        <TitlesDropdownsSectionContainer title={"Crear mi cuenta"} subtitle={"Por favor complete la información a continuación:"}/>
+      <form className="flex flex-col gap-4 mx-4 pb-2" onSubmit={handleSubmit}>
         {formsContact.map((userForm) => {
           return (
             <div key={userForm.id}>
@@ -156,6 +154,7 @@ const UserRegistration = ({ registerUser, setRegisterUser , log , setLog }) => {
           </button>
         </span>
       </form>
+      </DropdownContainer>
     </>
   );
 };
