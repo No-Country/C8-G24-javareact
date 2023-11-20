@@ -8,6 +8,7 @@ import { doc, getFirestore, updateDoc, getDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
+import DropdownItemCommerce from "../../DropdownItemCommerce/DropdownItemCommerce";
 
 const Card1 = ({
   description,
@@ -69,17 +70,15 @@ const Card1 = ({
     }
   }, [authUser, match]);
 
- 
   const handleLike = async () => {
     setLike(!like);
 
     if (!disabled) {
-     return props.setOpenModal('pop-up');
+      return props.setOpenModal("pop-up");
     }
 
     const nuevoFavorito = { id, description, image, price };
 
-    
     const db = getFirestore();
     const docRef = doc(db, "users", authUser.uid);
     const docSnap = await getDoc(docRef);
@@ -92,7 +91,7 @@ const Card1 = ({
       if (!like) {
         //     // Agrega el producto a la lista de productos favoritos
         nuevosProductosFavoritos.push(nuevoFavorito);
-        toast.success("Producto agregado a favoritos",{icon:<FaHeart />})
+        toast.success("Producto agregado a favoritos", { icon: <FaHeart /> });
       } else {
         //     // Elimina el producto de la lista de productos favoritos
         const index = nuevosProductosFavoritos.findIndex(
@@ -100,7 +99,9 @@ const Card1 = ({
         );
         if (index !== -1) {
           nuevosProductosFavoritos.splice(index, 1);
-          toast.error("Producto eliminado de favoritos",{icon:<FaRegHeart />})
+          toast.error("Producto eliminado de favoritos", {
+            icon: <FaRegHeart />
+          });
         }
       }
 
@@ -112,11 +113,13 @@ const Card1 = ({
       const nameData = productLikeUser.productsLike;
 
       if (!like) {
-        toast.success("Producto agregado a favoritos",{icon:<FaHeart />})
+        toast.success("Producto agregado a favoritos", { icon: <FaHeart /> });
         nameData.push(nuevoFavorito);
       } else {
         // Elimina el producto de la lista de productos favoritos
-        toast.error("Producto eliminado de favoritos",{icon:<FaRegHeart />})
+        toast.error("Producto eliminado de favoritos", {
+          icon: <FaRegHeart />
+        });
         const index = nameData.findIndex((producto) => producto.id === id);
         if (index !== -1) {
           nameData.splice(index, 1);
@@ -159,45 +162,28 @@ const Card1 = ({
           </p>
         </Card>
       </div>
-      <div className="m-4">
-        <Dropdown
-          label={`Compáralo en ${comercios.length} tiendas`}
-          className="padding-list"
-          placement="bottom"
-          style={{ backgroundColor: "#37cbfa" }}
-        >
-          {comercios.map((items) => {
-            return (
-              <Dropdown.Item
-                className="border-y w-52 min-[400px]:w-96 flex justify-between"
-                key={items.id}
-                onClick={() => {
-                  handleCardFunctionX(
-                    items,
-                    description,
-                    image,
-                    comercios,
-                    shopping,
-                    shipments,
-                    price,
-                    id
-                  );
-                }}
-              >
-                <div>
-                  <p>{items.negocio}</p>
-                </div>
-                <div>
-                  <p>$ {items.precio}</p>
-                  <p>$ {items.envio}</p>
-                </div>
-              </Dropdown.Item>
-            );
-          })}
-        </Dropdown>
+      <div className="m-4 w-full">
+        <DropdownItemCommerce
+          comercios={comercios}
+          handleCardFunctionX={handleCardFunctionX}
+          description={description}
+          image={image}
+          shopping={shopping}
+          shipments={shipments}
+          price={price}
+          id={id}
+        />
       </div>
-      <ModalAuth props={props} setOpenModal={setOpenModal} openModal={openModal} title={"Por registrate o ingresa como usuario"} buttonText={"Entendido"} modaCloseFunction={() => props.setOpenModal(undefined)} icon={"register"}/>
-    </div>  
+      <ModalAuth
+        props={props}
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+        title={"Por registrate o ingresa como usuario"}
+        buttonText={"Entendido"}
+        modaCloseFunction={() => props.setOpenModal(undefined)}
+        icon={"register"}
+      />
+    </div>
   );
 };
 

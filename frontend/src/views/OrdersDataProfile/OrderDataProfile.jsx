@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "flowbite-react";
-import { translateDateToSpanish, dateShipping } from "../helpers/helpers";
+import { translateDateToSpanish, dateShipping } from "../helpers/helpers.js";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Button } from "flowbite-react";
 import { GrCopy } from "react-icons/gr";
@@ -93,3 +93,4 @@ const OrderDataProfile = ({ data }) => {
 };
 
 export default OrderDataProfile;
+
