@@ -91,7 +91,7 @@ const Favourites = () => {
               boxStyles={"right-2 max-lg:left-2 lg:right-72 divide-y-0"}
             >
               <Menu.Item>
-                <p className="text-sm m-6">
+                <p className="text-md max-sm:text-sm m-6">
                   No haz agregado ningún producto a tu lista de favoritos
                 </p>
               </Menu.Item>

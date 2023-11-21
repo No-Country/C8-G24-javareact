@@ -34,14 +34,7 @@
 }
 
 /*cart button badge*/
-#rounded-full {
-  position: relative;
-  border-radius: 99%;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0rem 0.5rem;
-  z-index: 99;
-}
+
 
 /*padding dropdown shops*/
 
@@ -53,9 +46,9 @@
   padding: 0rem;
 }
 
-.paddingLeft {
+/* .paddingLeft {
   left: 0px !important;
-}
+} */
 
 #bgColorNavBar{
   background-color: transparent;
