@@ -33,9 +33,6 @@
   -webkit-text-stroke: 1px black;
 }
 
-/*cart button badge*/
-
-
 /*padding dropdown shops*/
 
 .padding-list div {
@@ -45,10 +42,6 @@
 .padding-list div ul {
   padding: 0rem;
 }
-
-/* .paddingLeft {
-  left: 0px !important;
-} */
 
 #bgColorNavBar{
   background-color: transparent;
