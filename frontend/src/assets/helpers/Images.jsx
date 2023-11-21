@@ -21,6 +21,6 @@ const puppys = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot
 const natural = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/green-leaf-texture-leaf-texture-background.jpg?alt=media&token=b909086c-0a9a-47ff-9318-db38941e2cfd"
 const food = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/supermarket-banner-with-various-items.jpg?alt=media&token=bc9d5135-6750-4fdd-8c62-d2a2382cbc18"
 const dogSmile = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/still-life-domestic-animal-food-composition.jpg?alt=media&token=0bc937d7-5ddd-4958-aa01-f7b9d957db0b"
-
+const error404 = "https://firebasestorage.googleapis.com/v0/b/kaipet-38aea.appspot.com/o/dog-404.png?alt=media&token=1fc3a7d4-b596-482f-b38d-d49e09c65541"
 export default userIcon 
-export {dogSmile, food  ,cartImg , natural , deleteIcon , hearth , hearthEmpty , locationVector , facebook , instagram , imageKaiPetLogo , dogSlide , catSlide , veterinaria , success , iconBack , Mastercard , Visa , AmericanExpress , puppys}
+export {dogSmile, food , error404 ,cartImg , natural , deleteIcon , hearth , hearthEmpty , locationVector , facebook , instagram , imageKaiPetLogo , dogSlide , catSlide , veterinaria , success , iconBack , Mastercard , Visa , AmericanExpress , puppys}

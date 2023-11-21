@@ -25,6 +25,7 @@ import Finish from "./views/Finish";
 import FavouritesPage from "./views/Pages/FavouritesPage/FavouritesPage";
 import UserPage from "./views/Pages/UserPage/UserPage";
 import OrdersPage from "./views/Pages/OrdersPage/OrdersPage";
+import Error404 from "./views/Pages/Error404/Error404";
 
 import { Toaster } from "react-hot-toast";
 
@@ -69,6 +70,10 @@ function App() {
                   path="/servicios/:product"
                   element={<Products name="servicios" />}
                 ></Route>
+
+<Route exact path = '*' element={<Error404/>}></Route>
+
+
                 <Route path="/favourites" element={<FavouritesPage />}></Route>
                 <Route path="/orders" element={<OrdersPage />}></Route>
                 <Route path="/user" element={<UserPage />}></Route>
@@ -89,6 +94,7 @@ function App() {
                   element={<FormPayment />}
                 ></Route>
                 <Route path="/checkform/finish" element={<Finish />}></Route>
+               
               </Routes>
               <Footers />
             </SearchProvider>
