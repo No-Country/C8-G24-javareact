@@ -71,7 +71,7 @@ function App() {
                   element={<Products name="servicios" />}
                 ></Route>
 
-<Route exact path = '*' element={<Error404/>}></Route>
+
 
 
                 <Route path="/favourites" element={<FavouritesPage />}></Route>
@@ -94,7 +94,7 @@ function App() {
                   element={<FormPayment />}
                 ></Route>
                 <Route path="/checkform/finish" element={<Finish />}></Route>
-               
+                <Route exact path = '*' element={<Error404/>}></Route>
               </Routes>
               <Footers />
             </SearchProvider>
